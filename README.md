@@ -1,7 +1,9 @@
 # Codemarc Links
 
 ## My Site List
-[codemarc.net](https://codemarc.net/)
+[codemarc.net](https://codemarc.net/)  
+[codemarc consultinc, llc](https://consulting.codemarc.net/)  
+[codemarc's blog](https://blog.codemarc.net/)
 [braintrailz.com](https://braintrailz.com/)
 
 
