@@ -1,3 +1,9 @@
+# Codemarc Links
+
+## My Site List
+[codemarc.net](https://codemarc.net/)
+[braintrailz.com](https://braintrailz.com/)
+
 
 ## BLT Custom Grid Files
 [wip-grid-data](grid/wip-grid-data.json)  
