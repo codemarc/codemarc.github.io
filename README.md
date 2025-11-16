@@ -8,9 +8,13 @@
 
 
 ## BLT Custom Grid Files
-[wip-grid-data](grid/wip-grid-data.json)  
-[custom grid data](grid/custom-grid-data.json)  
-[grid data](grid/grid-data.json)
+
+[wip](grid/wip.json)  - work in progress grid  
+[blank](grid/blank.json) - blank custom grid - load/export/customize/import  
+
+---
+
+[marc](grid/marc.json) - codemarc's personal grid data
 
 ## links to review
 [https://www.nodegit.org/]([https://www.nodegit.org/)
