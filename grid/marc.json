@@ -162,6 +162,7 @@
   "p5": {
     "name": "payments",
     "title": "payments",
+    "showas": "ltable",
     "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/22609922/Payment+System+Documentation",
     "href2": "*/settings",
     "links": [
