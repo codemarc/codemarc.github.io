@@ -1,74 +1,5 @@
 {
   "p1": {
-    "name": "blank",
-    "title": "blank",
-    "href1": " ",
-    "href2": "*/settings",
-    "links": [
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      }
-    ]
-  },
-  "p2": {
-    "name": "test1",
-    "title": "shift management",
-    "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/14090242/Shift+Management+Strategy",
-    "href2": "*/settings",
-    "links": [
-      { "pre1": "ㅤ" },
-      {
-        "pre1": "ㅤ",
-        "name1": "shift open",
-        "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/14548993/Shift+Open+Implementation+Plan",
-        "post1": "   "
-      },
-      { "pre1": "ㅤ" },
-      {
-        "pre1": "ㅤ",
-        "name1": "shift close",
-        "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/14548993/Shift+Close+Implementation+Plan",
-        "post1": "   "
-      },
-      { "pre1": "ㅤ" },
-      {
-        "pre1": "ㅤ",
-        "name1": "settings",
-        "href1": "http://localhost:8080/settings/shifts",
-        "post1": "   "
-      },
-      {
-        "pre1": "ㅤ", 
-        "name1": "testing",
-        "href": "http://localhost:8080/test/shift"
-      },
-      {
-        "pre1": "ㅤ"
-      }
-    ]
-  },
-  "p3": {
     "name": "payments",
     "title": "payments",
     "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/22609922/Payment+System+Documentation",
@@ -100,10 +31,10 @@
       }
     ]
   },
-  "p4": {
+  "p2": {
     "name": "blank",
-    "title": "source feed",
-    "href1": "https://github.com/orgs/bltcore-com/dashboard",
+    "title": "blank",
+    "href1": " ",
     "href2": "*/settings",
     "links": [
       {
@@ -113,30 +44,102 @@
         "pre1": "ㅤ"
       },
       {
-        "name1": "-repos",
-        "href1": "https://github.com/orgs/bltcore-com/repositories"
+        "pre1": "ㅤ"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤㅤㅤ",
-        "name1": "pos",
-        "href1": "https://github.com/bltcore-com/blt-core-pos",
-        "post1": "  |  ",
-        "name2": "branches",
-        "href2": "https://github.com/bltcore-com/blt-core-pos/branches"
+        "pre1": "ㅤ"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤㅤㅤ",
-        "name1": "data",
-        "href1": "https://github.com/bltcore-com/blt-core-data",
-        "post1": "  |  ",
-        "name2": "branches",
-        "href2": "https://github.com/bltcore-com/blt-core-data/branches"
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      }
+    ]
+  },
+  "p3": {
+    "name": "newai",
+    "title": "new/updated ai tools",
+    "href1": "https://www.youtube.com/@t3dotgg",
+    "href2": "*/settings",
+    "links": [
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ",
+        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://fal.ai/&size=14)",
+        "name2": "fal",
+        "href2": "https://fal.ai/",
+        "post2": "   ",
+        "pre3": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://developers.google.com/)",
+        "name3": "dev@google",
+        "href3": "https://developers.google.com/",
+        "post3": "   "
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": " ",
+        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.dolthub.com/&size=10)",
+        "name2": "dolthub",
+        "href2": "https://www.dolthub.com/",
+        "post2": "   ",
+        "pre3": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mobbin.com/&size=10)",
+        "name3": "mobbin",
+        "href3": "https://mobbin.com/"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ",
+        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.flutterflow.io/&size=10)",
+        "name2": "flutterflow",
+        "href2": "https://www.flutterflow.io/",
+        "title2": "Flutterflow: Build iOS and Android apps with AI, no coding required"
+      },
+      {
+        "pre1": "ㅤ"
+      }
+    ]
+  },
+  "p4": {
+    "name": "blank",
+    "title": "blank",
+    "href1": " ",
+    "href2": "*/settings",
+    "links": [
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
       },
       {
         "pre1": "ㅤ"
@@ -177,8 +180,8 @@
   },
   "p6": {
     "name": "blank",
-    "title": "blt-core-pos wiki",
-    "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/overview?homepageId=1868255",
+    "title": "blank",
+    "href1": " ",
     "href2": "*/settings",
     "links": [
       {
@@ -209,8 +212,8 @@
   },
   "p7": {
     "name": "blank",
-    "title": "blt-core-data wiki",
-    "href1": "https://bltwai.atlassian.net/wiki/spaces/data/overview?homepageId=1704370",
+    "title": "blank",
+    "href1": " ",
     "href2": "*/settings",
     "links": [
       {
