@@ -1,19 +1,11 @@
 {
   "p1": {
-    "name": "test1",
-    "title": "shift management",
-    "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/14090242/Shift+Management+Strategy",
+    "name": "joanne",
+    "title": "joanne.bltpos.com",
+    "href1": "https://joanne.bltpos.com/",
     "href2": "*/settings",
     "links": [
-      {
-        "pre1": "ㅤ" ,
-        "name1": "settings shifts",
-        "href1": "http://localhost:8080/settings/shifts",
-        "post1": "   "
-
-
-      },
-      {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" },
+      {"pre1": "ㅤ" }, {{"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" },
       {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }
     ]
   },
@@ -159,7 +151,7 @@
       }
     ]
   },
-  "p5": {
+ "p5": {
     "name": "payments",
     "title": "payments",
     "showas": "ltable",
@@ -189,19 +181,6 @@
         "post2": "  ✫  ",
         "name3": "developer",
         "href3": "https://developer.squareup.com/"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "~wip",
-        "href1": "https://bltwai.atlassian.net/jira/software/projects/POS/boards/1"
-      },
-      {
-        "pre1": "ㅤ" ,
-        "name1": "shifts",
-        "href1": "http://localhost:8080/settings/shifts",
-        "post1": "   "
       }
     ]
   },
