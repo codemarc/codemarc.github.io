@@ -194,12 +194,12 @@
         "pre1": "ㅤ"
       },
       {
-        "name1": "-wip",
+        "name1": "~wip",
         "href1": "https://bltwai.atlassian.net/jira/software/projects/POS/boards/1"
       },
       {
         "pre1": "ㅤ" ,
-        "name1": "settings shifts",
+        "name1": "shifts",
         "href1": "http://localhost:8080/settings/shifts",
         "post1": "   "
       }
