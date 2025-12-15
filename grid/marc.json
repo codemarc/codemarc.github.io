@@ -189,6 +189,19 @@
         "post2": "  ✫  ",
         "name3": "developer",
         "href3": "https://developer.squareup.com/"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "-wip",
+        "href1": "https://bltwai.atlassian.net/jira/software/projects/POS/boards/1"
+      },
+      {
+        "pre1": "ㅤ" ,
+        "name1": "settings shifts",
+        "href1": "http://localhost:8080/settings/shifts",
+        "post1": "   "
       }
     ]
   },
