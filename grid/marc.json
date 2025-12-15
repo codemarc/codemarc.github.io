@@ -9,10 +9,15 @@
         "pre1": "ㅤ",
         "name1": "joanne trattoria",
         "href1": "https://joanne.bltpos.com/"
-        
-
-       }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" },
-      {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }
+      },
+      {"pre1": "ㅤ" }, 
+      {
+        "pre1": "ㅤ",
+        "name1": "supabase",
+        "href1": "https://supabase.com/dashboard/project/sinkqyhpejtzuivuvvlg",
+        "post1": "   "
+      }, 
+      {"pre1": "ㅤ" }, {"pre1": "ㅤ" },{"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" }
     ]
   },
   "p2": {
