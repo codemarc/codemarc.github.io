@@ -2,34 +2,33 @@
   "p1": {
     "name": "bltpos.com",
     "title": "bltpos.com",
+    "showas": "ltable",
     "href1": "https://bltpos.com/",
     "href2": "*/settings",
     "links": [
       {
-        "pre1": "ㅤ",
         "name1": "demo",
         "href1": "https://demo.bltcore.com/",
-        "pre2": "ㅤ",
+
         "name2": "joanne",
         "href2": "https://joanne.bltpos.com/",
-        "pre3": "ㅤ",
+
         "name3": "test",
         "href3": "https://test.bltcore.com/",
-        "pre4": "ㅤ",
+
         "name4": "dev",
         "href4": "http://localhost:8080/"
       },
       {
-        "pre1": "ㅤ",
         "name1": "supa",
         "href1": "https://supabase.com/dashboard/project/dxanewewxwxsapiwxazt",
-        "pre2": "ㅤ",
+
         "name2": "supa",
         "href2": "https://supabase.com/dashboard/project/sinkqyhpejtzuivuvvlg",
-        "pre3": "ㅤ",
+
         "name3": "supa",
         "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
-        "pre4": "ㅤ",
+
         "name4": "supa",
         "href4": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk"
       },      
