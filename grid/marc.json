@@ -9,22 +9,15 @@
         "pre1": "ㅤ",
         "name1": "demo",
         "href1": "https://demo.bltcore.com/",
-
+        "pre2": "ㅤ",
+        "name2": "joanne",
+        "href2": "https://joanne.bltpos.com/",
         "pre3": "ㅤ",
-        "name3": "joanne",
-        "href3": "https://joanne.bltpos.com/"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ",
-        "name1": "test",
-        "href1": "https://test.bltcore.com/",
-
-        "pre3": "ㅤ",
-        "name3": "dev",
-        "href3": "http://localhost:8080/"
+        "name3": "test",
+        "href3": "https://test.bltcore.com/",
+        "pre4": "ㅤ",
+        "name4": "dev",
+        "href4": "http://localhost:8080/"
       },
       {
         "pre1": "ㅤ"
