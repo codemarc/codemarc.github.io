@@ -35,11 +35,12 @@
       {"pre1": "ㅤ"},
       {"pre1": "ㅤ"},
       {"pre1": "ㅤ"}, 
+      {"pre1": "ㅤ" },
       {
-        "name2": "NotebookLM",
-        "href2": "https://notebooklm.google.com/" 
-      },
-      {"pre1": "ㅤ" }
+        "pre1": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://notebooklm.google.com/)",
+        "name1": "NotebookLM",
+        "href1": "https://notebooklm.google.com/" 
+      }
     ]
   },
   "p2": {
