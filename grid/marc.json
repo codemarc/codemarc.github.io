@@ -32,7 +32,14 @@
         "name4": "supa",
         "href4": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk"
       },      
-      {"pre1": "ㅤ"},{"pre1": "ㅤ" }, {"pre1": "ㅤ" }, {"pre1": "ㅤ" },{"pre1": "ㅤ" }
+      {"pre1": "ㅤ"},
+      {"pre1": "ㅤ"},
+      {"pre1": "ㅤ"}, 
+      {
+        "name2: "NotebookLM",
+        "href2": "https://notebooklm.google.com/" 
+      },
+      {"pre1": "ㅤ" }
     ]
   },
   "p2": {
