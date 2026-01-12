@@ -2,7 +2,7 @@
   "p1": {
     "name": "bltpos.com",
     "title": "bltpos.com",
-    "showas": "table",
+    "showas": "ltable",
     "href1": "https://bltpos.com/",
     "href2": "*/settings",
     "links": [
