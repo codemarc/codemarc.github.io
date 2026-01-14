@@ -1,11 +1,14 @@
 {
   "p1": {
-    "name": "bltpos.com",
-    "title": "bltpos.com",
-    "showas": "ltable",
-    "href1": "https://bltpos.com/",
+    "name": "notebooklm",
+    "title": "Notes",
+    "showas": "table",
+    "href1": "https://notebooklm.google.com/",
     "href2": "*/settings",
     "links": [
+      {"pre1": "ㅤ"},
+      {"pre1": "ㅤ"},
+      {"pre1": "ㅤ"},
       {
         "name1": "demo",
         "href1": "https://demo.bltcore.com/",
@@ -33,16 +36,10 @@
         "href4": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk"
       },      
       {"pre1": "ㅤ"},
-      {"pre1": "ㅤ"},
       {"pre1": "ㅤ"}, 
-      {"pre1": "ㅤ" },
-      {
-        "pre1": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://notebooklm.google.com/)",
-        "name1": "NotebookLM",
-        "href1": "https://notebooklm.google.com/" 
-      }
+      {"pre1": "ㅤ"}
     ]
-  },
+  },    
   "p2": {
     "name": "education",
     "title": "education",
@@ -215,6 +212,9 @@
         "post2": "  ✫  ",
         "name3": "developer",
         "href3": "https://developer.squareup.com/"
+      },
+      {
+        "pre1": "ㅤ"
       }
     ]
   },
