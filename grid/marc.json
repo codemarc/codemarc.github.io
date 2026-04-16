@@ -7,7 +7,10 @@
     "href2": "*/settings",
     "links": [
       {"pre1": "ㅤ"},
-      {"pre1": "ㅤ"},
+      {
+        "name2": "Pitchdeck",
+        "href2": "https://bit.ly/3QIzDBy"
+      },
       {"pre1": "ㅤ"},
       {
         "name1": "demo",
