@@ -8,7 +8,9 @@
     "links": [
       {"pre1": "ㅤ"},
       {
-        "name2": "    *** pitchdeck ***",
+        "pre1": "ㅤ",
+        "pre2": "ㅤ",
+        "name2": "pitchdeck",
         "href2": "https://bit.ly/3QIzDBy"
       },
       {"pre1": "ㅤ"},
@@ -66,7 +68,7 @@
       }, 
       {"pre1": "ㅤ" }, 
       {
-        "pre1": "ㅤ",
+        1
         "name1": "sweetwater",
         "href1": "https://sweetwatergainesville.residentportal.com/",
         "post1": "   "
