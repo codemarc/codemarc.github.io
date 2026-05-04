@@ -1,56 +1,59 @@
 {
   "p1": {
-    "name": "notebooklm",
-    "title": "Notes",
+    "name": "laf config",
+    "title": "laf config",
     "showas": "table",
-    "href1": "https://notebooklm.google.com/",
+    "href1": "https://bltwai.com/laf.pdf",
     "href2": "*/settings",
     "links": [
-      {"pre1": "ㅤ"},
       {
-        "pre1": "ㅤ",
-        "pre2": "ㅤ",
-        "name2": "pitchdeck",
-        "href2": "https://bit.ly/3QIzDBy"
-      },
-      {"pre1": "ㅤ"},
-      {
-        "name1": "demo",
-        "href1": "https://demo.bltcore.com/",
-
-        "name2": "joanne",
-        "href2": "https://joanne.bltpos.com/",
-
-        "name3": "test",
-        "href3": "https://test.bltcore.com/",
-
-        "name4": "dev",
-        "href4": "http://localhost:8080/"
+        "name1": "apex",
+        "href1": "https://bltpos.com/",
+        "name2": "lab",
+        "href2": "https://laf-lab.bltpos.com/",
+        "name3": "prod",
+        "href3": "https://laf.bltpos.com/",
+        "name4": "store1",
+        "href4": "https://laf-store1.bltpos.com/"
       },
       {
-        "name1": "supa",
-        "href1": "https://supabase.com/dashboard/project/dxanewewxwxsapiwxazt",
-
-        "name2": "supa",
-        "href2": "https://supabase.com/dashboard/project/sinkqyhpejtzuivuvvlg",
-
-        "name3": "supa",
-        "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
-
-        "name4": "supa",
-        "href4": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk"
-      },      
-      {"pre1": "ㅤ"},
-      {
-        "name2": "bltcore",
-        "href2": "https://bltcore.com/",
-
-        "name3": "bltpos",
-        "href3": "https://bltpos.com/"
+        "name1": "blt2",
+        "href1": "https://bltpos.com/",
+        "name2": "lab dm",
+        "href2": "https://laf-lab-dm.bltpos.com/",
+        "name3": "prod dm",
+        "href3": "https://laf-dm.bltpos.com/",
+        "name4": "store1 dm",
+        "href4": "https://laf-store1-dm.bltpos.com/"
       },
-      {"pre1": "ㅤ"}
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "bltcore",
+        "href1": "https://bltcore.com/",
+        "name2": "gwh prod",
+        "href2": "https://laf-dm.bltpos.com/health",
+        "name3": "gwh store1",
+        "href3": "https://laf-store1-dm.bltpos.com/health",
+        "name4": "gwh lab",
+        "href4": "https://laf-lab-dm.bltpos.com/health"
+      },
+      {
+        "name1": "rsend",
+        "href1": "https://resend.com/emails",
+        "name2": "supa prod",
+        "href2": "https://supabase.com/dashboard/org/wdooygwzkckrvajexjju",
+        "name3": "supa dev",
+        "href3": "https://supabase.com/dashboard/org/hxuvuzspbcigvtxjqcpe",
+        "name4": "tailscale",
+        "href4": "https://login.tailscale.com/admin/machines"
+      },
+      {
+        "pre1": "ㅤ"
+      }      
     ]
-  },    
+  },
   "p2": {
     "name": "education",
     "title": "education",
@@ -58,23 +61,28 @@
     "href2": "*/settings",
     "links": [
       {
-        "pre1": "ㅤ" ,
+        "pre1": "ㅤ",
         "name1": "one.uf",
         "href1": "https://one.uf.edu/",
         "post1": "       ",
         "name2": "billing highway",
         "href2": "https://www.billhighway.com/aph/forChapters/v2/login.aspx",
         "post2": "   "
-      }, 
-      {"pre1": "ㅤ" }, 
+      },
       {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ",
         "name1": "sweetwater",
         "href1": "https://sweetwatergainesville.residentportal.com/",
         "post1": "   "
-      }, 
-      {"pre1": "ㅤ" }, 
+      },
       {
-        "pre1": "ㅤ" ,
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ",
         "name1": "nelnet",
         "href1": "https://nelnet.studentaid.gov/",
         "post1": "   ",
@@ -83,14 +91,22 @@
         "post2": "   ",
         "name3": "sallie mae",
         "href3": "https://www.salliemae.com/login/"
-      }, 
-      {"pre1": "ㅤ" }, 
+      },
+      {
+        "pre1": "ㅤ"
+      },
       {
         "pre1": "ㅤ",
         "name1": "phello",
-        "href1":"https://hellophello.com/backoffice/#/login"
+        "href1": "https://hellophello.com/backoffice/#/login",
+        "pre4": "ㅤㅤㅤㅤ",
+        "name4": "john hancock",
+        "href4": "https://johnhancock.com/ltc"
+
       },
-      {"pre1": "ㅤ" }      
+      {
+        "pre1": "ㅤ"
+      }
     ]
   },
   "p3": {
@@ -101,9 +117,9 @@
     "links": [
       {
         "pre1": " ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.mrcooper.com/)",
-        "name2": "mr. cooper",
-        "href2": "https://www.mylakeviewloan.com/servicing/payments"
+        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://rocket.com/)",
+        "name2": "rocket",
+        "href2": "https://rocket.com/mortgage/servicing"
       },
       {
         "pre1": " "
@@ -121,16 +137,16 @@
         "pre1": " ",
         "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ebill.pbcwater.com/Security/loginui.aspx)",
         "name2": "palm beach county water",
-        "href2": "https://ebill.pbcwater.com/Security/loginui.aspx" 
+        "href2": "https://ebill.pbcwater.com/Security/loginui.aspx"
       },
       {
         "pre1": " "
       },
       {
         "pre1": " ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.gethotwired.com/)",
-        "name2": "hotwire",
-        "href2": "https://www.gethotwired.com/channel-lineup/tve",
+        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.xfinity.com/)",
+        "name2": "xfinity",
+        "href2": "https://www.xfinity.com/",
         "post2": "   ",
         "pre4": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://verizon.com/)",
         "name4": "verizon",
@@ -196,39 +212,43 @@
       }
     ]
   },
- "p5": {
+  "p5": {
     "name": "payments",
     "title": "payments",
-    "showas": "ltable",
     "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/22609922/Payment+System+Documentation",
     "href2": "*/settings",
     "links": [
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "   ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dashboard.stripe.com&size=10)",
+        "pre1": "       ",
+        "name1": "datacap",
+        "href1": "https://dsidevportal.com/",
+        "post1": "   ✫ ",
         "name2": "stripe",
         "href2": "https://dashboard.stripe.com/",
         "post2": "   ✫  ",
-        "name3": "developer",
-        "href3": "https://docs.stripe.com/development"
+        "name3": "square",
+        "href3": "https://app.squareup.com/"  
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "   ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://app.squareup.com/&size=10)",
-        "name2": "square",
-        "href2": "https://app.squareup.com/",
-        "post2": "  ✫  ",
-        "name3": "developer",
-        "href3": "https://developer.squareup.com/"
+        "name1": "-ramp",
+        "href1": "https://ramp.com/"
       },
       {
         "pre1": "ㅤ"
+      },
+      {
+        "pre1": "         ",
+        "name1": "venmo",
+        "href1": "https://id.venmo.com/signin",
+        "name2": "paypal",
+        "href2": "https://www.paypal.com/us/signin",
+        "name3": "apple",
+        "href3": "https://apple.com/apple-pay",
+        "name4": "google",
+        "href4": "https://wallet.google.com/"
       }
     ]
   },
@@ -242,12 +262,10 @@
         "name1": "yahoo",
         "href1": "https://finance.yahoo.com",
         "title1": "Market data, news, and more.",
-
         "pre2": "ㅤ",
         "name2": "google",
         "href2": "https://www.google.com/finance",
         "title2": "Aggregates financial news and market data from multiple sources.",
-
         "pre3": " ",
         "name3": "seeking alpha",
         "href3": "https://seekingalpha.com",
@@ -280,13 +298,7 @@
       {
         "pre1": "     ",
         "name1": "cnbc",
-        "href1": "https://www.cnbc.com/live-tv/?trknav=navigation:shows:watchlive:103620081",
-        "post1": "         ",
-        "name2": "xfinity",
-        "href2": "https://www.xfinity.com/stream/",
-        "post2": "         ",
-        "name3": "jh-lcc",
-        "href3": "https://www.johnhancock.com/help-center/long-term-care.html"
+        "href1": "https://www.cnbc.com/live-tv/?trknav=navigation:shows:watchlive:103620081"
       }
     ]
   },
