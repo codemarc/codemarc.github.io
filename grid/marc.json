@@ -241,10 +241,10 @@
       },
       {
         "pre1": "       ",
-        "name1": "datacapDEV",
+        "name1": "DC DEV",
         "href1": "https://dsidevportal.com/",
-        "post1": "   ✫ ",
-        "name2": "datacapPAY",
+        "post1": "   ✫  ",
+        "name2": "DC PAY",
         "href2": "https://portal.dcap.com/Account/Login?ReturnUrl=%2F"
       },
       {
@@ -252,11 +252,11 @@
       },
       {
         "pre1": "       ",
-        "name1": "stripe",
-        "href1": "https://dashboard.stripe.com/",
-        "post1": "   ✫  ",
-        "name2": "square",
-        "href2": "https://app.squareup.com/"  
+        "name2": "stripe",
+        "href2": "https://dashboard.stripe.com/",
+        "post2": "     ✫     ",
+        "name3": "square",
+        "href3": "https://app.squareup.com/"  
       }
     ]
   },
