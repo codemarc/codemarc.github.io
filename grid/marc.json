@@ -240,7 +240,7 @@
         "pre1": "ㅤ"
       },
       {
-        "pre1": "             ",
+        "pre1": "                 ",
         "name1": "dc dev",
         "href1": "https://dsidevportal.com/",
         "post1": "    ✫   ",
@@ -251,10 +251,10 @@
         "pre1": "ㅤ"
       },
       {
-        "pre1": "                 ",
+        "pre1": "                        ",
         "name2": "stripe",
         "href2": "https://dashboard.stripe.com/",
-        "post2": "     ✫     ",
+        "post2": "      ✫      ",
         "name3": "square",
         "href3": "https://app.squareup.com/"  
       }
