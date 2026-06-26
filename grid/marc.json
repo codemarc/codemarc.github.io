@@ -240,18 +240,18 @@
         "pre1": "ㅤ"
       },
       {
-        "pre1": "       ",
-        "name1": "DC DEV",
+        "pre1": "             ",
+        "name1": "dc dev",
         "href1": "https://dsidevportal.com/",
-        "post1": "   ✫  ",
-        "name2": "DC PAY",
+        "post1": "    ✫   ",
+        "name2": "dc pay",
         "href2": "https://portal.dcap.com/Account/Login?ReturnUrl=%2F"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "       ",
+        "pre1": "                 ",
         "name2": "stripe",
         "href2": "https://dashboard.stripe.com/",
         "post2": "     ✫     ",
