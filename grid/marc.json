@@ -40,7 +40,7 @@
         "href4": "https://laf-lab-dm.bltpos.com/health"
       },
       {
-        "name1": "rsend",
+        "name1": "resend",
         "href1": "https://resend.com/emails",
         "name2": "supa prod",
         "href2": "https://supabase.com/dashboard/org/wdooygwzkckrvajexjju",
@@ -219,15 +219,15 @@
     "href2": "*/settings",
     "links": [
       {
-        "pre1": "       ",
-        "name1": "datacap",
-        "href1": "https://dsidevportal.com/",
-        "post1": "   ✫ ",
-        "name2": "stripe",
-        "href2": "https://dashboard.stripe.com/",
-        "post2": "   ✫  ",
-        "name3": "square",
-        "href3": "https://app.squareup.com/"  
+        "pre1": "         ",
+        "name1": "venmo",
+        "href1": "https://id.venmo.com/signin",
+        "name2": "paypal",
+        "href2": "https://www.paypal.com/us/signin",
+        "name3": "apple",
+        "href3": "https://apple.com/apple-pay",
+        "name4": "google",
+        "href4": "https://wallet.google.com/"
       },
       {
         "pre1": "ㅤ"
@@ -240,15 +240,23 @@
         "pre1": "ㅤ"
       },
       {
-        "pre1": "         ",
-        "name1": "venmo",
-        "href1": "https://id.venmo.com/signin",
-        "name2": "paypal",
-        "href2": "https://www.paypal.com/us/signin",
-        "name3": "apple",
-        "href3": "https://apple.com/apple-pay",
-        "name4": "google",
-        "href4": "https://wallet.google.com/"
+        "pre1": "       ",
+        "name1": "datacap dev ",
+        "href1": "https://dsidevportal.com/",
+        "post1": "   ✫ ",
+        "name2": "datacap payments",
+        "href2": "https://portal.dcap.com/Account/Login?ReturnUrl=%2F"
+      },
+      {
+        "pre1": "ㅤ"
+      }
+      {
+        "pre1": "       ",
+        "name1": "stripe",
+        "href1": "https://dashboard.stripe.com/",
+        "post1": "   ✫  ",
+        "name2": "square",
+        "href2": "https://app.squareup.com/"  
       }
     ]
   },
