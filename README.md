@@ -7,6 +7,10 @@
 [braintrailz.com](https://braintrailz.com/)
 
 
+## People to Follow List
+[Peter Steinberger - https://github.com/steipete](https://github.com/steipete)
+
+
 ## BLT Custom Grid Files
 
 [wip](grid/wip.json)  - work in progress grid  

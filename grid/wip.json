@@ -1,127 +1,202 @@
 {
   "p1": {
-    "name": "payments",
-    "title": "payments",
-    "href1": "https://bltwai.atlassian.net/wiki/spaces/pos/pages/22609922/Payment+System+Documentation",
-    "href2": "*/settings",
+    "name": "supabase",
+    "title": "supabase",
+    "href1": "https://supabase.com/",
+    "title2": "orgs",
+    "href2": "https://supabase.com/dashboard/organizations",
+    "showas": "ltable2",
     "links": [
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "   ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dashboard.stripe.com&size=10)",
-        "name2": "stripe",
-        "href2": "https://dashboard.stripe.com/",
-        "post2": "   ✫  ",
-        "name3": "developer",
-        "href3": "https://docs.stripe.com/development"
+        "name1": "laf-blt-pos",
+        "href1": "https://supabase.com/dashboard/project/sinkqyhpejtzuivuvvlg",
+        "title1": "La Fortuna Production - sinkqyhpejtzuivuvvlg (17.6.1.054)- do not use for new development",
+        "name3": "laf1-blt-pos",
+        "href3": "https://supabase.com/dashboard/project/iqzelztxknfitqkosdvw",
+        "title3": "La Fortuna Test 1 - iqzelztxknfitqkosdvw (17.6.1.127)- use this for migration testing"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "   ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://app.squareup.com/&size=10)",
-        "name2": "square",
-        "href2": "https://app.squareup.com/",
-        "post2": "  ✫  ",
-        "name3": "developer",
-        "href3": "https://developer.squareup.com/"
-      }
+        "name1": "bae-blt-core",
+        "href1": "https://supabase.com/dashboard/project/pjasnccutstsoftskein",
+        "title1": "Bacon and Eggs - pjasnccutstsoftskein (17.6.1.063) - branded features demo",
+        "name3": "demo-blt-core",
+        "href3": "https://supabase.com/dashboard/project/dxanewewxwxsapiwxazt",
+        "title3": "Demo backend - dxanewewxwxsapiwxazt (15.8.1.085)- stable infrequent updates"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "qa1-blt-core",
+        "href1":  "https://supabase.com/dashboard/project/aztdmdunqorpglfgaufa",
+        "title1": "QA1 backend - aztdmdunqorpglfgaufa (17.6.1.121) - frequent updates",
+        "name3": "qa2-blt-core",
+        "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
+        "title3": "QA2 backend - xpuspdtowohlxtmskyct (17.6.1.052) - frequent updates"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "marc-blt-dev",
+        "href1": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk",
+        "title1": "Marc's Dev Instance - ovpmvfheekvipqipsogk (17.6.1.127)- formerly known as core-flow-point",
+        "name3": "brian-blt-dev",
+        "href3": "https://supabase.com/dashboard/project/erpofhdbqnvltzggpnrn",
+        "title3": "Brian's Dev Instance - erpofhdbqnvltzggpnrn (17.6.1.127)"
+      }, 
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "^ㅤㅤㅤㅤㅤautoqa-blt-coreㅤㅤㅤㅤㅤ ",
+        "href1": "https://supabase.com/dashboard/project/otfuokcoywzbzzjhtsap",
+        "title1": "AutoQA backend - otfuokcoywzbzzjhtsap (17.6.1.127)- frequent updates"
+      }    
     ]
   },
   "p2": {
-    "name": "blank",
-    "title": "blank",
-    "href1": " ",
+    "name": "compute",
+    "title": "digitalocean",
+    "href1": "https://cloud.digitalocean.com/droplets",
     "href2": "*/settings",
+    "showas": "table3",
     "links": [
       {
-        "pre1": "ㅤ"
+        "name1":"bltwai",
+        "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:6773",
+        "title1":"bltwai.com - tagged landing",
+        "name2":"blt1",
+        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:5f31",
+        "title2":"bltcore.com - tagged core",
+        "name3":"blt2",
+        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:841f",
+        "title3":"bltpos.com - tagged customer"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
+        "name1":"autoqa",
+        "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:3b38",
+        "title1":"bltcore.com - tagged core",
+        "name2":"test1",
+        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:8140",
+        "title2":"bltcore.com - tagged core",
+        "name3":"test2",
+        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:6e94",
+        "title3":"bltpos.com - tagged customer"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
+        "label": "-"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1":"registry",
+        "href1": "https://cloud.digitalocean.com/registry",
+        "title1": "Registry",
+        "name2": "domains",
+        "href2": "https://cloud.digitalocean.com/networking/domains",
+        "title2": "Domains",
+        "name3": "droplets",
+        "href3": "https://cloud.digitalocean.com/droplets",
+        "title3": "Droplets"
       }
+
     ]
   },
   "p3": {
-    "name": "newai",
-    "title": "new/updated ai tools",
-    "href1": "https://www.youtube.com/@t3dotgg",
+    "name": "qa",
+    "title": "qa",
+    "href1": "",
     "href2": "*/settings",
+    "showas": "table3",
     "links": [
       {
-        "pre1": "ㅤ"
+        "name1": " autoqa ",        
+        "href1": "https://autoqa.bltcore.com/",
+        "title1": "autoqa droplet - backend autoqa-blt-core",
+
+        "name2": "ㅤdmㅤ",        
+        "href2": "https://autoqa-dm.bltcore.com/",
+        "title2": "autoqa droplet - backend autoqa-blt-core",
+
+        "name3": "ㅤamㅤ",
+        "href3": "https://autoqa-am.bltcore.com/",
+        "title3": "autoqa droplet - backend autoqa-blt-core"
       },
       {
-        "pre1": "ㅤ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://fal.ai/&size=14)",
-        "name2": "fal",
-        "href2": "https://fal.ai/",
-        "post2": "   ",
-        "pre3": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://developers.google.com/)",
-        "name3": "dev@google",
-        "href3": "https://developers.google.com/",
-        "post3": "   "
+        "name1": "test1",        
+        "href1": "https://test1.bltcore.com/",
+        "title1": "test1 droplet - backend qa1-blt-core",
+
+        "name2": "ㅤdmㅤ",        
+        "href2": "https://test1-dm.bltcore.com/",
+        "title2": "test1 droplet - backend qa1-blt-core",
+
+        "name3": "ㅤamㅤ",
+        "href3": "https://test1-am.bltcore.com/",
+        "title3": "test1 droplet - backend qa1-blt-core"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": " ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.dolthub.com/&size=10)",
-        "name2": "dolthub",
-        "href2": "https://www.dolthub.com/",
-        "post2": "   ",
-        "pre3": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mobbin.com/&size=10)",
-        "name3": "mobbin",
-        "href3": "https://mobbin.com/"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ",
-        "pre2": "(https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.flutterflow.io/&size=10)",
-        "name2": "flutterflow",
-        "href2": "https://www.flutterflow.io/",
-        "title2": "Flutterflow: Build iOS and Android apps with AI, no coding required"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1": "test2",        
+        "href1": "https://test2.bltcore.com/",
+        "title1": "test2 droplet - backend qa2-blt-core",
+
+        "name2": "ㅤdmㅤ",        
+        "href2": "https://test2-dm.bltcore.com/",
+        "title2": "test2 droplet - backend qa2-blt-core",
+
+        "name3": "ㅤamㅤ",
+        "href3": "https://test2-am.bltcore.com/",
+        "title3": "test2 droplet - backend qa2-blt-core"
+
       }
     ]
   },
   "p4": {
-    "name": "blank",
-    "title": "blank",
+    "name": "bltpos.com",
+    "title": "prod",
     "href1": " ",
     "href2": "*/settings",
+    "showas": "ltable3",
     "links": [
       {
+        "name1": "lafs1pos",
+        "href1": "https://laf-store1.bltpos.com/",
+        "title1": "La Fortuna - store1 - pos - requires tailscale",
+
+        "name2": "lafs1dm",
+        "href2": "https://laf-store1-dm.bltpos.com/",
+        "title2": "La Fortuna DM - store1 - dm - requires tailscale",
+
+        "name3": "lafs1am",
+        "href3": "https://laf-am-store1.bltpos.com/",
+        "title3": "NOT DEPLOTED YET"
+      },
+      {
         "pre1": "ㅤ"
+      },
+      {
+        "name1": "laf2s1pos",
+        "href1": "https://laf2.bltpos.com:8443",
+        "title1": "La Fortuna - store1 - pos (newer version) - requires tailscale",
+
+        "name2": "lafs1dm",
+        "href2": "https://laf2-dm.bltpos.com",
+        "title2": "NOT DEPLOYED",
+
+        "name3": "laf2s1am",
+        "href3": "https://laf2-am.bltpos.com",
+        "title3": "La Fortuna AM - store1 - am - requires tailscale"
       },
       {
         "pre1": "ㅤ"
@@ -130,147 +205,145 @@
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
+        "label": "-"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1": "bltwai",
+        "href1": "https://bltwai.com/",
+        "title1": "bltwai.com",
+        "name2": "bltpos",
+        "href2": "https://bltpos.com",
+        "title2": "bltpos.com",
+        "name3": "bltcore",
+        "href3": "https://bltcore.com",
+        "title3": "bltcore.com"
       },
       {
         "pre1": "ㅤ"
       }
     ]
-  },
+   },
   "p5": {
-    "name": "blank",
-    "title": "blank",
-    "href1": " ",
+    "name": "services",
+    "title": "services",
+    "href1": "",
     "href2": "*/settings",
     "links": [
       {
-        "pre1": "ㅤ"
+        "name1": "resend",
+        "href1": "https://resend.com/"
+      },
+      {
+        "pre2": "ㅤㅤㅤㅤㅤ",
+        "name2": "admin@laf.bltpos.com",
+        "href2": "https://resend.com/login"
+      },
+      {
+        "pre2": "ㅤㅤㅤㅤㅤ",
+        "name2": "admin@bltwai.com",
+        "href2": "https://resend.com/emails"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
+        "name1": "datacap",
+        "href1": "https://portal.dcap.com/"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "pre2": "ㅤㅤㅤㅤㅤ",
+        "name2": "marc@bltwai.com",
+        "href2": "https://portal.dcap.com/"
       }
     ]
   },
   "p6": {
-    "name": "blank",
-    "title": "blank",
-    "href1": " ",
-    "href2": "*/settings",
+    "name": "compute",
+    "title": "on-prem",
+    "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1415",
+    "title2": "tailscale",
+    "href2": "https://controlplane.tailscale.com",
+    "showas": "table3",
     "links": [
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1":"laf1",
+        "href1":"chrome-extension://iodiha`mcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1cc7",
+        "title1":"blt@lafbase.com",
+        "name2":"laf2",
+        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:d68c",
+        "title2":"blt2@lafbase.com",
+        "name3":"marc",
+        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:7391",
+        "title3":"marc@lafbase.com"
       }
     ]
   },
   "p7": {
-    "name": "blank",
-    "title": "blank",
+    "name": "dev",
+    "title": "dev",
     "href1": " ",
     "href2": "*/settings",
+    "showas": "ltable",
     "links": [
       {
-        "pre1": "ㅤ"
+        "name1": "^ㅤㅤlocalhost:80ㅤㅤㅤㅤㅤ",
+        "href1": "http://localhost/"
       },
       {
         "pre1": "ㅤ"
       },
       {
+        "name1": "^ㅤㅤlocalhost:8080ㅤㅤㅤㅤㅤ",
+        "href1": "http://localhost:8080/"
+     },
+     {
         "pre1": "ㅤ"
+      },
+      {
+        "name1": "^ㅤㅤlocalhost:3100ㅤㅤㅤㅤㅤ",
+        "href1": "http://localhost:3100/"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1": "^ㅤㅤlocalhost:9999ㅤㅤㅤㅤㅤ",
+        "href1": "http://localhost:9999/"
       }
     ]
   },
   "p8": {
-    "name": "blank",
-    "title": "blank",
+    "name": "demo",
+    "title": "demo",
     "href1": " ",
     "href2": "*/settings",
+    "showas": "ltable3",
     "links": [
       {
-        "pre1": "ㅤ"
+        "name1": " bae ",        
+        "href1": "https://bae.bltcore.com/",
+        "title1": "blt2 droplet - backend bae-blt-core",
+
+        "name2": "ㅤdmㅤ",        
+        "href2": "https://bae-dm.bltcore.com/",
+        "title2": "blt2 droplet - backend bae-blt-core",
+
+        "name3": "ㅤamㅤ",
+        "href3": "https://bae-am.bltcore.com/",
+        "title3": "blt2 droplet - backend bae-blt-core"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "pre1": "ㅤ"
+        "name1": " demo ",        
+        "href1": "https://demo.bltcore.com/",
+        "title1": "blt2 droplet - backend demo-blt-core",
+
+        "name2": "ㅤdmㅤ",        
+        "href2": "https://demo-dm.bltcore.com/",
+        "title2": "blt2 droplet - backend demo-blt-core",
+
+        "name3": "ㅤamㅤ",
+        "href3": "https://demo-am.bltcore.com/",
+        "title3": "blt2 droplet - backend demo-blt-core"
       }
     ]
   }
