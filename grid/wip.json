@@ -19,6 +19,25 @@
         "pre1": "ㅤ"
       },
       {
+        "name1": "qa1-blt-core",
+        "href1":  "https://supabase.com/dashboard/project/bdqjlhhbvvqubewgrbmo",
+        "title1": "QA1 backend - bdqjlhhbvvqubewgrbmo (17.6.1.121) - frequent updates",
+        "name3": "qa2-blt-core",
+        "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
+        "title3": "QA2 backend - xpuspdtowohlxtmskyct (17.6.1.052) - frequent updates"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "^ㅤㅤㅤㅤautoqa-blt-coreㅤㅤㅤㅤㅤ ",
+        "href1": "https://supabase.com/dashboard/project/otfuokcoywzbzzjhtsap",
+        "title1": "AutoQA backend - otfuokcoywzbzzjhtsap (17.6.1.127)- frequent updates"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
         "name1": "bae-blt-core",
         "href1": "https://supabase.com/dashboard/project/pjasnccutstsoftskein",
         "title1": "Bacon and Eggs - pjasnccutstsoftskein (17.6.1.063) - branded features demo",
@@ -30,32 +49,13 @@
         "pre1": "ㅤ"
       },
       {
-        "name1": "qa1-blt-core",
-        "href1":  "https://supabase.com/dashboard/project/aztdmdunqorpglfgaufa",
-        "title1": "QA1 backend - aztdmdunqorpglfgaufa (17.6.1.121) - frequent updates",
-        "name3": "qa2-blt-core",
-        "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
-        "title3": "QA2 backend - xpuspdtowohlxtmskyct (17.6.1.052) - frequent updates"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
         "name1": "marc-blt-dev",
         "href1": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk",
         "title1": "Marc's Dev Instance - ovpmvfheekvipqipsogk (17.6.1.127)- formerly known as core-flow-point",
         "name3": "brian-blt-dev",
         "href3": "https://supabase.com/dashboard/project/erpofhdbqnvltzggpnrn",
         "title3": "Brian's Dev Instance - erpofhdbqnvltzggpnrn (17.6.1.127)"
-      }, 
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "^ㅤㅤㅤㅤㅤautoqa-blt-coreㅤㅤㅤㅤㅤ ",
-        "href1": "https://supabase.com/dashboard/project/otfuokcoywzbzzjhtsap",
-        "title1": "AutoQA backend - otfuokcoywzbzzjhtsap (17.6.1.127)- frequent updates"
-      }    
+      }
     ]
   },
   "p2": {
@@ -83,21 +83,26 @@
         "name1":"autoqa",
         "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:3b38",
         "title1":"bltcore.com - tagged core",
-        "name2":"test1",
-        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:8140",
+        "name2":"qa1",
+        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1af8",
         "title2":"bltcore.com - tagged core",
-        "name3":"test2",
-        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:6e94",
-        "title3":"bltpos.com - tagged customer"
+        "name3":"qa2",
+        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:ec2d",
+        "title3":"bltcore.com - tagged core"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1":"bae",
+        "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:7c25",
+        "title1":"bae.bltcore.com - tagged demo"
       },
       {
         "pre1": "ㅤ"
       },
       {
         "label": "-"
-      },
-      {
-        "pre1": "ㅤ"
       },
       {
         "name1":"registry",
@@ -110,7 +115,6 @@
         "href3": "https://cloud.digitalocean.com/droplets",
         "title3": "Droplets"
       }
-
     ]
   },
   "p3": {
@@ -134,31 +138,30 @@
         "title3": "autoqa droplet - backend autoqa-blt-core"
       },
       {
-        "name1": "test1",        
-        "href1": "https://test1.bltcore.com/",
-        "title1": "test1 droplet - backend qa1-blt-core",
+        "name1": "qa1",        
+        "href1": "https://qa1.bltcore.com/",
+        "title1": "qa1 droplet - backend qa1-blt-core",
 
         "name2": "ㅤdmㅤ",        
-        "href2": "https://test1-dm.bltcore.com/",
-        "title2": "test1 droplet - backend qa1-blt-core",
+        "href2": "https://qa1-dm.bltcore.com/",
+        "title2": "qa1 droplet - backend qa1-blt-core",
 
         "name3": "ㅤamㅤ",
-        "href3": "https://test1-am.bltcore.com/",
-        "title3": "test1 droplet - backend qa1-blt-core"
+        "href3": "https://qa1-am.bltcore.com/",
+        "title3": "qa1 droplet - backend qa1-blt-core"
       },
       {
-        "name1": "test2",        
-        "href1": "https://test2.bltcore.com/",
-        "title1": "test2 droplet - backend qa2-blt-core",
+        "name1": "qa2",        
+        "href1": "https://qa2.bltcore.com/",
+        "title1": "qa2 droplet - backend qa2-blt-core",
 
         "name2": "ㅤdmㅤ",        
-        "href2": "https://test2-dm.bltcore.com/",
-        "title2": "test2 droplet - backend qa2-blt-core",
+        "href2": "https://qa2-dm.bltcore.com/",
+        "title2": "qa2 droplet - backend qa2-blt-core",
 
         "name3": "ㅤamㅤ",
-        "href3": "https://test2-am.bltcore.com/",
-        "title3": "test2 droplet - backend qa2-blt-core"
-
+        "href3": "https://qa1-am.bltcore.com/",
+        "title3": "qa1 droplet - backend qa1-blt-core"
       }
     ]
   },
@@ -186,6 +189,9 @@
         "pre1": "ㅤ"
       },
       {
+        "pre1": "ㅤ"
+      },
+      {
         "name1": "laf2s1pos",
         "href1": "https://laf2.bltpos.com:8443",
         "title1": "La Fortuna - store1 - pos (newer version) - requires tailscale",
@@ -197,9 +203,6 @@
         "name3": "laf2s1am",
         "href3": "https://laf2-am.bltpos.com",
         "title3": "La Fortuna AM - store1 - am - requires tailscale"
-      },
-      {
-        "pre1": "ㅤ"
       },
       {
         "pre1": "ㅤ"
