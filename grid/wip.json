@@ -46,7 +46,7 @@
         "title3": "Demo backend - dxanewewxwxsapiwxazt (15.8.1.085)- stable infrequent updates"
       },
       {
-        "pre1": "ㅤ"
+        "pre1": "c"
       },
       {
         "name1": "marc-blt-dev",
@@ -122,53 +122,48 @@
     "title": "qa",
     "href1": "",
     "href2": "*/settings",
-    "showas": "table3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": " autoqa ",        
-        "href1": "https://autoqa.bltcore.com/",
-        "title1": "autoqa droplet - backend autoqa-blt-core",
-
-        "name2": "ㅤdmㅤ",        
-        "href2": "https://autoqa-dm.bltcore.com/",
-        "title2": "autoqa droplet - backend autoqa-blt-core",
-
-        "name3": "ㅤamㅤ",
-        "href3": "https://autoqa-am.bltcore.com/",
-        "title3": "autoqa droplet - backend autoqa-blt-core"
+        "name1": "autoqa",
+        "href1": "https://autoqa.bltcore.com/smoke",
+        "name2": "pos",        
+        "href2": "https://autoqa.bltcore.com/",
+        "title2": "autoqa-blt-core",
+        "name3": "dm",        
+        "href3": "https://autoqa-dm.bltcore.com/",
+        "name4": "am",
+        "href4": "https://autoqa-am.bltcore.com/"
       },
       {
         "name1": "qa1",        
-        "href1": "https://qa1.bltcore.com/",
-        "title1": "qa1 droplet - backend qa1-blt-core",
-
-        "name2": "ㅤdmㅤ",        
-        "href2": "https://qa1-dm.bltcore.com/",
-        "title2": "qa1 droplet - backend qa1-blt-core",
-
-        "name3": "ㅤamㅤ",
-        "href3": "https://qa1-am.bltcore.com/",
-        "title3": "qa1 droplet - backend qa1-blt-core"
+        "href1": "https://qa1.bltcore.com/smoke",
+        "name2": "pos",        
+        "href2": "https://qa1.bltcore.com/",
+        "title2": "qa1-blt-core",
+        "name3": "dm",        
+        "href3": "https://qa1-dm.bltcore.com/",
+        "name4": "am",
+        "href4": "https://qa1-am.bltcore.com/"
       },
       {
         "name1": "qa2",        
-        "href1": "https://qa2.bltcore.com/",
-        "title1": "qa2 droplet - backend qa2-blt-core",
+        "href1": "https://qa2.bltcore.com/smoke",
+        "name2": "pos",
+        "href2": "https://qa2.bltcore.com/",
+        "title2": "qa2-blt-core",
+        "name3": "dm",        
+        "href3": "https://qa2-dm.bltcore.com/",
+        "name4": "am",
+        "href4": "https://qa1-am.bltcore.com/"
 
-        "name2": "ㅤdmㅤ",        
-        "href2": "https://qa2-dm.bltcore.com/",
-        "title2": "qa2 droplet - backend qa2-blt-core",
-
-        "name3": "ㅤamㅤ",
-        "href3": "https://qa1-am.bltcore.com/",
-        "title3": "qa1 droplet - backend qa1-blt-core"
       }
     ]
   },
   "p4": {
     "name": "bltpos.com",
-    "title": "prod",
-    "href1": " ",
+    "title": "bltpos.com",
+    "href1": "https://bltpos.com/status",
     "href2": "*/settings",
     "showas": "ltable3",
     "links": [
@@ -316,37 +311,44 @@
     ]
   },
   "p8": {
-    "name": "demo",
-    "title": "demo",
-    "href1": " ",
+    "name": "bltcore",
+    "title": "bltcore.com",
+    "href1": "https://bltcore.com/status",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": " bae ",        
-        "href1": "https://bae.bltcore.com/",
-        "title1": "blt2 droplet - backend bae-blt-core",
+        "name1": "bae",        
+        "href1": "https://bae.bltcore.com/smoke",
 
-        "name2": "ㅤdmㅤ",        
-        "href2": "https://bae-dm.bltcore.com/",
-        "title2": "blt2 droplet - backend bae-blt-core",
+        "name2": "pos",        
+        "href2": "https://bae.bltcore.com/",
+        "title2": "bae-blt-core",
 
-        "name3": "ㅤamㅤ",
-        "href3": "https://bae-am.bltcore.com/",
-        "title3": "blt2 droplet - backend bae-blt-core"
+        "name3": "dm",        
+        "href3": "https://bae-dm.bltcore.com/",
+
+        "name4": "am",
+        "href4": "https://bae-am.bltcore.com/"
       },
       {
-        "name1": " demo ",        
-        "href1": "https://demo.bltcore.com/",
-        "title1": "blt2 droplet - backend demo-blt-core",
+        "name1": "demo",
+        "href1": "https://demo.bltcore.com/smoke",
 
-        "name2": "ㅤdmㅤ",        
-        "href2": "https://demo-dm.bltcore.com/",
-        "title2": "blt2 droplet - backend demo-blt-core",
+        "name2": "pos",        
+        "href2": "https://demo.bltcore.com/",
+        "title2": "demo-blt-core",
 
-        "name3": "ㅤamㅤ",
-        "href3": "https://demo-am.bltcore.com/",
-        "title3": "blt2 droplet - backend demo-blt-core"
+        "name3": "dm",        
+        "href3": "https://demo-dm.bltcore.com/",
+
+        "name4": "am",
+        "href4": "https://demo-am.bltcore.com/"
+      },
+      {
+        "name1": "logz",
+        "href1": "https://logz.bltcore.com/",
+        "title1": "logz.bltcore.com"
       }
     ]
   }
