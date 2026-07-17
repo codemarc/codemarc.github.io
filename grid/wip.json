@@ -163,7 +163,7 @@
   "p4": {
     "name": "bltpos.com",
     "title": "bltpos.com",
-    "href1": "https://bltpos.com/status",
+    "href1": "https://bltpos.com/status/",
     "href2": "*/settings",
     "showas": "ltable3",
     "links": [
@@ -191,7 +191,7 @@
         "href1": "https://laf2.bltpos.com:8443",
         "title1": "La Fortuna - store1 - pos (newer version) - requires tailscale",
 
-        "name2": "lafs1dm",
+        "name2": "laf2s1dm",
         "href2": "https://laf2-dm.bltpos.com",
         "title2": "NOT DEPLOYED",
 
@@ -213,7 +213,7 @@
         "href2": "https://bltpos.com",
         "title2": "bltpos.com",
         "name3": "bltcore",
-        "href3": "https://bltcore.com",
+        "href3": "https://bltcore.com/",
         "title3": "bltcore.com"
       },
       {
@@ -278,35 +278,30 @@
   },
   "p7": {
     "name": "dev",
-    "title": "dev",
+    "title": "localhost",
     "href1": " ",
     "href2": "*/settings",
     "showas": "ltable",
     "links": [
       {
-        "name1": "^ㅤㅤlocalhost:80ㅤㅤㅤㅤㅤ",
-        "href1": "http://localhost/"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "^ㅤㅤlocalhost:8080ㅤㅤㅤㅤㅤ",
-        "href1": "http://localhost:8080/"
+        "name1": "^ㅤ80ㅤ",
+        "href1": "http://localhost/",
+        "name2": "^ㅤ8080ㅤ",
+        "href2": "http://localhost:8080/",
+        "name3": "^ㅤ8443ㅤ",
+        "href3": "http://localhost:8443/"
+
      },
      {
         "pre1": "ㅤ"
       },
       {
-        "name1": "^ㅤㅤlocalhost:3100ㅤㅤㅤㅤㅤ",
-        "href1": "http://localhost:3100/"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "^ㅤㅤlocalhost:9999ㅤㅤㅤㅤㅤ",
-        "href1": "http://localhost:9999/"
+        "name1": "^ㅤ3000ㅤ",
+        "href1": "http://localhost:3000/",
+        "name2": "^ㅤ3100ㅤ",
+        "href2": "http://localhost:3100/",
+        "name3": "^ㅤ9999ㅤ",
+        "href3": "http://localhost:9999/"
       }
     ]
   },
