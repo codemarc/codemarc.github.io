@@ -51,7 +51,7 @@
       },
       {
         "pre1": "ㅤ"
-      }      
+      }
     ]
   },
   "p2": {
@@ -102,7 +102,6 @@
         "pre4": "ㅤㅤㅤㅤ",
         "name4": "john hancock",
         "href4": "https://johnhancock.com/ltc"
-
       },
       {
         "pre1": "ㅤ"
@@ -256,7 +255,7 @@
         "href2": "https://dashboard.stripe.com/",
         "post2": "      ✫      ",
         "name3": "square",
-        "href3": "https://app.squareup.com/"  
+        "href3": "https://app.squareup.com/"
       }
     ]
   },
