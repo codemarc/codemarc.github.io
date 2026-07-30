@@ -1,14 +1,15 @@
 # Codemarc Links
 
+## About Marc 
+
+[Profile](about/profile.md)
+
+
 ## My Site List
 [codemarc.net](https://codemarc.net/)  
-[codemarc consultinc, llc](https://consulting.codemarc.net/)  
+[codemarc consulting, llc](https://consulting.codemarc.net/)  
 [codemarc's blog](https://blog.codemarc.net/)  
 [braintrailz.com](https://braintrailz.com/)
-
-
-## People to Follow List
-[Peter Steinberger - https://github.com/steipete](https://github.com/steipete)
 
 
 ## BLT Custom Grid Files
@@ -22,3 +23,6 @@
 
 ## links to review
 [https://www.nodegit.org/]([https://www.nodegit.org/)
+
+## People to Follow List
+[Peter Steinberger - https://github.com/steipete](https://github.com/steipete)
