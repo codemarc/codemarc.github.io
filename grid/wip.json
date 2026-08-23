@@ -5,56 +5,47 @@
     "href1": "https://supabase.com/",
     "title2": "orgs",
     "href2": "https://supabase.com/dashboard/organizations",
-    "showas": "ltable2",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "laf-blt-pos",
+        "name1": "ㅤlaf",
         "href1": "https://supabase.com/dashboard/project/sinkqyhpejtzuivuvvlg",
-        "title1": "La Fortuna Production - sinkqyhpejtzuivuvvlg (17.6.1.054)- do not use for new development",
-        "name3": "laf1-blt-pos",
-        "href3": "https://supabase.com/dashboard/project/iqzelztxknfitqkosdvw",
-        "title3": "La Fortuna Test 1 - iqzelztxknfitqkosdvw (17.6.1.127)- use this for migration testing"
+        "name2": "laf1",
+        "href2": "https://supabase.com/dashboard/project/iqzelztxknfitqkosdvw",
+        "name3": "demo",
+        "href3": "https://supabase.com/dashboard/project/dxanewewxwxsapiwxazt"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name1": "qa1-blt-core",
+        "name1": "ㅤqa1",
         "href1":  "https://supabase.com/dashboard/project/bdqjlhhbvvqubewgrbmo",
-        "title1": "QA1 backend - bdqjlhhbvvqubewgrbmo (17.6.1.121) - frequent updates",
-        "name3": "qa2-blt-core",
-        "href3": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
-        "title3": "QA2 backend - xpuspdtowohlxtmskyct (17.6.1.052) - frequent updates"
+        "name2": "qa2",
+        "href2": "https://supabase.com/dashboard/project/xpuspdtowohlxtmskyct",
+        "name3": "autoqa",
+        "href3": "https://supabase.com/dashboard/project/otfuokcoywzbzzjhtsap"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name1": "^ㅤㅤㅤㅤautoqa-blt-coreㅤㅤㅤㅤㅤ ",
-        "href1": "https://supabase.com/dashboard/project/otfuokcoywzbzzjhtsap",
-        "title1": "AutoQA backend - otfuokcoywzbzzjhtsap (17.6.1.127)- frequent updates"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "bae-blt-core",
+        "name1": "ㅤbae",
         "href1": "https://supabase.com/dashboard/project/pjasnccutstsoftskein",
-        "title1": "Bacon and Eggs - pjasnccutstsoftskein (17.6.1.063) - branded features demo",
-        "name3": "demo-blt-core",
-        "href3": "https://supabase.com/dashboard/project/dxanewewxwxsapiwxazt",
-        "title3": "Demo backend - dxanewewxwxsapiwxazt (15.8.1.085)- stable infrequent updates"
+        "name2": "gaudios",
+        "href2": "https://supabase.com/dashboard/project/zzuxcaystfaeeufrdqgd"
       },
       {
-        "pre1": "c"
+        "label": "ㅤ"
+      },  
+      {
+        "label": "-"
       },
       {
-        "name1": "marc-blt-dev",
+        "name1": "ㅤmarc",
         "href1": "https://supabase.com/dashboard/project/ovpmvfheekvipqipsogk",
-        "title1": "Marc's Dev Instance - ovpmvfheekvipqipsogk (17.6.1.127)- formerly known as core-flow-point",
-        "name3": "brian-blt-dev",
-        "href3": "https://supabase.com/dashboard/project/erpofhdbqnvltzggpnrn",
-        "title3": "Brian's Dev Instance - erpofhdbqnvltzggpnrn (17.6.1.127)"
+        "name2": "brian",
+        "href2": "https://supabase.com/dashboard/project/erpofhdbqnvltzggpnrn"
       }
     ]
   },
