@@ -87,7 +87,10 @@
       {
         "name1":"bae",
         "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:7c25",
-        "title1":"bae.bltcore.com - tagged demo"
+        "title1":"bae.bltcore.com - tagged demo",
+        "name2":"gaudios",
+        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2",
+        "title2":"gaudios.bltpos.com - tagged customer"
       },
       {
         "pre1": "ㅤ"
@@ -156,39 +159,58 @@
     "title": "bltpos.com",
     "href1": "https://bltpos.com/status/",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": "lafs1pos",
-        "href1": "https://laf-store1.bltpos.com/",
-        "title1": "La Fortuna - store1 - pos - requires tailscale",
+        "name1": "lafs1",
+        "href1": "https://laf-store1.bltpos.com/smoke",
+        "title1": "La Fortuna store1 smoke - requires tailscale",
 
-        "name2": "lafs1dm",
-        "href2": "https://laf-store1-dm.bltpos.com/",
-        "title2": "La Fortuna DM - store1 - dm - requires tailscale",
+        "name2": "pos",
+        "href2": "https://laf-store1.bltpos.com/",
+        "title2": "La Fortuna - store1 - pos - requires tailscale",
 
-        "name3": "lafs1am",
-        "href3": "https://laf-am-store1.bltpos.com/",
-        "title3": "NOT DEPLOTED YET"
+        "name3": "dm",
+        "href3": "https://laf-store1-dm.bltpos.com/",
+        "title3": "La Fortuna DM - store1 - dm - requires tailscale",
+
+        "name4": "am",
+        "href4": "https://laf-am-store1.bltpos.com/",
+        "title4": "NOT DEPLOTED YET"
       },
       {
-        "pre1": "ㅤ"
+        "name1": "laf2s1",
+        "href1": "https://laf2.bltpos.com:8443/smoke",
+        "title1": "La Fortuna laf2 smoke - requires tailscale",
+
+        "name2": "pos",
+        "href2": "https://laf2.bltpos.com:8443",
+        "title2": "La Fortuna - store1 - pos (newer version) - requires tailscale",
+
+        "name3": "dm",
+        "href3": "https://laf2-dm.bltpos.com",
+        "title3": "NOT DEPLOYED",
+
+        "name4": "am",
+        "href4": "https://laf2-am.bltpos.com",
+        "title4": "La Fortuna AM - store1 - am - requires tailscale"
       },
       {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "laf2s1pos",
-        "href1": "https://laf2.bltpos.com:8443",
-        "title1": "La Fortuna - store1 - pos (newer version) - requires tailscale",
+        "name1": "gadios",
+        "href1": "https://gaudios.bltpos.com/smoke",
+        "title1": "Gaudio's smoke",
 
-        "name2": "laf2s1dm",
-        "href2": "https://laf2-dm.bltpos.com",
-        "title2": "NOT DEPLOYED",
+        "name2": "pos",
+        "href2": "https://gaudios.bltpos.com/",
+        "title2": "Gaudio's Pizzeria - pos",
 
-        "name3": "laf2s1am",
-        "href3": "https://laf2-am.bltpos.com",
-        "title3": "La Fortuna AM - store1 - am - requires tailscale"
+        "name3": "dm",
+        "href3": "https://gaudios-dm.bltpos.com/",
+        "title3": "Gaudio's DM",
+
+        "name4": "ism",
+        "href4": "https://gaudios-am.bltpos.com/",
+        "title4": "Gaudio's ISM"
       },
       {
         "pre1": "ㅤ"
@@ -206,9 +228,6 @@
         "name3": "bltcore",
         "href3": "https://bltcore.com/",
         "title3": "bltcore.com"
-      },
-      {
-        "pre1": "ㅤ"
       }
     ]
    },
