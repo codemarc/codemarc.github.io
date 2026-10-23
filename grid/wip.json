@@ -36,8 +36,19 @@
         "href2": "https://supabase.com/dashboard/project/zzuxcaystfaeeufrdqgd"
       },
       {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "ㅤwaypoint",
+        "href1": "https://supabase.com/dashboard/project/aumxdmrbychugjfuqrjy",
+        "title1": "gaudios-blt-core - waypoint production",
+        "name2": "wp-dev",
+        "href2": "https://supabase.com/dashboard/project/csmorvurtrnqaayvspjx",
+        "title2": "gaudios-dev-blt-core - waypoint development"
+      },
+      {
         "label": "ㅤ"
-      },  
+      },
       {
         "label": "-"
       },
@@ -90,7 +101,10 @@
         "title1":"bae.bltcore.com - tagged demo",
         "name2":"gaudios",
         "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2",
-        "title2":"gaudios.bltpos.com - tagged customer"
+        "title2":"gaudios.bltpos.com - tagged customer",
+        "name3":"waypoint",
+        "href3":"https://cloud.digitalocean.com/droplets",
+        "title3":"waypoint.bltcore.com - gaudios (ssh profile pending)"
       },
       {
         "pre1": "ㅤ"
@@ -312,6 +326,37 @@
         "href2": "http://localhost:3100/",
         "name3": "^ㅤ9999ㅤ",
         "href3": "http://localhost:9999/"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "label": "-"
+      },
+      {
+        "name1": "^ㅤ5173ㅤ",
+        "href1": "http://localhost:5173/",
+        "title1": "waypoint pos (vite dev)",
+        "name2": "^ㅤ5174ㅤ",
+        "href2": "http://localhost:5174/",
+        "title2": "waypoint kds (vite dev)",
+        "name3": "^ㅤboㅤ",
+        "href3": "http://localhost:5173/back-office",
+        "title3": "waypoint back office (vite dev)"
+      },
+      {
+        "name1": "wp",
+        "href1": "https://waypoint.localhost:8443/",
+        "title1": "waypoint pos (docker local-test)",
+        "name2": "kds",
+        "href2": "https://waypoint-kds.localhost:8443/",
+        "title2": "waypoint kds (docker local-test)",
+        "name3": "bo",
+        "href3": "https://waypoint.localhost:8443/back-office",
+        "title3": "waypoint back office (docker local-test)",
+        "name4": "dm",
+        "href4": "https://waypoint-dm.localhost:8443/",
+        "title4": "waypoint print gateway (docker local-test) - only /v1/print/ is routed"
       }
     ]
   },
@@ -349,6 +394,23 @@
 
         "name4": "am",
         "href4": "https://demo-am.bltcore.com/"
+      },
+      {
+        "name1": "waypoint",
+        "href1": "https://waypoint.bltcore.com/back-office",
+        "title1": "waypoint back office - gaudios",
+
+        "name2": "pos",
+        "href2": "https://waypoint.bltcore.com/",
+        "title2": "waypoint pos - gaudios",
+
+        "name3": "dm",
+        "href3": "https://waypoint-dm.bltcore.com/",
+        "title3": "waypoint print gateway - only /v1/print/ is routed",
+
+        "name4": "kds",
+        "href4": "https://waypoint-kds.bltcore.com/",
+        "title4": "waypoint kds - gaudios"
       },
       {
         "name1": "logz",
