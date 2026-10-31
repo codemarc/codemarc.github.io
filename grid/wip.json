@@ -283,23 +283,17 @@
         "name3":"marc",
         "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:7391",
         "title3":"marc@lafbase.com"
-      }
-    ]
-  },
-  "p7": {
-    "name": "dev",
-    "title": "localhost",
-    "href1": " ",
-    "href2": "*/settings",
-    "showas": "ltable",
-    "links": [
+      },
       {
-        "name1": "^ㅤ80ㅤ",
-        "href1": "http://localhost/",
-        "name2": "^ㅤ8080ㅤ",
-        "href2": "http://localhost:8080/",
-        "name3": "^ㅤ8443ㅤ",
-        "href3": "http://localhost:8443/"
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "introㅤ",
+        "href1": "https://github.com/bltcore-com/waypoint#waypoint",
+        "name2": "dictㅤ",
+        "href2": "https://github.com/bltcore-com/waypoint/blob/main/0-WAYPOINT.md#waypoint-dictionary",
+        "name3": "specㅤ",
+        "href3": "https://github.com/bltcore-com/waypoint/blob/main/1-SPEC.md#clean-room-reconstruction-of-a-toast-class-full-servicequick-service-pos"
 
      },
      {
@@ -312,6 +306,63 @@
         "href2": "http://localhost:3100/",
         "name3": "^ㅤ9999ㅤ",
         "href3": "http://localhost:9999/"
+      }
+    ]
+  },
+  "p7": {
+    "name": "dev",
+    "title": "waypoint",
+    "href1": "https://github.com/bltcore-com/waypoint",
+    "title2": "ci/cd",
+    "href2": "https://github.com/bltcore-com/waypoint/actions",
+    "showas": "table4",
+    "links": [
+      {
+        "name1": "environments",
+        "href1": "https://github.com/bltcore-com/waypoint/blob/main/7-RELEASE.md#ENV",
+        "pre4": "ㅤㅤㅤㅤㅤㅤ", 
+        "name4": "gaudios",
+        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2"
+
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name2": "store",
+        "href2": "https://gaudios-store.bltcore.com/back-office"
+      },        
+      {
+        "label": "-store"          
+      },   
+      {
+        "pre1": "ㅤㅤㅤㅤ", 
+        "name1": "pos",
+        "href1": "https://gaudios-store.bltcore.com",
+        "pre2": "ㅤㅤㅤㅤ", 
+        "name2": "kds",
+        "href2": "https://gaudios-store-kds.bltcore.com",
+        "pre3": "ㅤㅤㅤㅤ", 
+        "name3": "dm",
+        "href3": "https://gaudios-store-dm.bltcore.com"
+      },
+      {
+        "name2": "lab",
+        "href2": "https://gaudios-lab.bltcore.com/back-office"
+      },   
+      {
+        "label": "-lab"
+      },   
+      {
+        "pre1": "ㅤㅤㅤㅤ", 
+        "name1": "pos",
+        "href1": "https://gaudios-lab.bltcore.com",
+        "pre2": "ㅤㅤㅤㅤ", 
+        "name2": "kds",
+        "href2": "https://gaudios-lab-kds.bltcore.com",
+        "pre3": "ㅤㅤㅤㅤ", 
+        "name3": "dm",
+        "href3": "https://gaudios-lab-dm.bltcore.com"
       }
     ]
   },
