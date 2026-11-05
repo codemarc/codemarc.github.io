@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How each sk command works</title>
+<meta name="description" content="sk, a read-only command line for a covered-call Schwab account: what each command reads, the rules in between, and what it prints. Synthetic sample data.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How each sk command works">
+<meta property="og:description" content="A read-only CLI for a covered-call Schwab account: 25 commands, each with its inputs, rules, outputs and a real run on synthetic data. It cannot place an order.">
+<meta property="og:url" content="https://codemarc.github.io/kit/">
+<meta property="og:image" content="https://codemarc.github.io/kit/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #ffffff; --bg2: #f6f6f7; --fg: #1d1d1f; --fg2: #55565b; --fg3: #86878c;
+    --fill1: #ececef; --fill2: #f2f2f4; --stroke1: #b9bac0; --stroke2: #d4d5da; --stroke3: #e6e6ea;
+    --accent: #2e79b5; --on-accent: #ffffff; --red: #c04848; --amber: #c9801f; --green: #1f8a65;
+    --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #181818; --bg2: #202022; --fg: #e8e8ea; --fg2: #b4b5ba; --fg3: #85868c;
+      --fill1: #2c2c30; --fill2: #252528; --stroke1: #5b5c62; --stroke2: #3f4045; --stroke3: #303135;
+      --accent: #4a90cf; --on-accent: #ffffff; --red: #e06a6a; --amber: #f0a040; --green: #3fbf8a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 28px 20px 60px; }
+  h1 { font-size: 24px; line-height: 30px; font-weight: 600; margin: 0 0 6px; }
+  h2 { font-size: 20px; line-height: 26px; font-weight: 600; margin: 0; font-family: var(--mono); }
+  h3 { font-size: 15px; line-height: 20px; font-weight: 600; margin: 26px 0 10px; }
+  p { margin: 0; }
+  .muted { color: var(--fg2); } .faint { color: var(--fg3); } .small { font-size: 12px; line-height: 16px; }
+  nav { margin: 22px 0 26px; display: grid; gap: 8px; }
+  .group { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .group-title { width: 190px; flex-shrink: 0; font-size: 12px; color: var(--fg3); }
+  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  button.pill { font: 12px/16px var(--mono); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--stroke2); background: transparent; color: var(--fg); cursor: pointer; }
+  button.pill:hover { background: var(--fill2); }
+  button.pill[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .lead { margin-top: 6px; font-weight: 500; }
+  .flow-wrap { overflow-x: auto; }
+  .flow { position: relative; }
+  .flow svg { position: absolute; left: 0; top: 0; }
+  .node { position: absolute; border-radius: 6px; padding: 6px 9px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+  .node .l { font-size: 12px; line-height: 15px; }
+  .node .s { font-size: 11px; line-height: 14px; color: var(--fg3); margin-top: 2px; }
+  .k-in { background: var(--fill2); border: 1px solid var(--stroke3); }
+  .k-step { background: var(--bg); border: 1px solid var(--stroke2); }
+  .k-decide { background: var(--bg); border: 1px dashed var(--stroke1); }
+  .k-out { background: var(--fill1); border: 1px solid var(--stroke1); }
+  .k-out .l { font-weight: 600; }
+  .k-write { background: var(--fill2); border: 1px dashed var(--stroke2); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+  .legend span.sw { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .stats { display: flex; gap: 26px; flex-wrap: wrap; align-items: flex-end; }
+  .stat .v { font-size: 20px; line-height: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat .k { font-size: 12px; color: var(--fg3); }
+  .good { color: var(--green); }
+  .card { border: 1px solid var(--stroke2); border-radius: 8px; margin-top: 26px; overflow: hidden; }
+  .card-h { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; font-size: 12px; color: var(--fg2); border-bottom: 1px solid var(--stroke3); background: var(--bg2); }
+  .tag { font: 11px/14px var(--mono); padding: 1px 8px; border-radius: 999px; background: var(--fill1); color: var(--fg2); }
+  .card-b { padding: 12px; }
+  pre { margin: 0; font: 12px/17px var(--mono); }
+  pre.cmd { white-space: pre-wrap; word-break: break-all; color: var(--fg3); margin-bottom: 10px; }
+  pre.out { overflow: auto; max-height: 460px; white-space: pre; }
+  .act { color: var(--red); } .warn { color: var(--amber); }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { text-align: left; font-weight: 500; color: var(--fg3); font-size: 12px; padding: 6px 10px; border-bottom: 1px solid var(--stroke2); }
+  td { padding: 6px 10px; border-bottom: 1px solid var(--stroke3); vertical-align: top; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+  .callout { border: 1px solid var(--stroke2); border-left: 3px solid var(--amber); border-radius: 6px; padding: 8px 12px; margin-top: 10px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .note { margin-top: 8px; }
+  footer { margin-top: 40px; }
+  svg[role="img"] { display: block; max-width: 640px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>How each sk command works</h1>
+  <p class="muted">Pick a command: what it reads, the steps and rules in between, and what it prints. Output is from real runs on the synthetic sample account in <code>fixtures/sample</code>; nothing here is Marc's data.</p>
+  <nav id="nav" aria-label="Commands"></nav>
+  <section id="view" aria-live="polite"></section>
+  <footer class="small faint" id="foot"></footer>
+</main>
+<script>
+const GEN = /*GEN*/[{"name":"auth","group":"daily","groupTitle":"Every trading day","summary":"hours left on the 7-day Schwab login","about":"Reads the login from the Keychain and says how long it has. Under 24 hours it says to log in again today. Run it before any live command.","live":true,"human":false,"exit":{"0":"logged in (under 24 hours left still exits 0; the text says log in today)","2":"usage error, or the Keychain or a file failed","3":"no App Key and Secret (sk setup), or not logged in, or the 7-day login expired (sk login)"},"run":null,"output":null,"code":null},{"name":"plan","group":"daily","groupTitle":"Every trading day","summary":"the day plan: your rules applied to today, written as a short narrative","about":"Today in a few readable sections: the session and its times, earnings around today and the freezes they cause, open dip swings and puts to settle first, which dip-universe names are eligible for a new swing and why the others are out, cash and how many swings it fits, how a swing runs, and a checklist. It picks no trade and decides nothing. format=md gives Markdown for a doc or a chat.","live":true,"human":false,"exit":{"0":"nothing to settle","1":"an open dip swing has an ACT line","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk plan file=fixtures/sample/schwab-account.json earnings=fixtures/sample/earnings.json dips=fixtures/sample/dips.json now=\"2026-11-04 10:30\" format=text","output":"DAY PLAN  Wednesday, November 4  (read only; picks no trade)\n\nWednesday, November 4. A full session, 9:30 to 4:00. AMD reports after today's close, so\nnew positions are frozen today and tomorrow. Being flat by 3:55 keeps tonight's report\nout of any swing. One name is eligible for a new swing today: META. Free cash fits 1\nswing at the $15,000.00 target. This plan applies your rules to the account; it does not\npick trades, and every decision stays yours.\n\nEARNINGS AROUND TODAY\n  AMD    Nov 4   AMC     held  no new positions today or tomorrow\n\nWHO IS ELIGIBLE FOR A NEW SWING\n  NVDA   out  a swing from Nov 4 is still open; a new one would stack on it\n  AMD    out  earnings blackout Oct 30 to Nov 5 (reports Nov 4 after the close)\n  META   yes  earnings Jan 27, clear of the blackout\n  AMZN   out  no earnings date on file, so the blackout cannot be proven clear\n  GOOGL  out  no earnings date on file, so the blackout cannot be proven clear\n  TSM    out  no earnings date on file, so the blackout cannot be proven clear\n  MSFT   out  no earnings date on file, so the blackout cannot be proven clear\n\nCASH\n  $40,000.00 cash, $20,000.00 held for open puts, $20,000.00 free: fits 1 swing(s) at\n  $15,000.00.\n\nHOW A SWING RUNS\n  1. No entries before 10:00.\n  2. Price and noise: the entry you would pay and the prior session's 5-minute ATR\n     (thinkorswim for now).\n  3. Size: sk size price=<entry> atr=<ATR> format=text. It sizes to $15,000.00, sets the\n     stop so the loss stays at or under $400.00, and checks the stop sits outside one\n     ATR of noise; failing that it tries the $13,000.00 band low, then SKIP. The band\n     wins over the stop.\n  4. Check: a limit buy with strategy dip-swing and its stop, through /rule-check.\n  5. Enter: /ticket gives the ladder, mid first, nickels toward the ask, never past the\n     checked limit.\n  6. Tag it once filled: sk dip symbol=<NAME>.\n\nDURING THE DAY\n  - Flat by 3:55. Start working exits around 3:45, limit at the mid walking down in\n    nickels.\n  - A stop hit means done for that name; a re-entry is a new swing, sized and checked\n    from scratch.\n  - Run sk review format=text once after 10:00 so option volume means something.\n  - Free cash is $20,000.00 after $20,000.00 held for open puts.\n\nCHECKLIST\n  [ ] Record earnings dates for AMZN, GOOGL, TSM and MSFT if you might trade them\n  [ ] 10:00: nothing enters before this\n  [ ] 10:15: sk review format=text\n  [ ] Each swing: sk size, /rule-check, /ticket, sk dip\n  [ ] 3:45: start exits; 3:55: flat\n  [ ] After the close: untag closed swings (sk dip symbol=<NAME> off=1)\n\nNot decided by this plan: whether to trade at all, which name, and what to do with open\nswings and puts. Those are yours; the plan only makes sure what you choose fits the\nrules you wrote.","code":0},{"name":"review","group":"daily","groupTitle":"Every trading day","summary":"the pre-trade look: ACT and WARN lines, calls, puts, best strikes, working orders","about":"One read-only look before any trade: account value and free cash; ACT and WARN lines for earnings, ex-dividend dates and dip swings; calls to watch; short puts; shares with no call and the best strike at or above basis on the next monthly expiry; working orders and what the rules say about them. Every candidate still goes through sk check before a ticket.","live":true,"human":false,"exit":{"0":"nothing needs a decision","1":"an ACT line","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk review file=fixtures/sample/schwab-account.json quotes=fixtures/sample/schwab-quotes.json chains=fixtures/sample/schwab-chains.json orders=fixtures/sample/schwab-orders.json earnings=fixtures/sample/earnings.json dips=fixtures/sample/dips.json now=\"2026-11-04 10:30\" format=text","output":"REVIEW 2026-11-04  (read only; nothing is sent)\nAccount $126,570.00   cash $40,000.00   put collateral $20,000.00   free $20,000.00\n\nNEEDS A LOOK\n  WARN  ex-dividend CME    310.00 call (2026-11-20) is 5.00 in the money and the stock goes ex-dividend 2026-11-12, before expiry. Time value left 1.50 vs dividend 1.25: early assignment possible\n\nCALLS TO WATCH\n  CME 2026-11-20 310.00 call x1: in the money by 5.00, time value left 1.50\n\nSHORT PUTS\n  AMD 2026-11-20 200.00 put x1: 10.00 above the strike; assignment takes $20,000.00 and makes 100 shares\n\nSHARES WITH NO CALL (2026-12-18, strikes at or above basis only)\n  SPCX   3 contract(s)  price 137.00  basis 145.87  best: 150.00 call, bid 3.00, volume 12, 18.2% annualized; earnings 2026-11-12 before expiry: the premium includes the report\n\nWORKING ORDERS (3)\n  DAY  SELL TO OPEN 1 SPCX 2026-12-18 140.00 call  limit 6.10  (working, entered 2026-11-04)\n  DAY  SELL 75 NVDA  trail 5%  (working, entered 2026-11-04)\n  GTC  BUY TO CLOSE 1 CME 2026-11-20 310.00 call  limit 3.25  (working, entered 2026-10-28)\n  ACT   #9000003 SPCX 2026-12-18 140.00 call: strike below the 145.87 basis, against the rule\n  WARN  #9000002 trailing stop becomes a market order when it triggers; fine for an exit, but the fill price is not controlled\n\nEvery candidate still goes through /rule-check before a ticket.","code":1},{"name":"orders","group":"daily","groupTitle":"Every trading day","summary":"orders at Schwab: working, filled, canceled, with rule warnings on working ones","about":"Lists orders entered in a date range, working ones first. On working orders it warns about market orders, stops that turn into market orders, and calls sold below basis. Schwab returns at most 60 days per request. Read only: sk cannot place, change or cancel an order.","live":true,"human":false,"exit":{"0":"no rule needs a decision","1":"an ACT warning on a working order","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk orders file=fixtures/sample/schwab-orders.json now=\"2026-11-04 10:30\" format=text","output":"WORKING (3)\n  2026-11-04  WORKING   DAY  SELL TO OPEN 1 SPCX 2026-12-18 140.00 call  limit 6.10  open 1  #9000003\n  2026-11-04  WORKING   DAY  SELL 75 NVDA  trail 5%  open 75  #9000002\n  2026-10-28  WORKING   GTC  BUY TO CLOSE 1 CME 2026-11-20 310.00 call  limit 3.25  open 1  #9000001\n\nRULES\n  WARN  #9000002 trailing stop becomes a market order when it triggers; fine for an exit, but the fill price is not controlled\n\nFILLED, CANCELED AND EXPIRED (2)\n  2026-10-30  CANCELED  DAY  BUY 25 NVDA  limit 195.00  #9000005\n  2026-10-21  FILLED    DAY  SELL TO OPEN 1 AMD 2026-11-20 200.00 put  limit 4.10  filled 1 at 4.10  #9000004\n\nRead only. sk cannot place, change or cancel an order.","code":0},{"name":"checks","group":"daily","groupTitle":"Every trading day","summary":"morning checks: earnings book against Schwab, ex-dividend risk, dip swings","about":"What the quote API knows that the positions read does not: earnings dates on file that are behind Schwab's last report, held symbols with no date (with an estimate to order the lookups), short calls in the money facing an ex-dividend date before expiry, and each tagged dip swing against the dip rules.","live":true,"human":false,"exit":{"0":"no ACT line","1":"an ACT line","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk checks file=fixtures/sample/schwab-account.json quotes=fixtures/sample/schwab-quotes.json earnings=fixtures/sample/earnings.json dips=fixtures/sample/dips.json now=\"2026-11-04 10:30\" format=text","output":"CHECKS 2026-11-04\nWARN  ex-dividend CME    310.00 call (2026-11-20) is 5.00 in the money and the stock goes ex-dividend 2026-11-12, before expiry. Time value left 1.50 vs dividend 1.25: early assignment possible\nok    dip         NVDA   75 shares, down $75.00, inside the dip rules\nok    earnings    AMD    reports 2026-11-04 AMC\nok    earnings    CME    reports 2027-02-04 BMO\nok    earnings    NVDA   reports 2026-11-19 AMC\nok    earnings    SPCX   reports 2026-11-12 AMC","code":0},{"name":"positions","group":"account","groupTitle":"The account and the market","summary":"every holding, grouped by underlying, totals rebuilt from the rows","about":"One block per underlying: shares, short calls and puts, value and basis, then each holding. Totals are rebuilt from the rows and set beside Schwab's liquidation value; a gap over $1.00 says stop and check.","live":true,"human":false,"exit":{"0":"rows and Schwab agree","1":"stop and check: rows plus cash differ from Schwab","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk positions file=fixtures/sample/schwab-account.json format=text","output":"ACCOUNT 7e071fd9 (CASH)  cash $40,000.00\n\nAMD  short put x1  value -$380.00  basis -$410.00\n       -1  2026-11-20 200.00 P    avg        4.1  value       -$380.00  basis       -$410.00\nCME  covered call x1  value $30,850.00  basis $29,970.67\n      100  CME                    avg     306.83  value     $31,500.00  basis     $30,683.00\n       -1  2026-11-20 310.00 C    avg     7.1233  value       -$650.00  basis       -$712.33\nNVDA  value $15,000.00  basis $15,075.00\n       75  NVDA                   avg        201  value     $15,000.00  basis     $15,075.00\nSPCX  value $41,100.00  basis $43,760.00\n      300  SPCX                   avg 145.866667  value     $41,100.00  basis     $43,760.00\n\nTOTAL holdings $86,570.00  plus cash $126,570.00  Schwab says $126,570.00","code":0},{"name":"table","group":"account","groupTitle":"The account and the market","summary":"one row per symbol, Schwab-style columns, options folded in","about":"Columns follow Schwab's Positions screen, simplified. Options fold into their stock's row; totals and cash at the bottom, rebuilt from the rows. Beta and IV show n/a: Schwab's quote API does not send them for stocks.","live":true,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk table file=fixtures/sample/schwab-account.json quotes=fixtures/sample/schwab-quotes.json sort=gain format=text","output":"Symbol  Avg vol 10d  Qty  Options         Cost/Share   Price  Day chng %  Day chng $  Price chng $  Price chng %     Mkt val  Cost basis  Gain/Loss $  Gain/Loss %    P/E     IV  % of acct  Beta\nSPCX           8.4M  300                      145.87  137.00      -1.08%    -$450.00         -1.50        -1.08%  $41,100.00  $43,760.00   -$2,660.00       -6.08%  61.00  52.00     32.47%  1.80\nNVDA         190.0M   75                      201.00  200.00      +1.52%    +$225.00         +3.00        +1.52%  $15,000.00  $15,075.00      -$75.00       -0.50%  48.00  44.00     11.85%  1.70\nAMD           41.0M    0  -1P 200 Nov 20         n/a  210.00      +7.32%     +$30.00         -0.90        -0.43%    -$380.00    -$410.00      +$30.00       +7.32%  95.00  47.00     -0.30%  1.90\nCME            2.1M  100  -1C 310 Nov 20      306.83  315.00      +0.36%    +$110.00         +1.50        +0.48%  $30,850.00  $29,970.67     +$879.33       +2.93%  26.40  18.20     24.37%  0.45\n\nTOTAL                                                             -0.10%     -$85.00                              $86,570.00  $88,395.67   -$1,825.67       -2.07%                   68.40%      \nCash                                                                                                              $40,000.00                                                         31.60%      \n\nAccount value $126,570.00. Totals rebuilt from rows. Beta and IV: not sent by Schwab's quote API for stocks.","code":0},{"name":"chain","group":"account","groupTitle":"The account and the market","summary":"option quotes for one expiry, with time value, yield and a parity check","about":"Bid, ask, mid, last, volume, open interest, time value and annualized yield on the bid for each strike. Filters combine; none means every strike. With both sides quoted, Schwab's underlying is checked against put-call parity.","live":true,"human":false,"exit":{"0":"printed","1":"an asked-for strike is missing, or the parity check says stop","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk chain symbol=SPCX expiry=2026-12-18 near=2 side=all file=fixtures/sample/schwab-chain-spcx.json now=\"2026-11-04 10:30\" format=text","output":"SPCX 2026-12-18  underlying 137.00  (2026-11-04 10:30 New York)  2 strikes each side of 137.00\n\nside  strike      bid      ask      mid     last    vol     OI   time val  ann. yld on bid\ncall  130.00    11.50    11.70    11.60    11.60      5    100       4.50    69.6%\ncall  135.00     7.80     8.00     7.90     7.90     20    280       5.80    47.2%\ncall  140.00     5.70     5.90     5.80     5.80     80   1000       5.70    34.5%\ncall  145.00     4.30     4.50     4.40     4.40     30    400       4.30    26.0%\nput   130.00     4.50     4.70     4.60     4.60      3     76       4.50    28.7%\nput   135.00     5.80     6.00     5.90     5.90     10    160       5.80    35.6%\nput   140.00     8.70     8.90     8.80     8.80     25    340       5.70    51.6%\nput   145.00    12.30    12.50    12.40    12.40      8    136       4.30    70.4%\n\nparity check: parity at 4 strikes: 137.00 to 137.00, median 137.00; Schwab underlying 137.00, agrees\n\nYield: bid / underlying x 365 / days for calls (bid / strike for puts). Read only; nothing was sent.","code":0},{"name":"quote","group":"account","groupTitle":"The account and the market","summary":"price and every fundamental field for some symbols","about":"Last price and mark, any earnings field Schwab sends, and the names of every fundamental field. Useful to see what the quote API carries.","live":true,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk quote symbols=CME,SPCX,NVDA,AMD file=fixtures/sample/schwab-quotes.json format=text","output":"CME  last 315  mark 315\n   lastEarningsDate: 2026-10-22T00:00:00Z\n   fundamental fields: avg10DaysVolume, beta, divAmount, divFreq, divPayAmount, lastEarningsDate, nextDivExDate, peRatio\nSPCX  last 137  mark 137\n   lastEarningsDate: 2026-08-12T00:00:00Z\n   fundamental fields: avg10DaysVolume, beta, lastEarningsDate, peRatio\nNVDA  last 200  mark 200\n   lastEarningsDate: 2026-08-27T00:00:00Z\n   fundamental fields: avg10DaysVolume, beta, divAmount, divFreq, divPayAmount, lastEarningsDate, nextDivExDate, peRatio\nAMD  last 210  mark 210\n   lastEarningsDate: 2026-08-05T00:00:00Z\n   fundamental fields: avg10DaysVolume, beta, lastEarningsDate, peRatio","code":0},{"name":"accounts","group":"account","groupTitle":"The account and the market","summary":"account tags and the last four digits","about":"The tag (first 8 hex of a hash of the account number) is what every other command takes as account=. The full number is never printed.","live":true,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":null,"output":null,"code":null},{"name":"context","group":"account","groupTitle":"The account and the market","summary":"the sk check context built from the live account","about":"New York time, cash, stock positions with per-share basis, open short options, earnings dates and report times, and dip-swing symbols: everything sk check reads. Save it with out= and pass it to sk check.","live":true,"human":false,"exit":{"0":"built","2":"usage error, or the Keychain or a file failed","3":"Marc must sign in: no App Key and Secret (sk setup), or the login is missing, expired or refused (sk login)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":"sk context file=fixtures/sample/schwab-account.json earnings=fixtures/sample/earnings.json dips=fixtures/sample/dips.json now=\"2026-11-04 10:30\" format=json","output":"{\n  \"note\": \"built from Schwab account 7e071fd9\",\n  \"now\": \"2026-11-04 10:30\",\n  \"cash\": \"40000.00\",\n  \"positions\": [\n    {\n      \"symbol\": \"CME\",\n      \"qty\": 100,\n      \"basis\": \"306.83\"\n    },\n    {\n      \"symbol\": \"SPCX\",\n      \"qty\": 300,\n      \"basis\": \"145.866667\"\n    },\n    {\n      \"symbol\": \"NVDA\",\n      \"qty\": 75,\n      \"basis\": \"201\"\n    }\n  ],\n  \"shortOptions\": [\n    {\n      \"symbol\": \"CME\",\n      \"right\": \"C\",\n      \"strike\": \"310.00\",\n      \"expiry\": \"2026-11-20\",\n      \"contracts\": 1\n    },\n    {\n      \"symbol\": \"AMD\",\n      \"right\": \"P\",\n      \"strike\": \"200.00\",\n      \"expiry\": \"2026-11-20\",\n      \"contracts\": 1\n    }\n  ],\n  \"earnings\": {\n    \"CME\": \"2027-02-04\",\n    \"SPCX\": \"2026-11-12\",\n    \"NVDA\": \"2026-11-19\",\n    \"META\": \"2027-01-27\",\n    \"AMD\": \"2026-11-04\"\n  },\n  \"earningsTime\": {\n    \"CME\": \"BMO\",\n    \"SPCX\": \"AMC\",\n    \"NVDA\": \"AMC\",\n    \"META\": \"AMC\",\n    \"AMD\": \"AMC\"\n  },\n  \"dips\": [\n    \"NVDA\"\n  ]\n}","code":0},{"name":"check","group":"order","groupTitle":"Before an order","summary":"the rules engine: PASS or BLOCK per proposed order, fingerprinted","about":"Checks proposed orders against Marc's rules: limit only, session and 10:00 fractional, earnings freeze, covered and cash-secured, strike never below basis, dip-swing universe, band, stop, time and blackout. Orders are checked in order against a running book. Exits are never blocked; they warn. A PASS only unlocks sk ticket for that exact order today.","live":false,"human":false,"exit":{"0":"every order PASSed","1":"at least one BLOCK","2":"usage error, or the Keychain or a file failed"},"run":"sk check context=fixtures/sample/context.json orders=fixtures/sample/orders.json format=text","output":"RULE CHECK 2026-10-20: BLOCK\nPASS  cc-cme  SELL TO OPEN 2 CME 2026-11-20 280.00 call LIMIT 5.20\nBLOCK  cc-msft-below-basis  SELL TO OPEN 2 MSFT 2026-11-20 400.00 call LIMIT 9.00\n    WARN earnings-before-expiry: MSFT reports 2026-10-28, before this option expires 2026-11-20; the premium prices in the earnings move\n    BLOCK basis: strike 400.00 is below basis 410.00; strike never below basis, live or dead thesis\nPASS  dip-nvda  BUY 82 NVDA LIMIT 182.40\nPASS  exit-msft-market  SELL 10 MSFT MARKET\n    WARN limit-only: market orders are not allowed; use a limit at the mid (exit, not blocked)","code":1},{"name":"ticket","group":"order","groupTitle":"Before an order","summary":"a hand-entry ticket with a nickel ladder, for PASSed orders only","about":"Options first, then stock. Each limit starts at the mid and walks toward the far side in $0.05 steps, four at most, never past the limit sk check saw. Refuses an order with no PASS today, a BLOCK, or a fingerprint that changed since the check. Nothing is sent: Marc types it into Schwab.","live":false,"human":false,"exit":{"0":"printed (refused lines say why)","2":"usage error, or the Keychain or a file failed"},"run":"sk ticket orders=fixtures/sample/orders.json verdicts=fixtures/sample/check-report.json quotes=fixtures/sample/quotes.json now=\"2026-10-20 10:20\" format=text","output":"TICKET 2026-10-20 (type these by hand; nothing is sent)\n\n1. SELL TO OPEN 2 CME 2026-11-20 280.00 call LIMIT 5.20\n   ladder: 5.35 > 5.30 > 5.25 > 5.20\n   bid 5.20 ask 5.50; floor 5.20\n2. SELL TO OPEN 2 MSFT 2026-11-20 400.00 call LIMIT 9.00\n   REFUSED: BLOCK: basis\n3. BUY 82 NVDA LIMIT 182.40\n   ladder: 182.35 > 182.40\n   bid 182.30 ask 182.42; ceiling 182.40\n4. SELL 10 MSFT MARKET\n   MARKET order; enter as written, no ladder","code":0},{"name":"size","group":"order","groupTitle":"Before an order","summary":"dip-swing size from the $400 loss cap, the band and noise","about":"Loss cap first: the stop comes from the cap. At the $15,000 target, round shares down; if the stop sits inside noise (the prior session 5-minute ATR), retry at the $13,000 band low. Still inside noise: the band wins, skip the trade. Every step is printed.","live":false,"human":false,"exit":{"0":"TRADE or SKIP printed","2":"usage error, or the Keychain or a file failed"},"run":"sk size price=182.40 atr=0.85 format=text","output":"TRADE 82 shares at 182.40, stop 177.53 (4.87 away), notional 14956.80, max loss 399.34\n  target $15,000.00: 82 shares x 182.40 = $14,956.80; stop distance $400.00 / 82 = 4.87; noise 0.85","code":0},{"name":"pick","group":"order","groupTitle":"Before an order","summary":"the best strike by time value among strikes that traded","about":"The Gold Strike rule: among strikes with traded volume, the most time value on the bid. A quote with zero volume is not a real price. Without spot=, spot comes from put-call parity across the chain, and strikes that disagree by more than 0.5% stop the pick.","live":false,"human":false,"exit":{"0":"picked, or nothing traded","1":"strikes disagree on spot: stop and ask","2":"usage error, or the Keychain or a file failed"},"run":"sk pick chain=fixtures/real/cme-2026-10-26.json format=text","output":"spot 307.45 from parity at 8 strikes: 307.10 to 307.70, median 307.45; 310.00 C: time value 6.50 on bid 6.50, volume 13; 4 zero-volume strike(s) ignored","code":0},{"name":"yield","group":"order","groupTitle":"Before an order","summary":"annualized yield of a premium on its collateral","about":"premium / collateral x 365 / calendar days. Collateral is the stock price for a covered call and the strike for a cash-secured put.","live":false,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed"},"run":"sk yield premium=5.20 collateral=280 asof=2026-09-03 expiry=2026-09-18 format=text","output":"5.20 / 280.00 x 365 / 15 days = 45.2%","code":0},{"name":"parity","group":"order","groupTitle":"Before an order","summary":"spot from put-call parity: call - put + strike","about":"Mids of the same strike and expiry. Rates are ignored; the error is a few cents on a 30-day option.","live":false,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed"},"run":"sk parity call=7.10 put=6.95 strike=280 format=text","output":"7.10 - 6.95 + 280.00 = 280.15 (put-call parity, rates ignored)","code":0},{"name":"clock","group":"order","groupTitle":"Before an order","summary":"New York time, the session, and whether fractional and dip entries are allowed","about":"Reads New York time from the time zone database, never the machine zone. Knows NYSE holidays and 13:00 early closes for 2026 and 2027.","live":false,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed"},"run":"sk clock now=\"2026-11-27 12:30\" format=text","output":"2026-11-27 12:30 New York: OPEN, early close 13:00 (day after Thanksgiving); fractional and dip entries allowed","code":0},{"name":"earnings","group":"books","groupTitle":"Books you keep","summary":"keep and review the earnings book","about":"Schwab's API has no earnings calendar, so Marc keeps one: read the date from Schwab's research page and save it here. A past date, one more than 150 days out, a weekend or an NYSE holiday is refused before saving. Without symbol= it reviews the book: past and stale (read over 14 days ago) entries, and listed symbols with no date.","live":false,"human":false,"exit":{"0":"every entry ok","1":"a past or stale entry, or a listed symbol with no date","2":"usage error, or the Keychain or a file failed"},"run":"sk earnings file=fixtures/sample/earnings.json symbols=CME,SPCX,NVDA,AMD now=\"2026-11-04 10:30\" format=text","output":"AMD    2026-11-04 AMC     in   0 days  ok  (SYNTHETIC sample, read 2026-11-01)\nSPCX   2026-11-12 AMC     in   8 days  ok  (SYNTHETIC sample, read 2026-11-01)\nNVDA   2026-11-19 AMC     in  15 days  ok  (SYNTHETIC sample, read 2026-11-01)\nMETA   2027-01-27 AMC     in  84 days  ok  (SYNTHETIC sample, read 2026-11-01)\nCME    2027-02-04 BMO     in  92 days  ok  (SYNTHETIC sample, read 2026-11-01)","code":0},{"name":"dip","group":"books","groupTitle":"Books you keep","summary":"tag, untag or list dip swings","about":"sk review and sk checks hold a position to the dip-swing rules only when it is tagged. Tag when the swing opens, untag when it closes. A symbol outside the dip universe in rules.json is refused.","live":false,"human":false,"exit":{"0":"listed or saved","2":"usage error, or the Keychain or a file failed"},"run":"sk dip file=fixtures/sample/dips.json format=text","output":"NVDA   since 2026-11-04  SYNTHETIC sample","code":0},{"name":"login","group":"kit","groupTitle":"Sign-in and the kit","summary":"sign in to Schwab in the browser; repeat every 7 days","about":"Opens the Schwab sign-in in the browser. Approve the app; the browser lands on a page at 127.0.0.1:8182 that will not load, by design. Copy the address bar within about 30 seconds and press Enter (it reads the clipboard on a Mac) or paste it. Schwab gives no way to extend the 7-day login in code.","live":true,"human":true,"exit":{"0":"logged in","2":"usage error, or the Keychain or a file failed","3":"no App Key (sk setup), or the code expired or was used (sk login again)","4":"Schwab or the network failed: unreachable, an error status, a rate limit; try again in a minute"},"run":null,"output":null,"code":null},{"name":"setup","group":"kit","groupTitle":"Sign-in and the kit","summary":"store the Schwab App Key and Secret in the macOS Keychain","about":"Asks for the App Key and Secret at a hidden prompt (developer.schwab.com, Dashboard, Apps). Pasted escape sequences and control characters are stripped; a Secret identical to the Key is refused. Once, or when the app changes.","live":true,"human":true,"exit":{"0":"saved","2":"usage error, or the Keychain or a file failed"},"run":null,"output":null,"code":null},{"name":"defaults","group":"kit","groupTitle":"Sign-in and the kit","summary":"values every command uses unless the command line says otherwise","about":"key=value sets one, key= clears one, reset=1 clears all, no keys shows them. Per-run values (file, symbol, dates, strikes, prices, now, ...) are refused so a stale one cannot change a later run. The command line always wins. $SK_DEFAULTS points at another file.","live":false,"human":false,"exit":{"0":"shown or saved","2":"usage error, or the Keychain or a file failed"},"run":"sk defaults","output":"Defaults (state/defaults.json):\n  none: every command uses its own built-in defaults (format=json)\n\nSet: sk defaults format=toon    Clear one: sk defaults format=    Clear all: sk defaults reset=1\nThe command line always wins over a default.","code":0},{"name":"version","group":"kit","groupTitle":"Sign-in and the kit","summary":"package version, git revision and runtime","about":"What is running: the version in package.json, the git commit of this checkout (null outside one), and the Bun version.","live":false,"human":false,"exit":{"0":"printed","2":"usage error, or the Keychain or a file failed"},"run":"sk version format=text","output":"sk 0.2.0 (d040031) on bun 1.4.2","code":0},{"name":"help","group":"kit","groupTitle":"Sign-in and the kit","summary":"this index, one page per command, or every command as JSON","about":"sk help <command> and sk <command> --help print the same page: usage, keys, what it reads and writes, exit codes and examples. Help is text whatever the default format; format=json on the command line gives the catalog an agent can plan from.","live":false,"human":false,"exit":{"0":"printed","2":"no such command"},"run":"sk help","output":"sk 0.2.0: Schwab kit, read only. Nothing here places, changes or cancels an order.\n\nEvery trading day\n  auth       hours left on the 7-day Schwab login\n  plan       the day plan: your rules applied to today, written as a short narrative\n  review     the pre-trade look: ACT and WARN lines, calls, puts, best strikes, working orders\n  orders     orders at Schwab: working, filled, canceled, with rule warnings on working ones\n  checks     morning checks: earnings book against Schwab, ex-dividend risk, dip swings\n\nThe account and the market\n  positions  every holding, grouped by underlying, totals rebuilt from the rows\n  table      one row per symbol, Schwab-style columns, options folded in\n  chain      option quotes for one expiry, with time value, yield and a parity check\n  quote      price and every fundamental field for some symbols\n  accounts   account tags and the last four digits\n  context    the sk check context built from the live account\n\nBefore an order\n  check      the rules engine: PASS or BLOCK per proposed order, fingerprinted\n  ticket     a hand-entry ticket with a nickel ladder, for PASSed orders only\n  size       dip-swing size from the $400 loss cap, the band and noise\n  pick       the best strike by time value among strikes that traded\n  yield      annualized yield of a premium on its collateral\n  parity     spot from put-call parity: call - put + strike\n  clock      New York time, the session, and whether fractional and dip entries are allowed\n\nBooks you keep\n  earnings   keep and review the earnings book\n  dip        tag, untag or list dip swings\n\nSign-in and the kit\n  login      sign in to Schwab in the browser; repeat every 7 days\n  setup      store the Schwab App Key and Secret in the macOS Keychain\n  defaults   values every command uses unless the command line says otherwise\n  version    package version, git revision and runtime\n\nOne command: sk help review  (or sk review --help).  Every command as JSON: sk help format=json\nArguments: key=value.  Output: format=json (default), toon or text.\nExit: 0 ok, 1 needs a look, 2 usage or file error, 3 sign in (sk login), 4 Schwab failed.\nFrom the repo, before sk is on your PATH: bun run sk <command>","code":0}]/*END*/;
+
+const N = (id, label, kind, sub) => ({ id, label, kind, sub });
+const FLOWS = {
+  auth: { nodes: [N("kc","Keychain","in","App Key, refresh token, login time"), N("have","Key and login present?","decide"), N("hrs","Hours left","step","7 days minus time since login"), N("ok","Logged in: N hours left","out","under 24: log in again today"), N("no","Not logged in","out","names sk login or sk setup; exit 3")],
+    edges: [["kc","have"],["have","hrs"],["hrs","ok"],["have","no"]] },
+  accounts: { nodes: [N("kc","Keychain","in","access token, refreshed if stale"), N("api","Schwab","in","GET /trader/v1/accounts/accountNumbers"), N("hash","SHA-256 each number","step","first 8 hex digits = account tag"), N("out","tag (ending 1234)","out","the number itself never prints")],
+    edges: [["kc","api"],["api","hash"],["hash","out"]] },
+  login: { nodes: [N("kc","Keychain","in","App Key"), N("url","Build the sign-in URL","step","/v1/oauth/authorize"), N("br","Marc signs in","decide","in the browser; approves the app"), N("paste","Redirect URL","in","clipboard on Enter, or pasted"), N("tok","Token call","step","POST /v1/oauth/token, the only POST"), N("save","Tokens to Keychain","write","good for 7 days"), N("out","Logged in: N hours","out")],
+    edges: [["kc","url"],["url","br"],["br","paste"],["paste","tok"],["tok","save"],["save","out"]] },
+  setup: { nodes: [N("p","Hidden prompts","in","App Key, then Secret; not echoed"), N("clean","Clean the paste","step","strip escape and control characters"), N("chk","Empty or identical?","decide","refused: Secret pasted twice"), N("kc","Keychain","write","security -i, base64 on stdin"), N("out","Lengths, last 2 chars","out","to compare with the app page")],
+    edges: [["p","clean"],["clean","chk"],["chk","kc"],["kc","out"]] },
+  plan: { nodes: [N("acct","Account","in","Schwab, or file="), N("books","Earnings, dip books","in","earnings=, dips="), N("rules","rules.json","in","dip universe, band, times"), N("cal","NYSE calendar","in","holidays, early closes"), N("sess","Session and times","step","entries from 10:00, flat by 15:55"), N("frz","Earnings freezes","decide","report day, reaction day"), N("settle","Settle first","decide","open swings, puts, stale tags"), N("elig","Eligible names","decide","open swing, no date, blackout, max shares"), N("cash","Cash","step","free cash, $15,000 swings it fits"), N("out","The day plan","out","picks no trade; exit 1 on an ACT"), N("raw","state/raw/account-tag","write","redacted; live runs only")],
+    edges: [["acct","raw"],["acct","cash"],["acct","settle"],["books","settle"],["rules","settle"],["books","frz"],["cal","frz"],["rules","sess"],["cal","sess"],["settle","elig"],["frz","elig"],["cash","out"],["elig","out"],["sess","out"]] },
+  positions: { nodes: [N("acct","Account","in","Schwab, or file="), N("adapt","Adapt each position","step","kind, OCC, signed qty, cents"), N("group","Group by underlying","step","covered: 100 shares per call"), N("total","Rebuild totals","step","rows plus cash"), N("cmp","Equals Schwab's value?","decide","liquidationValue"), N("out","Holdings and totals","out"), N("stop","stop and check","out","exit 1 when they differ"), N("raw","state/raw/account-tag","write","redacted; live runs only")],
+    edges: [["acct","adapt"],["adapt","group"],["group","total"],["total","cmp"],["cmp","out"],["cmp","stop"],["acct","raw"]] },
+  context: { nodes: [N("acct","Account","in","Schwab, or file="), N("earn","Earnings book","in","earnings="), N("dips","Dip book","in","dips="), N("now","now=","in","New York time"), N("adapt","Adapt the account","step","positions, short options, cash"), N("build","Build the context","step","basis, dates, report times, dips"), N("out","Context JSON","out","out= saves it for sk check")],
+    edges: [["acct","adapt"],["adapt","build"],["earn","build"],["dips","build"],["now","build"],["build","out"]] },
+  quote: { nodes: [N("args","symbols=","in"), N("api","Schwab quotes","in","GET /marketdata/v1/quotes, or file="), N("print","Pick out the fields","step","last, mark, every earnings field"), N("out","One block per symbol","out","plus every fundamental field sent"), N("raw","state/raw/quote-…","write","live runs only")],
+    edges: [["args","api"],["api","print"],["print","out"],["api","raw"]] },
+  checks: { nodes: [N("acct","Account","in","Schwab, or file="), N("q","Quotes","in","last report, ex-dividend, dividend"), N("earn","Earnings book","in"), N("dips","Dip book","in"), N("rules","rules.json","in"), N("e","Earnings check","step","missing, stale, behind Schwab"), N("x","Ex-dividend check","step","ITM call, time value < dividend"), N("d","Dip check","step","band, loss, blackout"), N("out","ACT, WARN, ok lines","out","exit 1 on any ACT")],
+    edges: [["acct","e"],["q","e"],["earn","e"],["acct","x"],["q","x"],["acct","d"],["dips","d"],["rules","d"],["e","out"],["x","out"],["d","out"]] },
+  orders: { nodes: [N("args","from=, to=, status=","in","default last 7 days; at most 60"), N("api","Schwab orders","in","GET …/accounts/{hash}/orders, or file="), N("acct","Account","in","live only: basis per symbol"), N("flat","Flatten","step","child orders, fills, average fill"), N("filt","Filter","step","status=open, symbol="), N("warn","Rules on working orders","decide","below basis, trailing stop"), N("out","WORKING, RULES, closed","out","exit 1 on an ACT")],
+    edges: [["args","api"],["api","flat"],["flat","filt"],["filt","warn"],["acct","warn"],["warn","out"]] },
+  table: { nodes: [N("acct","Account","in","Schwab, or file="), N("q","Quotes","in","price, change, volume, P/E"), N("rows","One row per symbol","step","options folded into the stock row"), N("tot","Totals, % of account","step"), N("sort","Sort","step","value, gain, day, symbol, …"), N("out","Text or CSV","out","Schwab's Positions columns")],
+    edges: [["acct","rows"],["q","rows"],["rows","tot"],["tot","sort"],["sort","out"]] },
+  review: { nodes: [N("acct","Account","in","Schwab, or file="), N("q","Quotes","in","or quotes="), N("books","Earnings, dip books","in"), N("ch","Call chains","in","next monthly, per uncovered lot"), N("ord","Orders","in","last 60 days, or orders="), N("rules","rules.json","in"), N("money","Account and free cash","step","cash minus put collateral"), N("lines","ACT and WARN lines","decide","earnings, ex-dividend, dips"), N("pos","Calls and puts","step","in the money, assignment cost"), N("pick","Best strike ≥ basis","decide","most time value, traded only"), N("work","Working orders","decide","rule lines per order"), N("out","REVIEW","out","exit 1 on any ACT")],
+    edges: [["acct","money"],["acct","pos"],["acct","lines"],["q","lines"],["books","lines"],["rules","lines"],["ch","pick"],["acct","pick"],["ord","work"],["acct","work"],["money","out"],["lines","out"],["pos","out"],["pick","out"],["work","out"]] },
+  chain: { nodes: [N("args","symbol=, expiry=","in","side=, strikes=, from=, to=, near="), N("api","Schwab chain","in","GET /marketdata/v1/chains, or file="), N("filt","Keep the asked strikes","step"), N("row","Per contract","step","mid, time value, yield on bid"), N("par","Parity spot","step","call − put + strike, median"), N("cmp","Agrees with Schwab?","decide","underlying mark"), N("out","Chain and parity line","out"), N("stop","stop and check","out","exit 1")],
+    edges: [["args","api"],["api","filt"],["filt","row"],["row","out"],["filt","par"],["par","cmp"],["cmp","out"],["cmp","stop"]] },
+  check: { nodes: [N("ctx","Context","in","cash, positions, dates, dips, now"), N("ord","Proposed orders","in","orders="), N("rules","rules.json","in"), N("each","Each order in turn","step","against a running book"), N("hyg","Hygiene","decide","limit only, session, 10:00"), N("ern","Earnings freeze","decide","report day, reaction day"), N("cov","Covered and basis","decide","cash-secured, strike ≥ basis"), N("dip","Dip-swing rules","decide","universe, band, stop, blackout"), N("exit","An exit?","decide","then BLOCK becomes WARN"), N("fp","Verdict, fingerprint","step","SHA-256 of the order"), N("out","PASS or BLOCK","out","exit 1 on BLOCK"), N("rep","Report file","write","out=, read by sk ticket")],
+    edges: [["ctx","each"],["ord","each"],["rules","each"],["each","hyg"],["each","ern"],["each","cov"],["each","dip"],["hyg","exit"],["ern","exit"],["cov","exit"],["dip","exit"],["exit","fp"],["fp","out"],["fp","rep"]] },
+  ticket: { nodes: [N("ord","Orders","in"), N("rep","Check report","in","verdicts="), N("q","Quotes","in","bid and ask per order id"), N("gate","Today's PASS?","decide","same fingerprint, same date"), N("ref","REFUSED and why","out"), N("lim","A limit order?","decide"), N("lad","Ladder","step","mid toward far side in nickels"), N("asis","Enter as written","step","market or stop"), N("out","TICKET","out","options first, then stock")],
+    edges: [["ord","gate"],["rep","gate"],["gate","ref"],["gate","lim"],["lim","lad"],["q","lad"],["lim","asis"],["lad","out"],["asis","out"],["ref","out"]] },
+  size: { nodes: [N("args","price=, atr=","in","atr: prior-session 5-min ATR"), N("rules","rules.json","in","$400 cap, $13k–$18k band"), N("t","At the $15,000 target","step","shares rounded down"), N("n1","Stop outside noise?","decide","stop = $400 / shares"), N("b","At the $13,000 band low","step","shares rounded up"), N("n2","Stop outside noise?","decide"), N("trade","TRADE","out","shares, stop, max loss"), N("skip","SKIP","out","the band wins")],
+    edges: [["args","t"],["rules","t"],["t","n1"],["n1","trade"],["n1","b"],["b","n2"],["n2","trade"],["n2","skip"]] },
+  pick: { nodes: [N("chain","Chain file","in","right, strike, bid, ask, volume"), N("spot","Spot from parity","step","median over strikes, or spot="), N("tr","Strikes that traded","decide","volume above zero"), N("tv","Time value on the bid","step","bid minus intrinsic"), N("best","Most time value","step","ties go to more volume"), N("out","The strike and why","out")],
+    edges: [["chain","spot"],["chain","tr"],["spot","tv"],["tr","tv"],["tv","best"],["best","out"]] },
+  yield: { nodes: [N("p","premium=, collateral=","in"), N("d","asof=, expiry=","in"), N("days","Calendar days","step","expiry minus as-of"), N("calc","premium ÷ collateral","step","× 365 ÷ days"), N("out","Annualized yield","out","with the formula")],
+    edges: [["p","calc"],["d","days"],["days","calc"],["calc","out"]] },
+  parity: { nodes: [N("a","call=, put=, strike=","in","mids at one strike"), N("calc","call − put + strike","step","rates ignored"), N("out","Spot","out","with the formula")],
+    edges: [["a","calc"],["calc","out"]] },
+  clock: { nodes: [N("now","now=","in","or the Mac's clock"), N("ny","New York time","step","via Intl, any time zone"), N("cal","NYSE calendar","in","2026–2027 holidays, early closes"), N("sess","Session","decide","open 09:30–16:00 or early close"), N("ent","Entries allowed?","decide","fractional and dip from 10:00"), N("out","One line","out")],
+    edges: [["now","ny"],["ny","sess"],["cal","sess"],["sess","ent"],["ent","out"]] },
+  earnings: { nodes: [N("book","Earnings book","in","file= or state/earnings.json"), N("add","symbol= date= time=","in","optional: add or change one"), N("val","A valid date?","decide","future, ≤ 150 days, trading day"), N("save","Save the book","write"), N("err","not saved: why","out","exit 2"), N("rev","Review","step","against symbols= you hold"), N("out","Date, time, days away","out","exit 1 if one is missing")],
+    edges: [["add","val"],["val","save"],["val","err"],["book","rev"],["save","rev"],["rev","out"]] },
+  dip: { nodes: [N("book","Dip book","in","file= or state/dips.json"), N("args","symbol=, since=, off=1","in","optional: tag or untag"), N("uni","In the universe?","decide","the seven names in rules.json"), N("save","Save the book","write"), N("out","Dip swings and since","out")],
+    edges: [["args","uni"],["uni","save"],["book","save"],["save","out"],["book","out"]] },
+  defaults: { nodes: [N("file","state/defaults.json","in","or $SK_DEFAULTS"), N("args","key=value, key=, reset=1","in"), N("val","Can it be a default?","decide","per-run values refused"), N("save","Save","write"), N("out","Defaults in force","out","the command line still wins")],
+    edges: [["args","val"],["val","save"],["file","save"],["save","out"],["file","out"]] },
+  version: { nodes: [N("pkg","package.json","in","version"), N("git","git rev-parse","in","short revision, if a checkout"), N("bun","Bun.version","in"), N("out","sk X.Y.Z (rev) on bun","out")],
+    edges: [["pkg","out"],["git","out"],["bun","out"]] },
+  help: { nodes: [N("reg","The registry","in","commands.ts: keys, exits, examples"), N("ask","How it was asked","in","sk, help <cmd>, --help, -h"), N("fmt","format= on the line?","decide","defaults never apply"), N("idx","Index","out","grouped, ≤ 40 lines"), N("page","One page","out","usage, keys, exit, examples"), N("cat","JSON catalog","out","for an agent to plan from"), N("test","The test suite","step","runs every offline example")],
+    edges: [["reg","fmt"],["ask","fmt"],["fmt","idx"],["fmt","page"],["fmt","cat"],["reg","test"]] },
+};
+
+const TEMPLATES = {
+  auth: "Logged in: <hours> hours left on the 7-day login\nLogged in: <hours> hours left on the 7-day login (log in again today)     under 24 hours\nNot logged in or the 7-day login expired: bun run sk login                exit 3\nNo App Key or Secret yet: bun run sk setup                                 exit 3",
+  accounts: "<tag>  (ending <last four>)\n…one line per account",
+  login: "1. Sign in to Schwab in the browser window that just opened:\n\n   https://api.schwabapi.com/v1/oauth/authorize?…\n\n2. Approve the app. The browser lands on a page that will not load at https://127.0.0.1:8182. That is expected.\n3. Be quick: Schwab's code dies in about 30 seconds. Copy the whole address bar (Cmd+L, Cmd+C),\n   come back here and just press Enter to read it from the clipboard, or paste it.\n\nPress Enter (or paste):\nLogged in. Schwab login good for <hours> hours (7 days); run sk login again before then.",
+  setup: "App Key (from developer.schwab.com, Dashboard, Apps): \nApp Secret: \nSaved to the macOS Keychain (service schwab-kit).\n  App Key:    <n> characters, ends ...<last 2>\n  App Secret: <n> characters, ends ...<last 2>\nCompare with the app page, then: bun run sk login",
+};
+
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+/* Layered left-to-right layout: rank = longest path from a source; order by the mean order of predecessors. */
+function layout(flow, W, H, rankGap, nodeGap) {
+  const preds = new Map(flow.nodes.map((n) => [n.id, []]));
+  for (const [a, b] of flow.edges) preds.get(b).push(a);
+  const rank = new Map();
+  const r = (id) => { if (!rank.has(id)) { rank.set(id, 0); rank.set(id, Math.max(0, ...preds.get(id).map((p) => r(p) + 1))); } return rank.get(id); };
+  flow.nodes.forEach((n) => r(n.id));
+  const ranks = [];
+  flow.nodes.forEach((n, i) => { (ranks[rank.get(n.id)] ||= []).push({ id: n.id, i }); });
+  const order = new Map();
+  ranks.forEach((col) => {
+    col.forEach((c) => { const ps = preds.get(c.id).filter((p) => order.has(p)); c.key = ps.length ? ps.reduce((t, p) => t + order.get(p), 0) / ps.length : c.i; });
+    col.sort((a, b) => a.key - b.key || a.i - b.i);
+    col.forEach((c, k) => order.set(c.id, k));
+  });
+  const tallest = Math.max(...ranks.map((c) => c.length));
+  const height = tallest * H + (tallest - 1) * nodeGap;
+  const pos = new Map();
+  ranks.forEach((col, k) => {
+    const h = col.length * H + (col.length - 1) * nodeGap;
+    col.forEach((c, j) => pos.set(c.id, { x: k * (W + rankGap), y: (height - h) / 2 + j * (H + nodeGap) }));
+  });
+  return { pos, width: ranks.length * W + (ranks.length - 1) * rankGap, height };
+}
+
+function flowHtml(name, flow) {
+  const H = 62, P = 4, avail = document.getElementById("view").clientWidth - 2 * P;
+  const probe = layout(flow, 1, H, 0, 12), cols = probe.width;
+  const gap = Math.max(22, Math.min(40, (avail - cols * 176) / Math.max(1, cols - 1)));
+  const W = Math.max(118, Math.min(176, Math.floor((avail - (cols - 1) * gap) / cols)));
+  const L = layout(flow, W, H, gap, 12);
+  const edges = flow.edges.map(([a, b]) => {
+    const s = L.pos.get(a), t = L.pos.get(b);
+    const sx = s.x + W + P, sy = s.y + H / 2 + P, tx = t.x + P - 2, ty = t.y + H / 2 + P, mx = (sx + tx) / 2;
+    return `<path d="M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}" fill="none" stroke="var(--stroke1)" stroke-width="1.25" marker-end="url(#arr-${name})"/>`;
+  }).join("");
+  const nodes = flow.nodes.map((n) => {
+    const p = L.pos.get(n.id);
+    return `<div class="node k-${n.kind}" style="left:${p.x + P}px;top:${p.y + P}px;width:${W}px;height:${H}px"><div class="l">${esc(n.label)}</div>${n.sub ? `<div class="s">${esc(n.sub)}</div>` : ""}</div>`;
+  }).join("");
+  const w = L.width + 2 * P, h = L.height + 2 * P;
+  return `<div class="flow-wrap"><div class="flow" role="img" aria-label="How sk ${name} works: inputs, steps and outputs" style="width:${w}px;height:${h}px">
+    <svg width="${w}" height="${h}"><defs><marker id="arr-${name}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--fg3)"/></marker></defs>${edges}</svg>${nodes}</div></div>
+  <div class="legend small muted">${[["k-in","Reads"],["k-step","Step"],["k-decide","Rule or decision"],["k-write","Writes a file"],["k-out","Prints"]].map(([k, t]) => `<span><span class="sw ${k}"></span>${t}</span>`).join("")}</div>`;
+}
+
+function outputHtml(text) {
+  return `<pre class="out">${text.split("\n").map((l) => {
+    const c = /^\s*(ACT|BLOCK)\b|REFUSED|: BLOCK$/.test(l) ? "act" : /^\s*WARN\b/.test(l) ? "warn" : "";
+    return c ? `<span class="${c}">${esc(l)}</span>` : esc(l);
+  }).join("\n")}</pre>`;
+}
+
+const stats = (items) => `<div class="stats">${items.map(([v, k, good]) => `<div class="stat"><div class="v${good ? " good" : ""}">${esc(v)}</div><div class="k">${esc(k)}</div></div>`).join("")}</div>`;
+
+function tableHtml(headers, rows, opts = {}) {
+  const tones = { success: "var(--green)", danger: "var(--red)", warning: "var(--amber)" };
+  const al = (i) => (opts.align && opts.align[i] === "right" ? ' class="r"' : "");
+  return `<table><thead><tr>${headers.map((h, i) => `<th${al(i)}>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.map((row, ri) => `<tr>${row.map((c, i) => {
+    const dot = i === 0 && opts.tones && opts.tones[ri] ? `<span class="dot" style="background:${tones[opts.tones[ri]]}"></span>` : "";
+    return `<td${al(i)}>${dot}${esc(c)}</td>`;
+  }).join("")}</tr>`).join("")}</tbody></table>`;
+}
+
+function barsHtml(label, cats, vals, fmt, horizontal) {
+  const max = Math.max(...vals);
+  if (horizontal) {
+    return `<div role="img" aria-label="${esc(label)}"><p class="small" style="font-weight:500;margin-bottom:8px">${esc(label)}</p>${cats.map((c, i) => `<div class="row" style="margin:4px 0"><span class="small muted" style="width:110px">${esc(c)}</span><span style="height:14px;width:${(vals[i] / max) * 60}%;background:var(--accent);border-radius:2px"></span><span class="small">${esc(fmt(vals[i]))}</span></div>`).join("")}</div>`;
+  }
+  const W = 640, Hc = 150, pad = 24, bw = Math.min(60, (W - 2 * pad) / cats.length - 16);
+  const step = (W - 2 * pad) / cats.length;
+  const bars = cats.map((c, i) => {
+    const h = (vals[i] / max) * (Hc - 30), x = pad + i * step + (step - bw) / 2, y = Hc - h;
+    return `<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="2" fill="var(--accent)"/><text x="${x + bw / 2}" y="${y - 6}" text-anchor="middle" font-size="11" fill="var(--fg2)">${esc(fmt(vals[i]))}</text><text x="${x + bw / 2}" y="${Hc + 16}" text-anchor="middle" font-size="11" fill="var(--fg3)">${esc(c)}</text>`;
+  }).join("");
+  return `<p class="small" style="font-weight:500;margin-bottom:6px">${esc(label)}</p><svg viewBox="0 0 ${W} ${Hc + 24}" width="100%" role="img" aria-label="${esc(label)}"><line x1="${pad}" x2="${W - pad}" y1="${Hc}" y2="${Hc}" stroke="var(--stroke2)"/>${bars}</svg>`;
+}
+
+function ladderHtml(t) {
+  const W = 640, axisY = 70, x = (v) => 30 + ((v - t.lo) / (t.hi - t.lo)) * (W - 60), f = (v) => v.toFixed(2);
+  const marks = [["bid", t.bid], ["ask", t.ask]].map(([k, v]) => `<line x1="${x(v)}" x2="${x(v)}" y1="${axisY - 14}" y2="${axisY + 14}" stroke="var(--fg3)"/><text x="${x(v)}" y="${axisY + 30}" text-anchor="middle" font-size="11" fill="var(--fg2)">${k} ${f(v)}</text>`).join("");
+  const rungs = t.rungs.map((r, i) => `<circle cx="${x(r)}" cy="${axisY - 26}" r="10" fill="var(--accent)"/><text x="${x(r)}" y="${axisY - 22}" text-anchor="middle" font-size="11" fill="var(--on-accent)">${i + 1}</text>`).join("");
+  return `<div><p class="small" style="font-weight:500">${esc(t.title)}</p>
+    <svg viewBox="0 0 ${W} 120" width="100%" role="img" aria-label="${esc(t.title)}: rungs ${t.rungs.map(f).join(", ")}">
+      <line x1="${x(t.lo)}" x2="${x(t.hi)}" y1="${axisY}" y2="${axisY}" stroke="var(--stroke1)"/>
+      <rect x="${x(t.bid)}" y="${axisY - 6}" width="${x(t.ask) - x(t.bid)}" height="12" fill="var(--fill1)"/>${marks}
+      <line x1="${x(t.mid)}" x2="${x(t.mid)}" y1="${axisY - 14}" y2="${axisY + 14}" stroke="var(--fg3)" stroke-dasharray="2 3"/>
+      <text x="${x(t.mid)}" y="${axisY + 46}" text-anchor="middle" font-size="11" fill="var(--fg3)">mid ${t.mid.toFixed(t.side === "BUY" ? 3 : 2)}</text>
+      <text x="${x(t.limit)}" y="14" text-anchor="middle" font-size="11" fill="var(--fg2)">${t.side === "SELL" ? "floor" : "ceiling"} ${f(t.limit)} (the limit)</text>
+      <line x1="${x(t.limit)}" x2="${x(t.limit)}" y1="20" y2="${axisY - 16}" stroke="var(--fg2)" stroke-dasharray="3 3"/>${rungs}
+    </svg><p class="small muted">Enter at ${t.rungs.map(f).join(", then ")}${t.rungs.length > 1 ? " if unfilled" : ""}.</p></div>`;
+}
+
+function sizeDip(entry, atr) {
+  const maxLoss = 40000, lo = 1300000, hi = 1800000, target = 1500000, maxShares = 299, steps = [];
+  for (const [label, budget, up] of [["$15,000 target", target, false], ["$13,000 band low", lo, true]]) {
+    const shares = Math.min(up ? Math.ceil(budget / entry) : Math.floor(budget / entry), maxShares);
+    const dist = Math.floor(maxLoss / shares), notional = shares * entry, inside = dist <= atr;
+    steps.push({ label, shares, notional, dist, inside });
+    if (notional < lo || notional > hi || inside) continue;
+    return { trade: true, shares, dist, stop: entry - dist, loss: shares * dist, steps };
+  }
+  return { trade: false, steps };
+}
+const money = (c) => "$" + (c / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const px = (c) => (c / 100).toFixed(2);
+let atr = 85;
+function sizeHtml() {
+  const r = sizeDip(18240, atr);
+  return `<div class="row"><span class="small muted">Entry 182.40, noise (ATR):</span>${[85, 500, 600].map((a) => `<button class="pill" data-atr="${a}" aria-pressed="${a === atr}">${px(a)}</button>`).join("")}</div>
+    <div style="margin-top:10px">${tableHtml(["Try", "Shares", "Notional", "Stop distance ($400 ÷ shares)", "vs noise"],
+      r.steps.map((s) => [s.label, String(s.shares), money(s.notional), px(s.dist), s.inside ? `inside ${px(atr)}: no` : `outside ${px(atr)}: yes`]),
+      { align: ["left", "right", "right", "right", "left"], tones: r.steps.map((s) => (s.inside ? "warning" : "success")) })}</div>
+    <div style="margin-top:12px">${r.trade ? stats([[`TRADE ${r.shares}`, "shares", true], [px(r.stop), `stop (${px(r.dist)} away)`], [money(r.loss), "loss at the stop"]])
+      : `<div class="callout"><b>SKIP.</b> The stop sits inside noise at both sizes, so the band wins over the stop.</div>`}</div>`;
+}
+
+function clockHtml() {
+  const W = 640, y = 50, t = (h, m) => 30 + ((h * 60 + m - 570) / 390) * (W - 60);
+  const marks = [[9, 30, "09:30 open"], [10, 0, "10:00 entries"], [13, 0, "13:00 early close"], [15, 55, "15:55 dip flat-by"], [16, 0, "16:00 close"]];
+  return `<svg viewBox="0 0 ${W} 100" width="100%" role="img" aria-label="A New York trading day: open 09:30, entries from 10:00, early close 13:00 on short days, dip swings flat by 15:55, close 16:00">
+    <rect x="${t(9, 30)}" y="${y - 8}" width="${t(10, 0) - t(9, 30)}" height="16" fill="var(--fill2)"/>
+    <rect x="${t(10, 0)}" y="${y - 8}" width="${t(16, 0) - t(10, 0)}" height="16" fill="var(--fill1)"/>
+    ${marks.map(([h, m, l], i) => `<line x1="${t(h, m)}" x2="${t(h, m)}" y1="${y - 14}" y2="${y + 14}" stroke="var(--fg3)" ${h === 13 || m === 55 ? 'stroke-dasharray="3 3"' : ""}/><text x="${t(h, m)}" y="${i % 2 === 0 ? y + 30 : y - 20}" text-anchor="${i === 0 ? "start" : i === marks.length - 1 ? "end" : "middle"}" font-size="11" fill="var(--fg2)">${l}</text>`).join("")}
+  </svg>` + tableHtml(["now=", "sk clock says"], [
+    ["2026-11-04 09:45", "OPEN; fractional and dip entries not yet"],
+    ["2026-11-04 10:15", "OPEN; fractional and dip entries allowed"],
+    ["2026-11-04 16:30", "CLOSED"],
+    ["2026-11-26 11:00", "CLOSED (NYSE holiday: Thanksgiving Day)"],
+    ["2026-11-27 12:30", "OPEN, early close 13:00 (day after Thanksgiving)"],
+  ]);
+}
+
+const dollars = (v) => "$" + v.toFixed(2);
+const MECH = {
+  review: () => stats([["$126,570.00", "Account value"], ["$40,000.00", "Cash"], ["−$20,000.00", "Put collateral (AMD 200 put)"], ["$20,000.00", "Free cash"]])
+    + `<div style="margin-top:18px">${barsHtml("Best strike for the 300 uncovered SPCX (basis 145.87, Dec 18): time value on the bid", ["150 (vol 12)", "155 (vol 0)", "160 (vol 4)"], [3.0, 2.0, 1.2], dollars)}</div>
+    <p class="small faint note">Only strikes at or above basis are considered; 155 never traded, so it is ignored. 150 wins. Strikes below basis (130–145) are never offered.</p>`,
+  positions: () => stats([["$86,570.00", "Holdings, from the rows"], ["+ $40,000.00", "Cash"], ["= $126,570.00", "Rebuilt"], ["$126,570.00", "Schwab says: agrees", true]]),
+  chain: () => barsHtml("SPCX Dec 18 calls: time value on the bid by strike (underlying 137.00)", ["130", "135", "140", "145", "150", "155", "160"], [4.5, 5.8, 5.7, 4.3, 3.0, 2.0, 1.2], dollars)
+    + `<p class="small faint note">Time value peaks near the money. Every strike implies spot 137.00 by parity, matching Schwab's underlying, so no stop and check.</p>`,
+  check: () => tableHtml(["Order", "What", "Verdict", "Why"], [
+    ["cc-cme", "Sell 2 CME 280 calls @ 5.20", "PASS", "covered, at or above basis"],
+    ["cc-msft-below-basis", "Sell 2 MSFT 400 calls @ 9.00", "BLOCK", "strike 400.00 below basis 410.00; also WARN: earnings before expiry"],
+    ["dip-nvda", "Buy 82 NVDA @ 182.40", "PASS", "inside the dip rules"],
+    ["exit-msft-market", "Sell 10 MSFT at market", "PASS", "WARN limit-only: an exit is never blocked"],
+  ], { tones: ["success", "danger", "success", "warning"] }),
+  ticket: () => `<div class="grid2">${ladderHtml({ title: "Sell 2 CME 280 calls, limit 5.20", side: "SELL", bid: 5.2, ask: 5.5, mid: 5.35, rungs: [5.35, 5.3, 5.25, 5.2], limit: 5.2, lo: 5.12, hi: 5.58 })}${ladderHtml({ title: "Buy 82 NVDA, limit 182.40", side: "BUY", bid: 182.3, ask: 182.42, mid: 182.36, rungs: [182.35, 182.4], limit: 182.4, lo: 182.26, hi: 182.46 })}</div>`,
+  size: () => `<div id="size">${sizeHtml()}</div>`,
+  pick: () => barsHtml("CME Nov 20 calls that traded on Oct 26: time value on the bid (spot 307.45 from parity)", ["300.00", "310.00", "312.50", "315.00"], [4.15, 6.5, 5.5, 4.5], dollars)
+    + `<p class="small faint note">297.50, 302.50, 305.00 and 307.50 had no volume and are ignored. 310 wins with 6.50. Source: fixtures/real/cme-2026-10-26.json.</p>`,
+  yield: () => stats([["5.20", "Premium (bid)"], ["÷ 280.00", "Collateral"], ["× 365 ÷ 15", "Sep 3 to Sep 18"], ["= 45.2%", "Annualized", true]]),
+  parity: () => stats([["7.10", "Call mid"], ["− 6.95", "Put mid"], ["+ 280.00", "Strike"], ["= 280.15", "Spot", true]]),
+  clock: clockHtml,
+  earnings: () => barsHtml("Days to the next report in the sample book, as of 2026-11-04", ["SPCX (AMC)", "NVDA (AMC)", "CME (BMO)"], [8, 15, 92], (v) => `${v} days`, true)
+    + `<div class="callout">AMD is held but has no date on file, so sk earnings exits 1 and the review shows it as a WARN.</div>`,
+  auth: () => `<div role="img" aria-label="The 7-day login: 144 hours fine, the last 24 hours say log in again today" style="display:flex;height:14px;border-radius:3px;overflow:hidden"><div style="flex:144;background:var(--fill1)"></div><div style="flex:24;background:var(--amber)"></div></div>
+    <div class="row small muted" style="justify-content:space-between;margin-top:6px"><span>sk login: 168 hours</span><span>last 24: "log in again today"</span></div>`,
+  help: () => stats([["25", "Commands"], ["54", "Examples"], ["28", "Run by bun test"], ["≤ 40", "Lines in the index"]]),
+};
+
+function where(g) {
+  if (g.human) return "Marc runs it at the terminal: it prompts. An agent asks him to and never asks for what it takes.";
+  if (g.name === "auth" || g.name === "accounts") return "Reads the Keychain; no offline form.";
+  return g.live ? "Calls Schwab, or runs on saved responses (file=, quotes=, chains=, orders=)." : "Runs on files and arguments only; never calls Schwab.";
+}
+
+function render(name) {
+  const g = GEN.find((x) => x.name === name) || GEN.find((x) => x.name === "review") || GEN[0];
+  if (!g) return;
+  document.querySelectorAll("nav button.pill").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cmd === g.name)));
+  const mech = MECH[g.name];
+  const heading = g.name === "size" ? "Try it" : g.name === "help" ? "What it covers" : "The numbers";
+  const out = g.output !== null && g.run
+    ? `<div class="card"><div class="card-h"><span>What it printed on the sample</span><span class="tag">exit ${g.code}</span></div><div class="card-b"><pre class="cmd">$ ${esc(g.run)}</pre>${outputHtml(g.output)}</div></div>`
+    : TEMPLATES[g.name] ? `<div class="card"><div class="card-h"><span>What it says (message shapes from the code)</span><span class="tag">no account data</span></div><div class="card-b">${outputHtml(TEMPLATES[g.name])}</div></div>` : "";
+  document.getElementById("view").innerHTML = `
+    <h2>sk ${esc(g.name)}</h2>
+    <p class="lead">${esc(g.summary)}</p>
+    <p class="muted" style="margin-top:4px">${esc(g.about)}</p>
+    <p class="small faint" style="margin-top:4px">${esc(where(g))}</p>
+    ${FLOWS[g.name] ? `<h3>How it works</h3><div id="flowbox" data-cmd-flow="${g.name}">${flowHtml(g.name, FLOWS[g.name])}</div>` : ""}
+    ${mech ? `<h3>${heading}</h3>${mech()}` : ""}
+    ${out}
+    <h3>Exit codes</h3>${tableHtml(["Code", "Means"], Object.entries(g.exit), { align: ["right", "left"] })}`;
+}
+
+function nav() {
+  const groups = [];
+  for (const g of GEN) {
+    const last = groups[groups.length - 1];
+    if (last && last.title === g.groupTitle) last.names.push(g.name); else groups.push({ title: g.groupTitle, names: [g.name] });
+  }
+  document.getElementById("nav").innerHTML = groups.map((grp) => `<div class="group"><span class="group-title">${esc(grp.title)}</span><span class="pills">${grp.names.map((n) => `<button class="pill" data-cmd="${n}" aria-pressed="false">${n}</button>`).join("")}</span></div>`).join("");
+}
+
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  if (b.dataset.cmd) { history.replaceState(null, "", "#" + b.dataset.cmd); render(b.dataset.cmd); }
+  if (b.dataset.atr) { atr = Number(b.dataset.atr); document.getElementById("size").innerHTML = sizeHtml(); }
+});
+window.addEventListener("hashchange", () => render(location.hash.slice(1)));
+let resizing;
+window.addEventListener("resize", () => {
+  clearTimeout(resizing);
+  resizing = setTimeout(() => {
+    const box = document.getElementById("flowbox");
+    if (box) box.innerHTML = flowHtml(box.dataset.cmdFlow, FLOWS[box.dataset.cmdFlow]);
+  }, 120);
+});
+
+nav();
+render(location.hash.slice(1) || "review");
+const v = GEN.find((x) => x.name === "version");
+document.getElementById("foot").textContent = `Generated from ${v && v.output ? v.output : "sk"}, on the synthetic sample in fixtures/sample. Read only: sk cannot place, change or cancel an order.`;
+</script>
+</body>
+</html>
