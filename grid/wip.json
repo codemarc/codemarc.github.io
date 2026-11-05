@@ -266,6 +266,43 @@
     ]
   },
   "p6": {
+    "name": "staging-dev",
+    "title": "staging",
+    "href1": "",
+    "href2": "*/settings",
+    "showas": "table4",
+    "links": [
+      {
+        "name1": "tailscale",
+        "href1": "https://controlplane.tailscale.com",
+        "pre4": "ㅤㅤㅤㅤㅤㅤ", 
+        "name4": "waypoint-dev",
+        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2"
+
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name2": "back-office",
+        "href2": "https://waypoint-dev.bltcore.com/back-office"
+      },        
+      {
+        "label": "-store"          
+      },   
+      {
+        "pre1": "ㅤㅤㅤㅤ", 
+        "name1": "pos",
+        "href1": "https://waypoint-dev.bltcore.com",
+        "pre2": "ㅤㅤㅤㅤ", 
+        "name2": "kds",
+        "href2": "https://waypoint-dev-kds.bltcore.com",
+        "pre3": "ㅤㅤㅤㅤ", 
+        "name3": "dm",
+        "href3": "https://waypoint-dev-dm.bltcore.com"
+      }
+    ],
+    "save":{
     "name": "compute",
     "title": "on-prem",
     "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1415",
@@ -308,6 +345,7 @@
         "href3": "http://localhost:9999/"
       }
     ]
+    }
   },
   "p7": {
     "name": "dev",
@@ -322,7 +360,7 @@
         "href1": "https://github.com/bltcore-com/waypoint/blob/main/7-RELEASE.md#ENV",
         "pre4": "ㅤㅤㅤㅤㅤㅤ", 
         "name4": "gaudios",
-        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2"
+        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:ba17 "
 
       },
       {
