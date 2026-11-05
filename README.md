@@ -6,6 +6,7 @@
 
 ## Schwab-kit
 
+[How each sk command works](https://codemarc.github.io/kit/) - the read-only Schwab CLI, command by command, on synthetic sample data
 
 ## My Site List
 [codemarc.net](https://codemarc.net/)  
