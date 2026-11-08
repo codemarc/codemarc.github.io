@@ -1,0 +1,413 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{var t=localStorage.getItem("proof-theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head><body>
+<title>Proof of Work</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+  /* Layout: one column, a continuous rule down the left standing in for the trail, entries hung off it as ledger rows. */
+  :root{
+    --bg:#f6f7f9;
+    --surface:#ffffff;
+    --ink:#11161d;
+    --muted:#5c6673;
+    --rule:#d9dfe7;
+    --accent:#1f5fa8;
+    --violet:#6a4ba8;
+    --live:#17694a;
+    --warm:#8a5a12;
+    --font-sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d1117;
+      --surface:#141b24;
+      --ink:#e6ebf2;
+      --muted:#93a0b0;
+      --rule:#263140;
+      --accent:#79b0ee;
+      --violet:#b096e8;
+      --live:#5cc39a;
+      --warm:#d8a74e;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1117;
+    --surface:#141b24;
+    --ink:#e6ebf2;
+    --muted:#93a0b0;
+    --rule:#263140;
+    --accent:#79b0ee;
+    --violet:#b096e8;
+    --live:#5cc39a;
+    --warm:#d8a74e;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--font-sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:46rem;margin:0 auto;
+    padding-block:3.5rem 3rem;
+    padding-left:max(16px,env(safe-area-inset-left,0px));
+    padding-right:max(16px,env(safe-area-inset-right,0px));
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);font-size:.7rem;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.1rem;
+  }
+  h1{
+    font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.04;letter-spacing:-.025em;
+    font-weight:700;margin:0;text-wrap:balance;
+  }
+  h1 .sub{display:block;color:var(--muted);font-weight:400}
+  .lede{
+    margin:1.5rem 0 0;font-size:1.08rem;max-width:34rem;
+  }
+  .who{
+    margin:1.1rem 0 0;color:var(--muted);font-size:.95rem;max-width:34rem;
+  }
+  .ruleoff{height:1px;background:var(--rule);border:0;margin:2.75rem 0 0}
+
+  section{margin-top:2.75rem}
+  h2{
+    font-family:var(--font-mono);font-size:.74rem;font-weight:600;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--accent);
+    margin:0 0 .35rem;
+  }
+  .sectnote{margin:0 0 1.5rem;color:var(--muted);font-size:.9rem;max-width:34rem}
+
+  .trail{
+    border-left:2px solid var(--rule);
+    padding-left:1.4rem;
+    display:flex;flex-direction:column;gap:1.9rem;
+    margin:0;
+  }
+  .entry{position:relative;min-width:0}
+  .entry::before{
+    content:"";position:absolute;left:-1.78rem;top:.55rem;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--accent);
+  }
+  .entry.live::before{background:var(--live);border-color:var(--live)}
+  .entry.warm::before{border-color:var(--warm);border-style:dashed}
+
+  .kind{
+    font-family:var(--font-mono);font-size:.68rem;font-weight:500;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:.1rem .7rem;margin-bottom:.2rem;
+  }
+  .kind .live{color:var(--live);font-weight:600}
+  .kind .warm{color:var(--warm);font-weight:600}
+  .name{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0}
+  .claim{
+    font-family:var(--font-mono);font-size:.92rem;color:var(--violet);
+    margin:.3rem 0 .45rem;
+  }
+  .entry p{margin:0;max-width:34rem}
+  .links{
+    display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:.6rem;
+    font-family:var(--font-mono);font-size:.8rem;
+  }
+  .links a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  .links a:hover,.links a:focus-visible{border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .closing{
+    margin-top:3rem;padding:1.4rem 1.5rem;background:var(--surface);
+    border:1px solid var(--rule);border-radius:4px;
+  }
+  .closing p{margin:0;max-width:34rem}
+
+  footer{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
+  footer .nm{font-weight:600}
+  footer .meta{
+    font-family:var(--font-mono);font-size:.82rem;color:var(--muted);
+    margin-top:.3rem;line-height:1.9;
+  }
+  footer .meta span{user-select:all}
+  .stamp{
+    font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin-top:1.4rem;
+  }
+
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;margin:0 0 1.1rem}
+  .top .eyebrow{margin:0}
+  .theme{display:inline-flex;flex-shrink:0;border:1px solid var(--rule);border-radius:999px;padding:2px}
+  .theme button{
+    font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+    line-height:1.2;padding:4px 10px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;
+  }
+  .theme button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .theme button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  @media (max-width:420px){
+    .page{padding-block:2.5rem 2.25rem}
+    .trail{padding-left:1.15rem}
+    .entry::before{left:-1.53rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="page">
+
+  <div class="top">
+    <p class="eyebrow">In lieu of a resume</p>
+    <div class="theme" role="group" aria-label="Color theme">
+      <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+      <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+  <h1>Proof of Work<span class="sub">Marc J. Greenberg</span></h1>
+
+  <p class="lede">Everything on this page is running, published, or in print. No titles, no employment dates, no credentials. Each line is something you can open and check for yourself in about a minute.</p>
+
+  <p class="who">He builds AI-native software and advises the people buying it. Delray Beach, Florida. The practice is Braintrailz; the products are BLT Core and Waypoint.</p>
+
+  <hr class="ruleoff">
+
+  <section>
+    <h2>Running in production</h2>
+    <p class="sectnote">Two point of sale buildouts, with real restaurants on the other end.</p>
+    <div class="trail">
+
+      <article class="entry live">
+        <div class="kind"><span class="live">Live</span><span>AI-native point of sale and payments</span><span>Eleven repositories</span></div>
+        <h3 class="name">BLT Core</h3>
+        <p class="claim">Payments freedom, not another terminal lease.</p>
+        <p>Co-founder and CTO of Beyond Limited Thinking. Payments-neutral, AI-native point of sale infrastructure built for ISOs, banks and strategic partners. Recruited the engineers, set the engineering and review standards, defined the delivery model, and put it into production in a working restaurant in New York. Eleven independent repositories, each with its own release line, behind one payments adapter layer across DataCap, Stripe and Square.</p>
+        <div class="links"><a href="https://bltwai.com" target="_blank" rel="noopener">bltwai.com</a><a href="https://bae.bltcore.com" target="_blank" rel="noopener">the payments layer</a><a href="https://www.npmjs.com/package/@codemarc/blt" target="_blank" rel="noopener">the CLI on npm</a></div>
+      </article>
+
+      <article class="entry live">
+        <div class="kind"><span class="live">Deployed, pilot pending</span><span>Clean-room POS core</span><span>Release 0.1.3</span></div>
+        <h3 class="name">Waypoint</h3>
+        <p class="claim">Written fresh from the spec, not ported from the old code.</p>
+        <p>A clean-room order-taking core for a Toast-class full and quick service POS: orders, tender, kitchen display and money. Written fresh from a normative spec, integrating with BLT's gateway and payments adapters over APIs, codebases kept separate. Multi-tenant from the first migration, with row-level security isolating every location. Offline is not a claim: a timed thirty minute outage drill, three terminals, a hundred and fifty mutations, zero lost lines.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Published and forkable</h2>
+    <p class="sectnote">Build the tool, publish the method. Every one of these is public, and most of them are a fork away from being yours.</p>
+    <div class="trail">
+
+      <article class="entry">
+        <div class="kind"><span>Agent skill</span><span>October 2026</span></div>
+        <h3 class="name">Trailcard</h3>
+        <p class="claim">Intent is not enough.</p>
+        <p>Turn a bare instruction into a card an agent can safely act on, then audit what it says it did. Written after arguing the case in print, because an argument nobody can run is just an opinion. Works across Claude, Codex, Grok and Muse.</p>
+        <div class="links"><a href="https://github.com/braintrailz/trailcard" target="_blank" rel="noopener">github.com/braintrailz/trailcard</a><a href="https://braintrailz.com/blog/intent-is-not-enough" target="_blank" rel="noopener">the argument behind it</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Toolkit and agent skills</span><span>26 commands</span><span>In daily use</span></div>
+        <h3 class="name">schwab-kit</h3>
+        <p class="claim">Read only, until it earns the right to write.</p>
+        <p>A toolkit and four agent skills that read a live brokerage account and check proposed orders against a rules file before anyone types them. Integer-cent arithmetic, an NYSE calendar, and a rules engine that fingerprints every verdict. It cannot place an order, and will not for thirty clean trading days. Intent is not enough, with real money on the other side. The account is private. The reference is not.</p>
+        <div class="links"><a href="https://codemarc.github.io/kit/" target="_blank" rel="noopener">the command reference</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Editor extension</span><span>VS Code and Cursor</span></div>
+        <h3 class="name">Muse CLI Chat</h3>
+        <p class="claim">Wrap the harness. Don't rebuild it.</p>
+        <p>Meta shipped Muse Code as a command line agent with no editor surface. Rather than rebuild the agent, this wraps the harness it already had, so the same agent sits next to your files. Written with Muse, about Muse. Published on Open VSX.</p>
+        <div class="links"><a href="https://open-vsx.org/extension/codemarc/muse-cli-chat" target="_blank" rel="noopener">install it</a><a href="https://blog.codemarc.net/inception-a-muse-inside-muse" target="_blank" rel="noopener">how it was built</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Agent skill</span><span>Open source</span></div>
+        <h3 class="name">Aristotle Skill</h3>
+        <p class="claim">Channel a thinker's worldview, not a costume.</p>
+        <p>Grounds answers in what a thinker actually wrote, reasons in their method, and tutors instead of lecturing. Fork the roster and add the next one.</p>
+        <div class="links"><a href="https://github.com/codemarc/aristotle-skill" target="_blank" rel="noopener">github.com/codemarc/aristotle-skill</a><a href="https://blog.codemarc.net/ship-the-engine" target="_blank" rel="noopener">ship the engine</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Agent skill</span><span>Open source</span></div>
+        <h3 class="name">Solid Skill</h3>
+        <p class="claim">Cut word salad and word vomit. Name the pattern.</p>
+        <p>Writing is solid when it has no voids. Diagnose the failure, run the shuffle test, return two cuts so the writer starts catching it without the tool.</p>
+        <div class="links"><a href="https://github.com/codemarc/solid-skill" target="_blank" rel="noopener">github.com/codemarc/solid-skill</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Agent skill</span><span>Two regions mapped</span></div>
+        <h3 class="name">Tech Ecosystem Map</h3>
+        <p class="claim">The map is not the territory.</p>
+        <p>Renders real-geography, layered maps of a region's tech, AI and capital ecosystem from live-verified companies and actual census boundary data. Two instances published so far.</p>
+        <div class="links"><a href="https://github.com/codemarc/tech-ecosystem-map-skill" target="_blank" rel="noopener">the skill</a><a href="https://braintrailz.com/trailcraft/maps/sofla" target="_blank" rel="noopener">South Florida</a><a href="https://braintrailz.com/trailcraft/maps/rdu" target="_blank" rel="noopener">Research Triangle</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Method</span><span>Practice</span></div>
+        <h3 class="name">Repack</h3>
+        <p class="claim">Conserve the knowledge. Clear the clutter.</p>
+        <p>What to keep when the tools turn over every quarter. Preserve what the experiments taught you, then rebuild the kit for the trail ahead. This is the discipline that stops a fast-moving stack from quietly becoming debt.</p>
+        <div class="links"><a href="https://braintrailz.com/trailcraft/repack" target="_blank" rel="noopener">braintrailz.com/trailcraft/repack</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Field guide</span><span>Book</span></div>
+        <h3 class="name">I Built My Own Recruiter</h3>
+        <p class="claim">Run your job search like a software project.</p>
+        <p>Part memoir, part manual. Score, sweep, outreach, then fork the method. Written while doing the thing it documents, which is the only way to write a method that survives contact.</p>
+        <div class="links"><a href="https://braintrailz.com/recruiter/" target="_blank" rel="noopener">read it</a></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>The argument, in writing</h2>
+    <p class="sectnote">Dated, public, and specific enough to be wrong.</p>
+    <div class="trail">
+
+      <article class="entry">
+        <div class="kind"><span>November 1, 2026</span></div>
+        <h3 class="name">After the First Blaze</h3>
+        <p>What the first pass teaches you, and what repacking looks like when you set off again on a quieter trail.</p>
+        <div class="links"><a href="https://braintrailz.com/blog/after-the-first-blaze" target="_blank" rel="noopener">braintrailz.com</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>September 28, 2026</span></div>
+        <h3 class="name">Intent Is Not Enough</h3>
+        <p>What happens when AI stops answering and starts acting. Intent tells a system what you want. It does not tell it what success looks like, what it is allowed to do, where it may use judgment, or how anyone knows afterward what actually happened. That gap is an engineering standards problem.</p>
+        <div class="links"><a href="https://braintrailz.com/blog/intent-is-not-enough" target="_blank" rel="noopener">braintrailz.com</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>August 31, 2026</span></div>
+        <h3 class="name">The Margin Stack</h3>
+        <p>What happens to margin, capacity and client relationships when AI makes a billable hour nearly free to produce. Worked arithmetic on a representative engagement, not a thesis.</p>
+        <div class="links"><a href="https://braintrailz.com/blog/the-margin-stack" target="_blank" rel="noopener">braintrailz.com</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>August 29, 2026</span></div>
+        <h3 class="name">Finding / Founding BrainTrailz</h3>
+        <p>Thirty years of rediscovering the same problem in different forms. The systems we connect are intelligent now, and moving between them put us back in the integration business, except this time the human is the integration layer.</p>
+        <div class="links"><a href="https://braintrailz.com/blog/finding-founding-braintrailz" target="_blank" rel="noopener">braintrailz.com</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>February 2026</span></div>
+        <h3 class="name">The Director of Agent Orchestration</h3>
+        <p>How software leadership moved from writing the code to casting, scripting and directing autonomous agents, and what that does to a delivery model and a job architecture.</p>
+        <div class="links"><a href="https://blog.codemarc.net" target="_blank" rel="noopener">blog.codemarc.net</a></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Still on the fire</h2>
+    <p class="sectnote">Published as unfinished on purpose. Pretending everything is shipped is how a practice loses credibility.</p>
+    <div class="trail">
+
+      <article class="entry warm">
+        <div class="kind"><span class="warm">In progress</span><span>Contacts</span></div>
+        <h3 class="name">Trailhead</h3>
+        <p class="claim">One golden record. Yours.</p>
+        <p>Contacts scatter across LinkedIn, mail and three phones. Merge the duplicates, log the touchpoints, keep a private source of truth.</p>
+        <div class="links"><a href="https://trailhead.braintrailz.com/" target="_blank" rel="noopener">trailhead.braintrailz.com</a></div>
+      </article>
+
+      <article class="entry warm">
+        <div class="kind"><span class="warm">In progress</span><span>Logbook</span></div>
+        <h3 class="name">Logz</h3>
+        <p class="claim">Logbook keeps your trail.</p>
+        <p>A quiet companion for builders. Capture ideas, prompts, decisions and process as you go.</p>
+        <div class="links"><a href="https://logz.bltcore.com/" target="_blank" rel="noopener">logz.bltcore.com</a></div>
+      </article>
+
+      <article class="entry warm">
+        <div class="kind"><span class="warm">In progress</span><span>Network</span></div>
+        <h3 class="name">LinkedTwin</h3>
+        <p class="claim">No followers. No likes. Just real work.</p>
+        <p>A professional network for people tired of polish, where presence is earned through contribution rather than performance.</p>
+        <div class="links"><a href="https://linkedtwin.net/" target="_blank" rel="noopener">linkedtwin.net</a></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>The kit</h2>
+    <p class="sectnote">The tools actually carried, by house: Anthropic, Google, Meta, OpenAI, Microsoft, xAI, open source, and what is coming out of China. Chat, code, assistant, harness.</p>
+    <div class="trail">
+      <article class="entry">
+        <div class="kind"><span>Updated October 14, 2026</span></div>
+        <h3 class="name">The Backpack</h3>
+        <p>Carrying every house is insurance. It is how you know what a model family is good at this month rather than what it was good at when the slide was made, and it is why BLT has model-agnostic interfaces rather than one vendor's roadmap baked in. The page carries a date, because a stack without one is a stack nobody should trust.</p>
+        <div class="links"><a href="https://braintrailz.com/backpack" target="_blank" rel="noopener">braintrailz.com/backpack</a><a href="https://braintrailz.com/trailcraft" target="_blank" rel="noopener">all of Trailcraft</a></div>
+      </article>
+    </div>
+  </section>
+
+  <div class="closing">
+    <p>Everything here is dated and public. The point of leaving a trail is that someone else can walk it.</p>
+  </div>
+
+  <footer>
+    <div class="nm">Marc J. Greenberg</div>
+    <div class="meta">
+      Delray Beach, Florida<br>
+      <span>marc@braintrailz.com</span><br>
+      <span>marc.greenberg@codemarc.net</span><br>
+      <span>516.313.4826</span>
+    </div>
+    <p style="margin:.55rem 0 0;font-size:.85rem;color:var(--muted);max-width:30rem">Both addresses reach the same inbox.</p>
+    <div class="links" style="margin-top:.9rem">
+      <a href="https://braintrailz.com" target="_blank" rel="noopener">braintrailz.com</a>
+      <a href="https://codemarc.net" target="_blank" rel="noopener">codemarc.net</a>
+      <a href="https://github.com/codemarc" target="_blank" rel="noopener">github.com/codemarc</a>
+      <a href="https://www.linkedin.com/in/codemarc/" target="_blank" rel="noopener">linkedin.com/in/codemarc</a>
+    </div>
+    <p class="stamp">Compiled November 5, 2026</p>
+  </footer>
+
+</div>
+<script>
+function setTheme(t) {
+  var theme = t === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = theme;
+  try { localStorage.setItem("proof-theme", theme); } catch (e) {}
+  document.querySelectorAll("[data-theme-set]").forEach(function (b) {
+    b.setAttribute("aria-pressed", String(b.dataset.themeSet === theme));
+  });
+}
+document.querySelector(".theme").addEventListener("click", function (e) {
+  var b = e.target.closest("[data-theme-set]");
+  if (b) setTheme(b.dataset.themeSet);
+});
+(function () {
+  var stored = document.documentElement.dataset.theme;
+  if (stored === "dark" || stored === "light") { setTheme(stored); return; }
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var paint = function () {
+    var theme = mq.matches ? "dark" : "light";
+    document.querySelectorAll("[data-theme-set]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.themeSet === theme));
+    });
+  };
+  paint();
+  mq.addEventListener("change", paint);
+})();
+</script>
+
+</body></html>

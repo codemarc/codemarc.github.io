@@ -21,9 +21,10 @@ This file gives AI agents and assistants the context needed to work effectively 
 - **Name:** Marc J. Greenberg  
 - **Handle:** CodeMarc (GitHub: [codemarc](https://github.com/codemarc))  
 - **Current framing:** Expert generalist, Director of Agent Orchestration  
+- **In one line:** Builds AI-native software and advises the people buying it.  
 - **Location:** Delray Beach, Florida  
-- **Contact:** [marc.greenberg@codemarc.net](mailto:marc.greenberg@codemarc.net)  
-- **Links:** [linkedin.com/in/codemarc](https://linkedin.com/in/codemarc), [consulting.codemarc.net](https://consulting.codemarc.net), [blog.codemarc.net](https://blog.codemarc.net), [braintrailz.com](https://braintrailz.com)
+- **Contact:** [marc.greenberg@codemarc.net](mailto:marc.greenberg@codemarc.net), [marc@braintrailz.com](mailto:marc@braintrailz.com) (same inbox)  
+- **Links:** [linkedin.com/in/codemarc](https://linkedin.com/in/codemarc), [consulting.codemarc.net](https://consulting.codemarc.net), [blog.codemarc.net](https://blog.codemarc.net), [braintrailz.com](https://braintrailz.com), [Proof of Work](https://codemarc.github.io/proof/)
 
 35 years leading enterprise technology from vision to execution, including 14 years as Chief Software Architect of a $30M ARR integration platform and four years running client-facing AI and digital transformation engagements. Owns the full delivery lifecycle (analyze, design, build, test, deploy) and the C-suite conversation that precedes it: advising CIOs, CDOs, and CXOs on technology strategy, operating model redesign, and AI readiness. US patent holder in enterprise application integration.
 
@@ -53,7 +54,7 @@ Active goals: generate consulting income through Braintrailz and Codemarc Consul
 
 Digital transformation strategy and delivery; C-suite advisory (CIO, CDO, CXO); agentic workflow design and orchestration; enterprise integration architecture (patent holder); business development and practice growth; team development and mentorship; practice economics and ROI frameworks; AI readiness assessment and governance; operating model and process transformation; data strategy, governance and quality; change enablement and adoption; executive presence and board communication.
 
-**AI Advisory:** Agent orchestration, agentic workflows, Claude/MCP ecosystem, AI readiness assessment, process identification and transformation, governance frameworks. **Architecture:** Enterprise integration (ESB, adapters, CEP), microservices, event-driven design, data governance, cloud-native (AWS, Azure, GCP). **Client Delivery:** Full-lifecycle delivery, implementation roadmaps, work package decomposition and handoff, Agile delivery (Scrum, Jira, Confluence), economics modeling, executive presentations. **Tooling:** Claude, Claude Code, Cursor, Bolt, ChatGPT, Gemini. Containers, Docker, DevOps, Rancher, IaC, Kubernetes/k3s, observability, resilience. React/Supabase architecture. POS and hospitality software, ISO payment channel dynamics.
+**AI Advisory:** Agent orchestration, agentic workflows, Claude/MCP ecosystem, AI readiness assessment, process identification and transformation, governance frameworks. **Architecture:** Enterprise integration (ESB, adapters, CEP), microservices, event-driven design, data governance, cloud-native (AWS, Azure, GCP). **Client Delivery:** Full-lifecycle delivery, implementation roadmaps, work package decomposition and handoff, Agile delivery (Scrum, Jira, Confluence), economics modeling, executive presentations. **Tooling:** Claude, Claude Code, Cursor, Bolt, ChatGPT, Codex, Gemini, Grok, Muse. Containers, Docker, DevOps, Rancher, IaC, Kubernetes/k3s, observability, resilience. React/Supabase architecture. POS and hospitality software, ISO payment channel dynamics.
 
 ---
 
@@ -69,13 +70,13 @@ Digital transformation strategy and delivery; C-suite advisory (CIO, CDO, CXO); 
 - Advised C-suite executives on data governance, infrastructure readiness, and AI-native workflow design; translated technical options into build/buy/integrate recommendations.  
 - Built the practice through direct business development: networked, scoped, priced, and closed every engagement.
 
-### Beyond Limited Thinking, LLC (BLT Core): Co-Founder (Seed-Stage, Advisory Role)
+### Beyond Limited Thinking, LLC (BLT Core): Co-Founder and CTO
 
 **May 2025 to Present, Remote**
 
 - Architected the full BLT Core stack: payments adapter layer across DataCap, Stripe, and Square; device gateway; AI-native operator workflows; white-label partner surfaces; sub-2-minute shift reconciliation engine.  
-- Designed ISO channel economics: $3,750 setup \+ $129/mo SaaS per location; one ISO partnership \= $264.9K Year 1 revenue at 50 locations.  
-- Advisory role with no functional overlap with advisory firm client engagements. Full commercial release targeted for August 2026\.
+- Recruited the engineers, set the engineering and review standards, and defined the delivery model. Eleven independent repositories, each with its own release line.  
+- Designed ISO channel economics: $3,750 setup + $129/mo SaaS per location; one ISO partnership = $264.9K Year 1 revenue at 50 locations.
 
 ### Intelligent Audit: Chief of Staff, Office of the CTO
 
@@ -122,11 +123,11 @@ Global financial services start-up for cross-border settlement processing.
 
 **1989 to 2000, New York, NY**
 
-Privately owned software company (\~$300M revenue, 2000+ employees) known for FOCUS/WebFOCUS and EDA/SQL middleware. Progression of roles:
+Privately owned software company (~$300M revenue, 2000+ employees) known for FOCUS/WebFOCUS and EDA/SQL middleware. Progression of roles:
 
-- **Director of Research and Development (1998-2000):** IBI product architecture on Windows 2000\. Designed the IBI XML Connector Toolkit (XML application server for SOAP services, XML Document Generator, XML/MQSeries message broker). Primary technical relationship owner for the Microsoft Certified Solution Provider Program.  
+- **Director of Research and Development (1998-2000):** IBI product architecture on Windows 2000. Designed the IBI XML Connector Toolkit (XML application server for SOAP services, XML Document Generator, XML/MQSeries message broker). Primary technical relationship owner for the Microsoft Certified Solution Provider Program.  
 - **Technical Director, Data Warehousing Technologies (1997-1998):** SmartMart product line: metadata management, data modeling, transfer/transform tools, query governing, multidimensional database server.  
-- **Programming Manager (1993-1997):** Chief architect of EDA/PC development, team of 15\. Chief technical contact with Microsoft BackOffice Division. Architected EDA/Message Server, early message-oriented middleware for client/server SQL access over multiple message systems.  
+- **Programming Manager (1993-1997):** Chief architect of EDA/PC development, team of 15. Chief technical contact with Microsoft BackOffice Division. Architected EDA/Message Server, early message-oriented middleware for client/server SQL access over multiple message systems.  
 - **Communications Group Leader:** Designed a protocol-independent communications API in C, portable across Windows NT, OS/2, NetWare, DOS, MVS, CMS, UNIX, VMS. Built the Windows NT communications gateway, NetWare data access products (joint deal with Novell), the Gateway/CONNECT OS/2 product, and DOS NetBIOS session layer software for PC/FOCUS.
 
 ### IBM Glendale Labs: Technical Manager
@@ -147,7 +148,7 @@ Actuarial consulting firm. Developed benefit administration applications in C an
 
 ## Education
 
-Bachelor of Science, Computer Science, Syracuse University, May 1986\.
+Bachelor of Science, Computer Science, Syracuse University, May 1986.
 
 ---
 
@@ -164,30 +165,25 @@ Bachelor of Science, Computer Science, Syracuse University, May 1986\.
 - Core differentiator: "Payments Freedom." Merchants keep their existing processor relationships. Competes against Toast, Clover, Square.  
 - Stack: payments adapter layer (DataCap, Stripe, Square), device gateway, AI-native operator workflows, white-label partner surfaces, sub-2-minute shift reconciliation engine.  
 - BLT agents are hospitality-focused automated workers scoped per merchant by configuration, with an Agent Manager holding per-customer context.  
-- ISO channel economics: $3,750 setup \+ $129/mo SaaS per location; one ISO partnership \= $264.9K Year 1 revenue at 50 locations.  
+- ISO channel economics: $3,750 setup + $129/mo SaaS per location; one ISO partnership = $264.9K Year 1 revenue at 50 locations.  
 - Team: Jeffrey Feuer (ISO and distribution), Eric Greenberg (restaurant operations), Brian Robison (lead engineer), Chad Horn (GTM advisor).  
-- Explored a stablecoin cannabis payment rail concept (GENIUS Act) targeting legal dispensaries.  
-- Full commercial release targeted for August 2026\.
+- Explored a stablecoin cannabis payment rail concept (GENIUS Act) targeting legal dispensaries.
 
 ---
 
 ## Projects and Thought Leadership
 
+- **Waypoint:** Clean-room order-taking core for a Toast-class full and quick service POS (orders, tender, kitchen display, money), written fresh from a normative spec rather than ported. Integrates with BLT's gateway and payments adapters over APIs, codebases kept separate. Multi-tenant from the first migration, with row-level security isolating every location. Offline verified by a timed 30-minute outage drill: three terminals, 150 mutations, zero lost lines. Release 0.1.3, deployed, pilot pending.  
+- **Trailcard** ([github.com/braintrailz/trailcard](https://github.com/braintrailz/trailcard)): Agent skill that turns a bare instruction into a card an agent can safely act on (purpose, acceptable outcome, authority, bounded judgment, execution, evidence), then audits what the agent says it did. The runnable companion to "Intent Is Not Enough." Works across Claude, Codex, Grok, and Muse.  
+- **schwab-kit** ([command reference](https://codemarc.github.io/kit/)): Read-only toolkit and four agent skills that read a live brokerage account and check proposed orders against a rules file before anyone types them. Integer-cent arithmetic, an NYSE calendar, and a rules engine that fingerprints every verdict. It cannot place an order, and will not for thirty clean trading days.  
+- **Muse CLI Chat** ([Open VSX](https://open-vsx.org/extension/codemarc/muse-cli-chat)): VS Code and Cursor extension that wraps Meta's Muse Code command line agent so it sits next to your files, rather than rebuilding the agent. Written with Muse, about Muse.  
 - **Aristotle Skill** ([github.com/codemarc/aristotle-skill](https://github.com/codemarc/aristotle-skill)): Installable Claude Code skill that captures deceased thinkers' worldviews and reasoning methods rather than impersonating their voice. Uses the "Braintrailz composition pattern" (source, method, commitments, voice).  
-- **trailhead** (in conception): Open-source conversational booking interface powered by Claude, intended to replace transactional calendar-widget funnels. Planned build with Claude Code and Cursor, documented as a major blog post.  
+- **Trailhead** (in progress, [trailhead.braintrailz.com](https://trailhead.braintrailz.com/)): One golden record for contacts scattered across LinkedIn, mail, and phones. Merges duplicates, logs touchpoints, keeps a private source of truth.  
+- **LinkedTwin** (in progress, [linkedtwin.net](https://linkedtwin.net/)): A professional network where presence is earned through contribution rather than performance. No followers, no likes.  
 - **The Margin Stack:** Combo-meal framework for AI-augmented professional services pricing.  
+- Writes at [braintrailz.com/blog](https://braintrailz.com/blog): "[After the First Blaze](https://braintrailz.com/blog/after-the-first-blaze)" (Nov 2026), "[Intent Is Not Enough](https://braintrailz.com/blog/intent-is-not-enough)" (Sep 2026), "[The Margin Stack](https://braintrailz.com/blog/the-margin-stack)" (Aug 2026), "[Finding / Founding BrainTrailz](https://braintrailz.com/blog/finding-founding-braintrailz)" (Aug 2026).  
 - Active writer at [blog.codemarc.net](https://blog.codemarc.net). Notable posts: "Ship the Engine" (a 1985 Steve Jobs dream fulfilled in a weekend), "The Director of Agent Orchestration" (Feb 2026), "The Rise of First Principles Leadership" (Sep 2024), "35 Years of Code, Connection, and Change" (Nov 2024).  
 - The "Director of Agent Orchestration" framing and the conductor/composer metaphor predate mainstream adoption of agentic AI terminology.
-
----
-
-## Current Threads (as of late July 2026; verify before relying)
-
-- Repositioned bio on codemarc.net and LinkedIn from "T-shaped professional" to "expert generalist."  
-- Exploring select fractional and contract engagements alongside the advisory practice.  
-- Pursuing development-partner conversations for BLT with hospitality operators.  
-- Reviewed a DevOps modernization audit for BLT (Pulumi vs. Terraform, TypeScript-heavy stack).  
-- Ongoing competitive and investor-lens analysis of BLT's positioning.
 
 ---
 
@@ -195,8 +191,8 @@ Bachelor of Science, Computer Science, Syracuse University, May 1986\.
 
 - Lives in Delray Beach, Florida.  
 - Member at Mizner Country Club; golf is a regular personal interest.  
-- Married  3 children , and a dog
+- Married, three children, and a dog.
 
 ---
 
-*Curated and maintained by Marc. Last updated July 30, 2026\.*  
+*Curated and maintained by Marc. Last updated November 8, 2026.*  
