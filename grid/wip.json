@@ -334,30 +334,38 @@
     "title": "prod",
     "href1": "https://supabase.com/dashboard/project/aumxdmrbychugjfuqrjy",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": "office",
-        "name2": "lab",
-        "href2": "https://gaudios-lab.bltcore.com/back-office",
-        "title2": "lab office, droplet waypoint",
-        "name3": "store",
-        "href3": "https://gaudios-store.bltcore.com/back-office",
-        "title3": "store office, box gaudios001-base, Gaudio's network only"
+        "name1": "lab",
+        "href1": "https://gaudios-lab.bltcore.com/back-office",
+        "title1": "lab office, droplet waypoint",
+        "name2": "api",
+        "href2": "https://gaudios-lab.bltcore.com/api/v1/version",
+        "title2": "prod API version and revision (lab)",
+        "name3": "pos",
+        "href3": "https://gaudios-lab.bltcore.com",
+        "title3": "lab POS",
+        "name4": "kds",
+        "href4": "https://waypoint-kds.bltcore.com",
+        "title4": "lab KDS"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name1": "api",
-        "href1": "https://gaudios-lab.bltcore.com/api/v1/version",
-        "title1": "prod API version and revision (lab)",
-        "name2": "pos",
-        "href2": "https://gaudios-lab.bltcore.com",
-        "title2": "lab POS",
-        "name3": "kds",
-        "href3": "https://waypoint-kds.bltcore.com",
-        "title3": "lab KDS"
+        "name1": "store",
+        "href1": "https://gaudios-store.bltcore.com/back-office",
+        "title1": "store office, box gaudios001-base, Gaudio's network only",
+        "name2": "api",
+        "href2": "https://gaudios-store.bltcore.com/api/v1/version",
+        "title2": "prod API version and revision (store), Gaudio's network only",
+        "name3": "pos",
+        "href3": "https://gaudios-store.bltcore.com",
+        "title3": "store POS, Gaudio's network only",
+        "name4": "kds",
+        "href4": "https://gaudios-store-kds.bltcore.com",
+        "title4": "store KDS, Gaudio's network only"
       }
     ]
   }
