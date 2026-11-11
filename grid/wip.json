@@ -112,45 +112,59 @@
     ]
   },
   "p3": {
-    "name": "qa",
-    "title": "qa",
+    "name": "toolchain",
+    "title": "toolchain",
     "href1": "",
     "href2": "*/settings",
-    "showas": "ltable",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "autoqa",
-        "href1": "https://autoqa.bltcore.com/smoke",
-        "name2": "pos",        
-        "href2": "https://autoqa.bltcore.com/",
-        "title2": "autoqa-blt-core",
-        "name3": "dm",        
-        "href3": "https://autoqa-dm.bltcore.com/",
-        "name4": "am",
-        "href4": "https://autoqa-am.bltcore.com/"
+        "name1": "tailscale",
+        "href1": "https://controlplane.tailscale.com",
+        "name2": "resend",
+        "href2": "https://resend.com/",
+        "name3": "datacap",
+        "href3": "https://portal.dcap.com/"
       },
       {
-        "name1": "qa1",        
-        "href1": "https://qa1.bltcore.com/smoke",
-        "name2": "pos",        
-        "href2": "https://qa1.bltcore.com/",
-        "title2": "qa1-blt-core",
-        "name3": "dm",        
-        "href3": "https://qa1-dm.bltcore.com/",
-        "name4": "am",
-        "href4": "https://qa1-am.bltcore.com/"
+        "pre1": "ㅤ"
       },
       {
-        "name1": "qa2",        
-        "href1": "https://qa2.bltcore.com/smoke",
+        "name1": "waypoint",
+        "href1": "https://github.com/bltcore-com/waypoint",
+        "name2": "ci/cd",
+        "href2": "https://github.com/bltcore-com/waypoint/actions",
+        "name3": "envmap",
+        "href3": "https://github.com/bltcore-com/waypoint/blob/main/7-RELEASE.md#ENV"
+      },
+      {
+        "pre1": "ㅤ",
+        "name1": "ㅤ"
+      },
+      {
+        "label": "-"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "bltcore",
+        "href1": "https://bltcore.com/status",
+        "name2": "bae",
+        "href2": "https://bae.bltcore.com/smoke",
+        "name3": "pos",
+        "href3": "https://bae.bltcore.com/",
+        "title3": "bae-blt-core"
+      },
+      {
+        "name1": "demo",
+        "href1": "https://demo.bltcore.com/smoke",
         "name2": "pos",
-        "href2": "https://qa2.bltcore.com/",
-        "title2": "qa2-blt-core",
-        "name3": "dm",        
-        "href3": "https://qa2-dm.bltcore.com/",
-        "name4": "am",
-        "href4": "https://qa1-am.bltcore.com/"
-
+        "href2": "https://demo.bltcore.com/",
+        "title2": "demo-blt-core",
+        "name3": "logz",
+        "href3": "https://logz.bltcore.com/",
+        "title3": "logz.bltcore.com"
       }
     ]
   },
@@ -232,217 +246,118 @@
     ]
    },
   "p5": {
-    "name": "services",
-    "title": "services",
-    "href1": "",
+    "name": "local",
+    "title": "local",
+    "href1": "http://127.0.0.1:5050/browser/",
     "href2": "*/settings",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "resend",
-        "href1": "https://resend.com/"
-      },
-      {
-        "pre2": "ㅤㅤㅤㅤㅤ",
-        "name2": "admin@laf.bltpos.com",
-        "href2": "https://resend.com/login"
-      },
-      {
-        "pre2": "ㅤㅤㅤㅤㅤ",
-        "name2": "admin@bltwai.com",
-        "href2": "https://resend.com/emails"
+        "name1": "office",
+        "name2": "bistro",
+        "href2": "http://127.0.0.1:5173/back-office",
+        "title2": "bistro office",
+        "name3": "gaudios",
+        "href3": "http://127.0.0.1:5173/back-office",
+        "title3": "gaudios office"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name1": "datacap",
-        "href1": "https://portal.dcap.com/"
-      },
-      {
-        "pre2": "ㅤㅤㅤㅤㅤ",
-        "name2": "marc@bltwai.com",
-        "href2": "https://portal.dcap.com/"
+        "name1": "api",
+        "href1": "http://127.0.0.1:5170/api/v1/version",
+        "title1": "local API version and revision",
+        "name2": "pos",
+        "href2": "http://127.0.0.1:5173",
+        "name3": "kds",
+        "href3": "http://127.0.0.1:5174"
       }
     ]
   },
   "p6": {
-    "name": "staging-dev",
-    "title": "staging",
-    "href1": "",
+    "name": "dev",
+    "title": "dev",
+    "href1": "https://supabase.com/dashboard/project/iebaxvzdfngobocwolua",
     "href2": "*/settings",
-    "showas": "table4",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "tailscale",
-        "href1": "https://controlplane.tailscale.com",
-        "pre4": "ㅤㅤㅤㅤㅤㅤ", 
-        "name4": "waypoint-dev",
-        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:73e2"
-
+        "name1": "office",
+        "name3": "gaudios",
+        "href3": "http://127.0.0.1:5173/back-office",
+        "title3": "gaudios office"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name2": "back-office",
-        "href2": "https://waypoint-dev.bltcore.com/back-office"
-      },        
-      {
-        "label": "-store"          
-      },   
-      {
-        "pre1": "ㅤㅤㅤㅤ", 
-        "name1": "pos",
-        "href1": "https://waypoint-dev.bltcore.com",
-        "pre2": "ㅤㅤㅤㅤ", 
-        "name2": "kds",
-        "href2": "https://waypoint-dev-kds.bltcore.com",
-        "pre3": "ㅤㅤㅤㅤ", 
-        "name3": "dm",
-        "href3": "https://waypoint-dev-dm.bltcore.com"
-      }
-    ],
-    "save":{
-    "name": "compute",
-    "title": "on-prem",
-    "href1":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1415",
-    "title2": "tailscale",
-    "href2": "https://controlplane.tailscale.com",
-    "showas": "table3",
-    "links": [
-      {
-        "name1":"laf1",
-        "href1":"chrome-extension://iodiha`mcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:1cc7",
-        "title1":"blt@lafbase.com",
-        "name2":"laf2",
-        "href2":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:d68c",
-        "title2":"blt2@lafbase.com",
-        "name3":"marc",
-        "href3":"chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:7391",
-        "title3":"marc@lafbase.com"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "introㅤ",
-        "href1": "https://github.com/bltcore-com/waypoint#waypoint",
-        "name2": "dictㅤ",
-        "href2": "https://github.com/bltcore-com/waypoint/blob/main/0-WAYPOINT.md#waypoint-dictionary",
-        "name3": "specㅤ",
-        "href3": "https://github.com/bltcore-com/waypoint/blob/main/1-SPEC.md#clean-room-reconstruction-of-a-toast-class-full-servicequick-service-pos"
-
-     },
-     {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "^ㅤ3000ㅤ",
-        "href1": "http://localhost:3000/",
-        "name2": "^ㅤ3100ㅤ",
-        "href2": "http://localhost:3100/",
-        "name3": "^ㅤ9999ㅤ",
-        "href3": "http://localhost:9999/"
+        "name1": "api",
+        "href1": "http://127.0.0.1:5170/api/v1/version",
+        "title1": "dev API version and revision",
+        "name2": "pos",
+        "href2": "http://127.0.0.1:5173",
+        "name3": "kds",
+        "href3": "http://127.0.0.1:5174"
       }
     ]
-    }
   },
   "p7": {
-    "name": "dev",
-    "title": "waypoint",
-    "href1": "https://github.com/bltcore-com/waypoint",
-    "title2": "ci/cd",
-    "href2": "https://github.com/bltcore-com/waypoint/actions",
-    "showas": "table4",
+    "name": "stage",
+    "title": "stage",
+    "href1": "https://supabase.com/dashboard/project/csmorvurtrnqaayvspjx",
+    "href2": "*/settings",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "environments",
-        "href1": "https://github.com/bltcore-com/waypoint/blob/main/7-RELEASE.md#ENV",
-        "pre4": "ㅤㅤㅤㅤㅤㅤ", 
-        "name4": "gaudios",
-        "href4": "chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#profile-id:ba17 "
-
+        "name1": "office",
+        "name3": "gaudios",
+        "href3": "https://waypoint-dev.bltcore.com/back-office",
+        "title3": "gaudios office"
       },
       {
         "pre1": "ㅤ"
       },
       {
-        "name2": "store",
-        "href2": "https://gaudios-store.bltcore.com/back-office"
-      },        
-      {
-        "label": "-store"          
-      },   
-      {
-        "pre1": "ㅤㅤㅤㅤ", 
-        "name1": "pos",
-        "href1": "https://gaudios-store.bltcore.com",
-        "pre2": "ㅤㅤㅤㅤ", 
-        "name2": "kds",
-        "href2": "https://gaudios-store-kds.bltcore.com",
-        "pre3": "ㅤㅤㅤㅤ", 
-        "name3": "dm",
-        "href3": "https://gaudios-store-dm.bltcore.com"
-      },
-      {
-        "name2": "lab",
-        "href2": "https://gaudios-lab.bltcore.com/back-office"
-      },   
-      {
-        "label": "-lab"
-      },   
-      {
-        "pre1": "ㅤㅤㅤㅤ", 
-        "name1": "pos",
-        "href1": "https://gaudios-lab.bltcore.com",
-        "pre2": "ㅤㅤㅤㅤ", 
-        "name2": "kds",
-        "href2": "https://gaudios-lab-kds.bltcore.com",
-        "pre3": "ㅤㅤㅤㅤ", 
-        "name3": "dm",
-        "href3": "https://gaudios-lab-dm.bltcore.com"
+        "name1": "api",
+        "href1": "https://waypoint-dev.bltcore.com/api/v1/version",
+        "title1": "stage API version and revision",
+        "name2": "pos",
+        "href2": "https://waypoint-dev.bltcore.com",
+        "name3": "kds",
+        "href3": "https://waypoint-dev-kds.bltcore.com"
       }
     ]
   },
   "p8": {
-    "name": "bltcore",
-    "title": "bltcore.com",
-    "href1": "https://bltcore.com/status",
+    "name": "prod",
+    "title": "prod",
+    "href1": "https://supabase.com/dashboard/project/aumxdmrbychugjfuqrjy",
     "href2": "*/settings",
-    "showas": "ltable",
+    "showas": "ltable3",
     "links": [
       {
-        "name1": "bae",        
-        "href1": "https://bae.bltcore.com/smoke",
-
-        "name2": "pos",        
-        "href2": "https://bae.bltcore.com/",
-        "title2": "bae-blt-core",
-
-        "name3": "dm",        
-        "href3": "https://bae-dm.bltcore.com/",
-
-        "name4": "am",
-        "href4": "https://bae-am.bltcore.com/"
+        "name1": "office",
+        "name2": "lab",
+        "href2": "https://gaudios-lab.bltcore.com/back-office",
+        "title2": "lab office, droplet waypoint",
+        "name3": "store",
+        "href3": "https://gaudios-store.bltcore.com/back-office",
+        "title3": "store office, box gaudios001-base, Gaudio's network only"
       },
       {
-        "name1": "demo",
-        "href1": "https://demo.bltcore.com/smoke",
-
-        "name2": "pos",        
-        "href2": "https://demo.bltcore.com/",
-        "title2": "demo-blt-core",
-
-        "name3": "dm",        
-        "href3": "https://demo-dm.bltcore.com/",
-
-        "name4": "am",
-        "href4": "https://demo-am.bltcore.com/"
+        "pre1": "ㅤ"
       },
       {
-        "name1": "logz",
-        "href1": "https://logz.bltcore.com/",
-        "title1": "logz.bltcore.com"
+        "name1": "api",
+        "href1": "https://gaudios-lab.bltcore.com/api/v1/version",
+        "title1": "prod API version and revision (lab)",
+        "name2": "pos",
+        "href2": "https://gaudios-lab.bltcore.com",
+        "title2": "lab POS",
+        "name3": "kds",
+        "href3": "https://waypoint-kds.bltcore.com",
+        "title3": "lab KDS"
       }
     ]
   }
