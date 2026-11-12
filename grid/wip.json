@@ -261,7 +261,32 @@
         "href3": "http://localhost:5173",
         "name4": "kds",
         "href4": "http://localhost:5174"
-      }
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤㅤㅤ",
+        "name1": "-tail",
+        "href1": "https://console.tailscale.com/admin/machines"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "office",
+        "href1": "https://bltdev.tail681791.ts.net:5173/back-office",
+        "name2": "api",
+        "href2": "https://bltdev.tail681791.ts.net:5170/api/v1/version",
+        "name3": "pos",
+        "href3": "https://bltdev.tail681791.ts.net:5173",
+        "name4": "kds",
+        "href4": "https://bltdev.tail681791.ts.net:5174"
+        }
+
     ]
   },
   "p6": {
@@ -280,8 +305,32 @@
       "href3": "http://localhost:5173",
       "name4": "kds",
       "href4": "http://localhost:5174"
-      }
-    ]
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "pre1": "ㅤㅤㅤ",
+        "name1": "-tail",
+        "href1": "https://console.tailscale.com/admin/machines"
+      },
+      {
+        "pre1": "ㅤ"
+      },
+      {
+        "name1": "office",
+        "href1": "https://bltdev.tail681791.ts.net:5173/back-office",
+        "name2": "api",
+        "href2": "https://bltdev.tail681791.ts.net:5170/api/v1/version",
+        "name3": "pos",
+        "href3": "https://bltdev.tail681791.ts.net:5173",
+        "name4": "kds",
+        "href4": "https://bltdev.tail681791.ts.net:5174"
+        }
+      ]
   },
   "p7": {
     "name": "stage",
