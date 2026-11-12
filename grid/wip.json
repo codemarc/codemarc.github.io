@@ -248,30 +248,19 @@
   "p5": {
     "name": "local",
     "title": "local",
-    "href1": "http://127.0.0.1:5050/browser/",
+    "href1": "http://localhost:5050/browser/",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
         "name1": "office",
-        "name2": "bistro",
-        "href2": "http://127.0.0.1:5173/back-office",
-        "title2": "bistro office",
-        "name3": "gaudios",
-        "href3": "http://127.0.0.1:5173/back-office",
-        "title3": "gaudios office"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "api",
-        "href1": "http://127.0.0.1:5170/api/v1/version",
-        "title1": "local API version and revision",
-        "name2": "pos",
-        "href2": "http://127.0.0.1:5173",
-        "name3": "kds",
-        "href3": "http://127.0.0.1:5174"
+        "href1": "https://localhost:5173/back-office",
+        "name2": "api",
+        "href2": "https://localhost:5170/api/v1/version",
+        "name3": "pos",
+        "href3": "https://localhost:5173",
+        "name4": "kds",
+        "href4": "https://localhost:5174"
       }
     ]
   },
@@ -280,25 +269,17 @@
     "title": "dev",
     "href1": "https://supabase.com/dashboard/project/iebaxvzdfngobocwolua",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": "office",
-        "name3": "gaudios",
-        "href3": "http://127.0.0.1:5173/back-office",
-        "title3": "gaudios office"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "api",
-        "href1": "http://127.0.0.1:5170/api/v1/version",
-        "title1": "dev API version and revision",
-        "name2": "pos",
-        "href2": "http://127.0.0.1:5173",
-        "name3": "kds",
-        "href3": "http://127.0.0.1:5174"
+      "name1": "office",
+      "href1": "https://localhost:5173/back-office",
+      "name2": "api",
+      "href2": "https://localhost:5170/api/v1/version",
+      "name3": "pos",
+      "href3": "https://localhost:5173",
+      "name4": "kds",
+      "href4": "https://localhost:5174"
       }
     ]
   },
@@ -307,25 +288,17 @@
     "title": "stage",
     "href1": "https://supabase.com/dashboard/project/csmorvurtrnqaayvspjx",
     "href2": "*/settings",
-    "showas": "ltable3",
+    "showas": "ltable",
     "links": [
       {
-        "name1": "office",
-        "name3": "gaudios",
-        "href3": "https://waypoint-dev.bltcore.com/back-office",
-        "title3": "gaudios office"
-      },
-      {
-        "pre1": "ㅤ"
-      },
-      {
-        "name1": "api",
-        "href1": "https://waypoint-dev.bltcore.com/api/v1/version",
-        "title1": "stage API version and revision",
-        "name2": "pos",
-        "href2": "https://waypoint-dev.bltcore.com",
-        "name3": "kds",
-        "href3": "https://waypoint-dev-kds.bltcore.com"
+      "name1": "office",
+      "href1": "https://gaudios-stage.bltcore.com/back-office",
+      "name2": "api",
+      "href2": "https://gaudios-stage.bltcore.com/api/v1/version",
+      "name3": "pos",
+      "href3": "https://gaudios-stage.bltcore.com",
+      "name4": "kds",
+      "href4": "https://gaudios-stage-kds.bltcore.com"
       }
     ]
   },
