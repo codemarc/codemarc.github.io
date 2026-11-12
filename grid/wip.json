@@ -254,13 +254,13 @@
     "links": [
       {
         "name1": "office",
-        "href1": "https://localhost:5173/back-office",
+        "href1": "http://localhost:5173/back-office",
         "name2": "api",
-        "href2": "https://localhost:5170/api/v1/version",
+        "href2": "http://localhost:5170/api/v1/version",
         "name3": "pos",
-        "href3": "https://localhost:5173",
+        "href3": "http://localhost:5173",
         "name4": "kds",
-        "href4": "https://localhost:5174"
+        "href4": "http://localhost:5174"
       }
     ]
   },
@@ -273,13 +273,13 @@
     "links": [
       {
       "name1": "office",
-      "href1": "https://localhost:5173/back-office",
+      "href1": "http://localhost:5173/back-office",
       "name2": "api",
-      "href2": "https://localhost:5170/api/v1/version",
+      "href2": "http://localhost:5170/api/v1/version",
       "name3": "pos",
-      "href3": "https://localhost:5173",
+      "href3": "http://localhost:5173",
       "name4": "kds",
-      "href4": "https://localhost:5174"
+      "href4": "http://localhost:5174"
       }
     ]
   },
