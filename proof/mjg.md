@@ -44,6 +44,16 @@ Turn a bare instruction into a card an agent can safely act on, then audit what 
 
 [github.com/braintrailz/trailcard](https://github.com/braintrailz/trailcard)[the argument behind it](https://braintrailz.com/blog/intent-is-not-enough)
 
+Agent skill · v0.1
+
+### Flint
+
+You bring the kindling. Flint tests whether it can catch.
+
+Turns an idea into a justified next investment before coding: a project definition, a bounded experiment, or a reason not to build. Uses Trailcard to preserve intent, authority, and evidence. Includes templates and structural validation; real-world effectiveness evaluation remains open.
+
+[source and instructions](https://github.com/braintrailz/flint)
+
 Toolkit and agent skills26 commandsIn daily use
 
 ### schwab-kit
@@ -128,6 +138,14 @@ Part memoir, part manual. Score, sweep, outreach, then fork the method. Written 
 
 Dated, public, and specific enough to be wrong.
 
+November 19, 2026
+
+### The Bridge That Wasn't There
+
+Why plausible AI recommendations need an owner, current evidence, and the history behind them before anyone acts. Governance turns a convincing connection into a bridge you can trust.
+
+[braintrailz.com](https://braintrailz.com/blog/the-bridge-that-wasnt-there)
+
 November 1, 2026
 
 ### After the First Blaze
@@ -206,7 +224,7 @@ A professional network for people tired of polish, where presence is earned thro
 
 The tools actually carried, by house: Anthropic, Google, Meta, OpenAI, Microsoft, xAI, open source, and what is coming out of China. Chat, code, assistant, harness.
 
-Updated October 14, 2026
+Updated November 22, 2026
 
 ### The Backpack
 
@@ -227,4 +245,4 @@ Both addresses reach the same inbox.
 
 [braintrailz.com](https://braintrailz.com) [codemarc.net](https://codemarc.net) [github.com/codemarc](https://github.com/codemarc) [linkedin.com/in/codemarc](https://www.linkedin.com/in/codemarc/)
 
-Compiled November 5, 2026
+Compiled November 5, 2026 · Updated November 22, 2026
