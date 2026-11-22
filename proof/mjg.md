@@ -22,7 +22,7 @@ Co-founder and CTO of Beyond Limited Thinking. Payments-neutral, AI-native point
 
 [bltwai.com](https://bltwai.com)[the payments layer](https://bae.bltcore.com)[the CLI on npm](https://www.npmjs.com/package/@codemarc/blt)
 
-Deployed, pilot pendingClean-room POS coreRelease 0.1.3
+Deployed, pilot pendingClean-room POS coreRelease 0.1.9
 
 ### Waypoint
 
@@ -83,6 +83,16 @@ Cut word salad and word vomit. Name the pattern.
 Writing is solid when it has no voids. Diagnose the failure, run the shuffle test, return two cuts so the writer starts catching it without the tool.
 
 [github.com/codemarc/solid-skill](https://github.com/codemarc/solid-skill)
+
+Agent skillOpen source
+
+### Scam Skill
+
+Before you trust it, get a second look.
+
+Paste a message or screenshot, ask "Scam?", and get an evidence-based assessment, what remains unknown, and one useful next step. When the evidence is missing, the right answer is "I don't know."
+
+[github.com/codemarc/scam-skill](https://github.com/codemarc/scam-skill)
 
 Agent skillTwo regions mapped
 

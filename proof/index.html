@@ -3,9 +3,11 @@
 </head><body>
 <title>Proof of Work</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/instrument-sans:vf@5.2.8/wght.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
   /* Layout: one column, a continuous rule down the left standing in for the trail, entries hung off it as ledger rows. */
   :root{
@@ -18,7 +20,7 @@
     --violet:#6a4ba8;
     --live:#17694a;
     --warm:#8a5a12;
-    --font-sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --font-body:"Instrument Sans Variable","Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme: dark){
@@ -51,11 +53,11 @@
   *{box-sizing:border-box}
   body{
     margin:0;background:var(--bg);color:var(--ink);
-    font-family:var(--font-sans);font-size:16px;line-height:1.6;
+    font-family:var(--font-body);font-size:calc(16.5px + 1pt);line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
   .page{
-    max-width:46rem;margin:0 auto;
+    max-width:49.68rem;margin:0 auto;
     padding-block:3.5rem 3rem;
     padding-left:max(16px,env(safe-area-inset-left,0px));
     padding-right:max(16px,env(safe-area-inset-right,0px));
@@ -67,15 +69,15 @@
     margin:0 0 1.1rem;
   }
   h1{
-    font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.04;letter-spacing:-.025em;
+    font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.08;letter-spacing:-.02em;
     font-weight:700;margin:0;text-wrap:balance;
   }
   h1 .sub{display:block;color:var(--muted);font-weight:400}
   .lede{
-    margin:1.5rem 0 0;font-size:1.08rem;max-width:34rem;
+    margin:1.5rem 0 0;font-size:1.1rem;max-width:36.72rem;
   }
   .who{
-    margin:1.1rem 0 0;color:var(--muted);font-size:.95rem;max-width:34rem;
+    margin:1.1rem 0 0;color:var(--muted);font-size:.97rem;max-width:36.72rem;
   }
   .ruleoff{height:1px;background:var(--rule);border:0;margin:2.75rem 0 0}
 
@@ -85,7 +87,7 @@
     letter-spacing:.17em;text-transform:uppercase;color:var(--accent);
     margin:0 0 .35rem;
   }
-  .sectnote{margin:0 0 1.5rem;color:var(--muted);font-size:.9rem;max-width:34rem}
+  .sectnote{margin:0 0 1.5rem;color:var(--muted);font-size:.9rem;max-width:36.72rem}
 
   .trail{
     border-left:2px solid var(--rule);
@@ -109,12 +111,12 @@
   }
   .kind .live{color:var(--live);font-weight:600}
   .kind .warm{color:var(--warm);font-weight:600}
-  .name{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0}
+  .name{font-size:1.2rem;font-weight:600;letter-spacing:-.01em;margin:0}
   .claim{
     font-family:var(--font-mono);font-size:.92rem;color:var(--violet);
     margin:.3rem 0 .45rem;
   }
-  .entry p{margin:0;max-width:34rem}
+  .entry p{margin:0;max-width:36.72rem}
   .links{
     display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:.6rem;
     font-family:var(--font-mono);font-size:.8rem;
@@ -127,7 +129,7 @@
     margin-top:3rem;padding:1.4rem 1.5rem;background:var(--surface);
     border:1px solid var(--rule);border-radius:4px;
   }
-  .closing p{margin:0;max-width:34rem}
+  .closing p{margin:0;max-width:36.72rem}
 
   footer{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
   footer .nm{font-weight:600}
@@ -190,7 +192,7 @@
       </article>
 
       <article class="entry live">
-        <div class="kind"><span class="live">Deployed, pilot pending</span><span>Clean-room POS core</span><span>Release 0.1.3</span></div>
+        <div class="kind"><span class="live">Deployed, pilot pending</span><span>Clean-room POS core</span><span>Release 0.1.9</span></div>
         <h3 class="name">Waypoint</h3>
         <p class="claim">Written fresh from the spec, not ported from the old code.</p>
         <p>A clean-room order-taking core for a Toast-class full and quick service POS: orders, tender, kitchen display and money. Written fresh from a normative spec, integrating with BLT's gateway and payments adapters over APIs, codebases kept separate. Multi-tenant from the first migration, with row-level security isolating every location. Offline is not a claim: a timed thirty minute outage drill, three terminals, a hundred and fifty mutations, zero lost lines.</p>
@@ -250,6 +252,14 @@
         <p class="claim">Cut word salad and word vomit. Name the pattern.</p>
         <p>Writing is solid when it has no voids. Diagnose the failure, run the shuffle test, return two cuts so the writer starts catching it without the tool.</p>
         <div class="links"><a href="https://github.com/codemarc/solid-skill" target="_blank" rel="noopener">github.com/codemarc/solid-skill</a></div>
+      </article>
+
+      <article class="entry">
+        <div class="kind"><span>Agent skill</span><span>Open source</span></div>
+        <h3 class="name">Scam Skill</h3>
+        <p class="claim">Before you trust it, get a second look.</p>
+        <p>Paste a message or screenshot, ask "Scam?", and get an evidence-based assessment, what remains unknown, and one useful next step. When the evidence is missing, the right answer is "I don't know."</p>
+        <div class="links"><a href="https://github.com/codemarc/scam-skill" target="_blank" rel="noopener">github.com/codemarc/scam-skill</a></div>
       </article>
 
       <article class="entry">
@@ -386,7 +396,7 @@
       <span>marc.greenberg@codemarc.net</span><br>
       <span>516.313.4826</span>
     </div>
-    <p style="margin:.55rem 0 0;font-size:.85rem;color:var(--muted);max-width:30rem">Both addresses reach the same inbox.</p>
+    <p style="margin:.55rem 0 0;font-size:.85rem;color:var(--muted);max-width:32.4rem">Both addresses reach the same inbox.</p>
     <div class="links" style="margin-top:.9rem">
       <a href="https://braintrailz.com" target="_blank" rel="noopener">braintrailz.com</a>
       <a href="https://codemarc.net" target="_blank" rel="noopener">codemarc.net</a>
@@ -423,6 +433,7 @@ document.querySelector(".theme").addEventListener("click", function (e) {
   paint();
   mq.addEventListener("change", paint);
 })();
+try { localStorage.removeItem("proof-font"); } catch (e) {}
 </script>
 
 </body></html>
