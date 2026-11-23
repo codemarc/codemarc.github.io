@@ -1,6 +1,6 @@
 In lieu of a resume
 
-# Proof of WorkMarc J. Greenberg
+# Proof of Work<br/>Marc J. Greenberg
 
 Everything on this page is running, published, or in print. No titles, no employment dates, no credentials. Each line is something you can open and check for yourself in about a minute.
 
