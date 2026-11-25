@@ -138,6 +138,14 @@ Part memoir, part manual. Score, sweep, outreach, then fork the method. Written 
 
 Dated, public, and specific enough to be wrong.
 
+November 25, 2026
+
+### Bones on the Trail
+
+When an assistant starts managing the experiment instead of helping with it, understanding intent is not permission to manage it. Partnership engineering is the gap after intent.
+
+[braintrailz.com](https://braintrailz.com/blog/bones-on-the-trail)
+
 November 19, 2026
 
 ### The Bridge That Wasn't There
@@ -245,4 +253,4 @@ Both addresses reach the same inbox.
 
 [braintrailz.com](https://braintrailz.com) [codemarc.net](https://codemarc.net) [github.com/codemarc](https://github.com/codemarc) [linkedin.com/in/codemarc](https://www.linkedin.com/in/codemarc/)
 
-Compiled November 5, 2026 · Updated November 22, 2026
+Compiled November 5, 2026 · Updated November 25, 2026
