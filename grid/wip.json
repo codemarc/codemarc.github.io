@@ -115,7 +115,8 @@
     "name": "toolchain",
     "title": "toolchain",
     "href1": "",
-    "href2": "*/settings",
+    "title2": "toml",
+    "href2": "https://toml.io/en/",
     "showas": "ltable3",
     "links": [
       {
